@@ -1,0 +1,100 @@
+{
+ "summary": {
+  "model": "@cf/google/gemma-4-26b-a4b-it",
+  "date": "2026-10-27T08:34:47.143Z",
+  "questions": 3,
+  "passed": 2,
+  "score": 66.7,
+  "by_kind": {
+   "ok": "1/2",
+   "refuse": "1/1"
+  },
+  "tokens": {
+   "input": 10459,
+   "output": 382,
+   "neurons": 105.49999570846558
+  },
+  "neurons": 105,
+  "est_usd": 0.0012,
+  "share_of_daily_free": "1%"
+ },
+ "results": [
+  {
+   "id": 1,
+   "lang": "EN",
+   "status": "ok",
+   "question": "What is the population of Selangor?",
+   "usage": {
+    "input": 4087,
+    "output": 98,
+    "neurons": 39.82727289199829
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT date, population * 1000 AS population_count FROM population_state WHERE state = 'Selangor' AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' ORDER BY date DESC LIMIT 1",
+   "chart": "table",
+   "columns": [
+    "date",
+    "population_count"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "population_count": 7454200
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "The population of Selangor is 7,454,200 as of 1 January 2026.",
+   "seconds": 7,
+   "verdict": "pass"
+  },
+  {
+   "id": 22,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Negeri mana pendapatan isi rumah naik paling laju sejak 2019?",
+   "usage": {
+    "input": 3961,
+    "output": 252,
+    "neurons": 42.881815910339355
+   },
+   "tables": [
+    "hh_income_state"
+   ],
+   "sql": "SELECT \n    state, \n    ((income_mean_2024 - income_mean_2019) * 1.0 / income_mean_2019) * 100 AS percentage_growth\nFROM (\n    SELECT \n        state, \n        MAX(CASE WHEN date = '2019-01-01' THEN income_mean END) AS income_mean_2019,\n        MAX(CASE WHEN date = (SELECT MAX(date) FROM hh_income_state) THEN income_mean END) AS income_mean_2024\n    FROM hh_income_state\n    GROUP BY state\n)\nWHERE income_mean_2019 IS NOT NULL AND income_mean_2024 IS NOT NULL\nORDER BY percentage_growth DESC\nLIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "percentage_growth"
+   ],
+   "rows": [
+    {
+     "state": "Selangor",
+     "percentage_growth": 22.804100858963704
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Selangor mencatatkan kenaikan pendapatan isi rumah paling laju sebanyak 22.8% bagi tempoh 2019 hingga 2024.",
+   "seconds": 7.4,
+   "verdict": "fail: 0/1 reference rows found"
+  },
+  {
+   "id": 47,
+   "lang": "EN",
+   "status": "refuse",
+   "question": "Who will win the next general election?",
+   "usage": {
+    "input": 2411,
+    "output": 32,
+    "neurons": 22.79090690612793
+   },
+   "tables": [],
+   "refused": "Saya tidak mempunyai maklumat mengenai ramalan atau keputusan pilihan raya akan datang. Data yang tersedia hanyalah statistik rasmi Malaysia.",
+   "seconds": 0.6,
+   "verdict": "pass"
+  }
+ ]
+}

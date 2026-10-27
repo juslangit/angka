@@ -1,0 +1,2077 @@
+[
+ {
+  "id": 1,
+  "question": "What is the population of Selangor?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "people"
+  ],
+  "rows": [
+   [
+    "2026-01-01",
+    7454200.0
+   ]
+  ]
+ },
+ {
+  "id": 2,
+  "question": "Which state has the highest median household income?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "state",
+   "income_median"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    "W.P. Kuala Lumpur",
+    10802.0
+   ]
+  ]
+ },
+ {
+  "id": 3,
+  "question": "How has Malaysia's unemployment rate changed since 2019?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "Trend; annual averages of the monthly rate. Monthly series also acceptable.",
+  "columns": [
+   "year",
+   "avg_u_rate"
+  ],
+  "rows": [
+   [
+    2019,
+    3.3
+   ],
+   [
+    2020,
+    4.48
+   ],
+   [
+    2021,
+    4.58
+   ],
+   [
+    2022,
+    3.82
+   ],
+   [
+    2023,
+    3.43
+   ],
+   [
+    2024,
+    3.25
+   ],
+   [
+    2025,
+    3.03
+   ],
+   [
+    2026,
+    2.95
+   ]
+  ]
+ },
+ {
+  "id": 4,
+  "question": "What was the inflation rate last month?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "'Last month' = latest month published.",
+  "columns": [
+   "date",
+   "inflation_yoy"
+  ],
+  "rows": [
+   [
+    "2026-09-01",
+    1.8
+   ]
+  ]
+ },
+ {
+  "id": 5,
+  "question": "Which district in Sabah has the most people?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "district",
+   "people"
+  ],
+  "rows": [
+   [
+    "2026-01-01",
+    "Kota Kinabalu",
+    556100.0
+   ]
+  ]
+ },
+ {
+  "id": 6,
+  "question": "How many babies were born in Malaysia in 2023?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "births"
+  ],
+  "rows": [
+   [
+    455761
+   ]
+  ]
+ },
+ {
+  "id": 7,
+  "question": "Compare the mean household income of Kelantan and Kuala Lumpur.",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "state",
+   "income_mean"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    "Kelantan",
+    5265
+   ],
+   [
+    "2024-01-01",
+    "W.P. Kuala Lumpur",
+    13985
+   ]
+  ]
+ },
+ {
+  "id": 8,
+  "question": "What are Malaysia's top 5 export partners?",
+  "lang": "EN",
+  "status": "gap",
+  "note": "No trade-by-country table on data.gov.my. Answer should say so and offer total or by-product exports."
+ },
+ {
+  "id": 9,
+  "question": "Show the poverty rate by state on a map.",
+  "lang": "EN",
+  "status": "ok",
+  "note": "Map. Absolute poverty is the headline rate.",
+  "columns": [
+   "date",
+   "state",
+   "poverty_absolute"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    "Johor",
+    2.5
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    8.4
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    11.5
+   ],
+   [
+    "2024-01-01",
+    "Melaka",
+    3.0
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    4.0
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    5.9
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    6.9
+   ],
+   [
+    "2024-01-01",
+    "Perlis",
+    3.6
+   ],
+   [
+    "2024-01-01",
+    "Pulau Pinang",
+    1.9
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    17.7
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    8.4
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    0.9
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    5.8
+   ],
+   [
+    "2024-01-01",
+    "W.P. Kuala Lumpur",
+    1.0
+   ],
+   [
+    "2024-01-01",
+    "W.P. Labuan",
+    2.0
+   ],
+   [
+    "2024-01-01",
+    "W.P. Putrajaya",
+    0.2
+   ]
+  ]
+ },
+ {
+  "id": 10,
+  "question": "How much has food inflation risen over the past 3 years?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "Cumulative change in the food price index over 36 months.",
+  "columns": [
+   "latest",
+   "pct_change"
+  ],
+  "rows": [
+   [
+    "2026-09-01",
+    5.6
+   ]
+  ]
+ },
+ {
+  "id": 11,
+  "question": "What share of Malaysia's population is over 65?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "'Over 65' read as 65 and older (the age groups start at 65).",
+  "columns": [
+   "date",
+   "pct_65_plus"
+  ],
+  "rows": [
+   [
+    "2026-01-01",
+    8.4
+   ]
+  ]
+ },
+ {
+  "id": 12,
+  "question": "Which state's GDP grew fastest in the last 5 years?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "Real GDP (constant 2015 prices).",
+  "columns": [
+   "state",
+   "pct_growth"
+  ],
+  "rows": [
+   [
+    "Selangor",
+    40.8
+   ]
+  ]
+ },
+ {
+  "id": 13,
+  "question": "What is the price of RON95 petrol this week?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "Answer should give both the unsubsidised and the BUDI95 subsidised price.",
+  "columns": [
+   "date",
+   "ron95",
+   "ron95_budi95"
+  ],
+  "rows": [
+   [
+    "2026-10-22",
+    4.32,
+    1.99
+   ]
+  ]
+ },
+ {
+  "id": 14,
+  "question": "How many new cars were registered in 2024?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "cars"
+  ],
+  "rows": [
+   [
+    856292
+   ]
+  ]
+ },
+ {
+  "id": 15,
+  "question": "Is the population of Perlis growing or shrinking?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "people"
+  ],
+  "rows": [
+   [
+    "2016-01-01",
+    251000.0
+   ],
+   [
+    "2017-01-01",
+    252000.0
+   ],
+   [
+    "2018-01-01",
+    253500.0
+   ],
+   [
+    "2019-01-01",
+    254000.0
+   ],
+   [
+    "2020-01-01",
+    284900.0
+   ],
+   [
+    "2021-01-01",
+    287600.0
+   ],
+   [
+    "2022-01-01",
+    289800.0
+   ],
+   [
+    "2023-01-01",
+    293100.0
+   ],
+   [
+    "2024-01-01",
+    296800.0
+   ],
+   [
+    "2025-01-01",
+    297000.0
+   ],
+   [
+    "2026-01-01",
+    297300.0
+   ]
+  ]
+ },
+ {
+  "id": 16,
+  "question": "Which state has the lowest unemployment rate?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "Latest quarter.",
+  "columns": [
+   "date",
+   "state",
+   "u_rate"
+  ],
+  "rows": [
+   [
+    "2026-04-01",
+    "W.P. Putrajaya",
+    1.3
+   ]
+  ]
+ },
+ {
+  "id": 17,
+  "question": "What is GDP per person in Penang compared to the national figure?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "Joins two tables; real 2015 prices for both.",
+  "columns": [
+   "date",
+   "penang_gdp_per_person",
+   "national_gdp_per_person"
+  ],
+  "rows": [
+   [
+    "2025-01-01",
+    72207.0,
+    50707.0
+   ]
+  ]
+ },
+ {
+  "id": 18,
+  "question": "How did the ringgit move against the US dollar this year?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "RM per US$1; a falling number means the ringgit strengthened.",
+  "columns": [
+   "date",
+   "USD"
+  ],
+  "rows": [
+   [
+    "2026-01-01",
+    4.0283
+   ],
+   [
+    "2026-02-01",
+    3.9146
+   ],
+   [
+    "2026-03-01",
+    3.9515
+   ],
+   [
+    "2026-04-01",
+    3.9784
+   ],
+   [
+    "2026-05-01",
+    3.9526
+   ],
+   [
+    "2026-06-01",
+    4.0778
+   ],
+   [
+    "2026-07-01",
+    4.0825
+   ],
+   [
+    "2026-08-01",
+    4.0687
+   ],
+   [
+    "2026-09-01",
+    4.0687
+   ]
+  ]
+ },
+ {
+  "id": 19,
+  "question": "Which state has the highest income inequality (Gini)?",
+  "lang": "EN",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "state",
+   "gini"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    "Sabah",
+    0.405
+   ]
+  ]
+ },
+ {
+  "id": 20,
+  "question": "Total imports from China in 2024?",
+  "lang": "EN",
+  "status": "gap",
+  "note": "No trade-by-country table. Answer should say so."
+ },
+ {
+  "id": 21,
+  "question": "Berapa jumlah penduduk Johor?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "people"
+  ],
+  "rows": [
+   [
+    "2026-01-01",
+    4224300.0
+   ]
+  ]
+ },
+ {
+  "id": 22,
+  "question": "Negeri mana pendapatan isi rumah naik paling laju sejak 2019?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Median income, 2019 survey vs latest survey. Mean income is a fair reading too (also Selangor), so only the state is graded.",
+  "key": [
+   "state"
+  ],
+  "columns": [
+   "state",
+   "pct_growth"
+  ],
+  "rows": [
+   [
+    "Selangor",
+    30.6
+   ]
+  ]
+ },
+ {
+  "id": 23,
+  "question": "Kadar pengangguran belia di Malaysia sekarang berapa?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Give both youth definitions (15-24 and 15-30).",
+  "columns": [
+   "date",
+   "u_rate_15_24",
+   "u_rate_15_30"
+  ],
+  "rows": [
+   [
+    "2026-06-01",
+    10.2,
+    6.3
+   ]
+  ]
+ },
+ {
+  "id": 24,
+  "question": "Berapa kadar inflasi di Sabah tahun lepas?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Annual inflation = average index of the year vs the year before.",
+  "columns": [
+   "year",
+   "inflation"
+  ],
+  "rows": [
+   [
+    2025,
+    1.2
+   ]
+  ]
+ },
+ {
+  "id": 25,
+  "question": "Daerah mana di Selangor yang paling ramai penduduk?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "district",
+   "people"
+  ],
+  "rows": [
+   [
+    "2026-01-01",
+    "Petaling",
+    2382000.0
+   ]
+  ]
+ },
+ {
+  "id": 26,
+  "question": "Berapa ramai kematian di Malaysia pada tahun 2022?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "deaths"
+  ],
+  "rows": [
+   [
+    206780
+   ]
+  ]
+ },
+ {
+  "id": 27,
+  "question": "Bandingkan kadar kemiskinan Kelantan dan Terengganu.",
+  "lang": "BM",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "state",
+   "poverty_absolute"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    "Kelantan",
+    11.5
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    5.8
+   ]
+  ]
+ },
+ {
+  "id": 28,
+  "question": "Harga minyak diesel naik berapa banyak tahun ini?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Peninsular diesel; may have fallen rather than risen.",
+  "columns": [
+   "first_price_this_year",
+   "latest_price"
+  ],
+  "rows": [
+   [
+    2.94,
+    5.07
+   ]
+  ]
+ },
+ {
+  "id": 29,
+  "question": "Tunjukkan nisbah lelaki dan perempuan mengikut negeri.",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Map.",
+  "columns": [
+   "state",
+   "males_per_100_females"
+  ],
+  "rows": [
+   [
+    "Johor",
+    115.2
+   ],
+   [
+    "Kedah",
+    104.0
+   ],
+   [
+    "Kelantan",
+    101.0
+   ],
+   [
+    "Melaka",
+    112.1
+   ],
+   [
+    "Negeri Sembilan",
+    107.6
+   ],
+   [
+    "Pahang",
+    113.8
+   ],
+   [
+    "Perak",
+    109.2
+   ],
+   [
+    "Perlis",
+    99.4
+   ],
+   [
+    "Pulau Pinang",
+    105.1
+   ],
+   [
+    "Sabah",
+    108.8
+   ],
+   [
+    "Sarawak",
+    106.4
+   ],
+   [
+    "Selangor",
+    114.5
+   ],
+   [
+    "Terengganu",
+    105.4
+   ],
+   [
+    "W.P. Kuala Lumpur",
+    117.2
+   ],
+   [
+    "W.P. Labuan",
+    104.7
+   ],
+   [
+    "W.P. Putrajaya",
+    96.9
+   ]
+  ]
+ },
+ {
+  "id": 30,
+  "question": "Berapa nilai eksport minyak sawit Malaysia tahun lepas?",
+  "lang": "BM",
+  "status": "partial",
+  "note": "Only SITC section 4 (all animal & vegetable oils and fats) exists; answer must say palm oil is most of it but not all.",
+  "columns": [
+   "rm"
+  ],
+  "rows": [
+   [
+    88419611807
+   ]
+  ]
+ },
+ {
+  "id": 31,
+  "question": "Negeri mana kadar kelahiran paling rendah?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Crude birth rate per 1,000 people.",
+  "columns": [
+   "date",
+   "state",
+   "rate"
+  ],
+  "rows": [
+   [
+    "2025-01-01",
+    "Pulau Pinang",
+    9.3
+   ]
+  ]
+ },
+ {
+  "id": 32,
+  "question": "Purata perbelanjaan isi rumah sebulan di Kuala Lumpur?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "expenditure_mean"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    8178
+   ]
+  ]
+ },
+ {
+  "id": 33,
+  "question": "Berapa peratus rakyat Malaysia tinggal di bandar?",
+  "lang": "BM",
+  "status": "gap",
+  "note": "Population tables have no urban/rural split in v1."
+ },
+ {
+  "id": 34,
+  "question": "Adakah inflasi makanan lebih tinggi daripada inflasi keseluruhan?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Graded on the two rates; they can come back as one row or two.",
+  "key": [
+   "inflation_yoy"
+  ],
+  "columns": [
+   "date",
+   "division",
+   "inflation_yoy"
+  ],
+  "rows": [
+   [
+    "2026-09-01",
+    "01",
+    1.8
+   ],
+   [
+    "2026-09-01",
+    "overall",
+    1.8
+   ]
+  ]
+ },
+ {
+  "id": 35,
+  "question": "Pendapatan median isi rumah di Pahang berapa?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "income_median"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    4975.0
+   ]
+  ]
+ },
+ {
+  "id": 36,
+  "question": "Negeri mana paling ramai orang tua?",
+  "lang": "BM",
+  "status": "ok",
+  "note": "Ambiguous: 'paling ramai' = most people aged 65+ (count). A share-based answer should say which it uses.",
+  "columns": [
+   "state",
+   "people_65_plus"
+  ],
+  "rows": [
+   [
+    "Selangor",
+    649800.0
+   ]
+  ]
+ },
+ {
+  "id": 37,
+  "question": "Berapa ramai orang kat Sarawak sekarang?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "people"
+  ],
+  "rows": [
+   [
+    "2026-01-01",
+    2539800.0
+   ]
+  ]
+ },
+ {
+  "id": 38,
+  "question": "Gaji median Malaysia naik ke tak dari tahun lepas?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "wages_median"
+  ],
+  "rows": [
+   [
+    "2025-01-01",
+    2940
+   ],
+   [
+    "2024-01-01",
+    2793
+   ]
+  ]
+ },
+ {
+  "id": 39,
+  "question": "KL ke Selangor yang household income lagi tinggi?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "state",
+   "income_median",
+   "income_mean"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    "Selangor",
+    10726.0,
+    13296
+   ],
+   [
+    "2024-01-01",
+    "W.P. Kuala Lumpur",
+    10802.0,
+    13985
+   ]
+  ]
+ },
+ {
+  "id": 40,
+  "question": "Unemployment rate Penang berapa eh?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "u_rate"
+  ],
+  "rows": [
+   [
+    "2026-04-01",
+    2.6
+   ]
+  ]
+ },
+ {
+  "id": 41,
+  "question": "Barang makanan naik harga berapa percent this year?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "Ambiguous: year-on-year food inflation; a year-to-date change is also acceptable if stated.",
+  "columns": [
+   "date",
+   "inflation_yoy"
+  ],
+  "rows": [
+   [
+    "2026-09-01",
+    1.8
+   ]
+  ]
+ },
+ {
+  "id": 42,
+  "question": "Mana state paling banyak export?",
+  "lang": "rojak",
+  "status": "gap",
+  "note": "No trade-by-state table."
+ },
+ {
+  "id": 43,
+  "question": "Boleh show map kemiskinan ikut daerah?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "District map.",
+  "columns": [
+   "date",
+   "state",
+   "district",
+   "poverty_absolute"
+  ],
+  "rows": [
+   [
+    "2024-01-01",
+    "Johor",
+    "Batu Pahat",
+    2.4
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Johor Bahru",
+    1.9
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Kluang",
+    5.7
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Kota Tinggi",
+    4.2
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Kulai",
+    0.1
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Mersing",
+    6.7
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Muar",
+    2.1
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Pontian",
+    2.0
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Segamat",
+    3.1
+   ],
+   [
+    "2024-01-01",
+    "Johor",
+    "Tangkak",
+    4.0
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Baling",
+    14.7
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Bandar Baharu",
+    5.8
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Kota Setar",
+    5.5
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Kuala Muda",
+    11.8
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Kubang Pasu",
+    4.0
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Kulim",
+    8.5
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Langkawi",
+    6.0
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Padang Terap",
+    8.0
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Pendang",
+    7.3
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Pokok Sena",
+    7.2
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Sik",
+    8.7
+   ],
+   [
+    "2024-01-01",
+    "Kedah",
+    "Yan",
+    7.4
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Bachok",
+    11.3
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Gua Musang",
+    16.3
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Jeli",
+    10.1
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Kecil Lojing",
+    20.0
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Kota Bharu",
+    9.9
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Kuala Krai",
+    20.2
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Machang",
+    7.3
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Pasir Mas",
+    8.6
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Pasir Puteh",
+    11.1
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Tanah Merah",
+    14.9
+   ],
+   [
+    "2024-01-01",
+    "Kelantan",
+    "Tumpat",
+    12.7
+   ],
+   [
+    "2024-01-01",
+    "Melaka",
+    "Alor Gajah",
+    4.5
+   ],
+   [
+    "2024-01-01",
+    "Melaka",
+    "Jasin",
+    1.1
+   ],
+   [
+    "2024-01-01",
+    "Melaka",
+    "Melaka Tengah",
+    2.8
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    "Jelebu",
+    6.4
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    "Jempol",
+    7.1
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    "Kuala Pilah",
+    6.2
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    "Port Dickson",
+    4.4
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    "Rembau",
+    2.6
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    "Seremban",
+    2.8
+   ],
+   [
+    "2024-01-01",
+    "Negeri Sembilan",
+    "Tampin",
+    7.0
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Bentong",
+    2.0
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Bera",
+    9.0
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Cameron Highlands",
+    5.0
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Jerantut",
+    8.8
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Kuantan",
+    3.7
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Lipis",
+    9.2
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Maran",
+    7.9
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Pekan",
+    10.9
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Raub",
+    3.4
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Rompin",
+    8.2
+   ],
+   [
+    "2024-01-01",
+    "Pahang",
+    "Temerloh",
+    6.2
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Bagan Datuk",
+    11.5
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Batang Padang",
+    11.5
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Hilir Perak",
+    12.3
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Hulu Perak",
+    13.3
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Kampar",
+    4.5
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Kerian",
+    7.3
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Kinta",
+    3.8
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Kuala Kangsar",
+    11.3
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Larut & Matang",
+    9.0
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Manjung",
+    3.9
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Muallim",
+    7.7
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Perak Tengah",
+    10.2
+   ],
+   [
+    "2024-01-01",
+    "Perak",
+    "Selama",
+    10.4
+   ],
+   [
+    "2024-01-01",
+    "Pulau Pinang",
+    "Barat Daya",
+    0.4
+   ],
+   [
+    "2024-01-01",
+    "Pulau Pinang",
+    "S.P. Selatan",
+    3.0
+   ],
+   [
+    "2024-01-01",
+    "Pulau Pinang",
+    "S.P.Tengah",
+    2.8
+   ],
+   [
+    "2024-01-01",
+    "Pulau Pinang",
+    "S.P.Utara",
+    3.9
+   ],
+   [
+    "2024-01-01",
+    "Pulau Pinang",
+    "Timur Laut",
+    0.4
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Beaufort",
+    20.4
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Beluran",
+    33.0
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kalabakan",
+    26.8
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Keningau",
+    12.8
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kinabatangan",
+    26.7
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kota Belud",
+    26.1
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kota Kinabalu",
+    12.0
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kota Marudu",
+    40.0
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kuala Penyu",
+    14.3
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kudat",
+    35.3
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Kunak",
+    29.2
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Lahad Datu",
+    13.6
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Membakut",
+    27.4
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Nabawan",
+    25.4
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Papar",
+    12.0
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Penampang",
+    5.7
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Pitas",
+    50.0
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Putatan",
+    6.9
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Ranau",
+    23.5
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Sandakan",
+    15.2
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Semporna",
+    30.4
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Sipitang",
+    15.3
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Tambunan",
+    8.3
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Tawau",
+    13.2
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Telupid",
+    22.0
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Tenom",
+    12.1
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Tongod",
+    41.5
+   ],
+   [
+    "2024-01-01",
+    "Sabah",
+    "Tuaran",
+    23.7
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Asajaya",
+    14.0
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Bau",
+    6.2
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Belaga",
+    13.6
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Beluru",
+    10.1
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Betong",
+    7.6
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Bintulu",
+    3.7
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Bukit Mabong",
+    6.3
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Dalat",
+    10.1
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Daro",
+    26.8
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Gedong",
+    16.7
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Julau",
+    26.6
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Kabong",
+    4.5
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Kanowit",
+    21.8
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Kapit",
+    15.5
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Kuching",
+    7.7
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Lawas",
+    14.6
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Limbang",
+    14.4
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Lingga",
+    6.3
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Lubok antu",
+    13.0
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Lundu",
+    12.9
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Maradong",
+    16.9
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Marudi",
+    4.4
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Matu",
+    9.1
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Miri",
+    3.8
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Mukah",
+    11.9
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Pakan",
+    14.5
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Pantu",
+    10.9
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Pusa",
+    14.6
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Samarahan",
+    6.3
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Saratok",
+    5.0
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Sarikei",
+    17.8
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Sebauh",
+    2.9
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Sebuyau",
+    21.4
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Selangau",
+    17.2
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Serian",
+    11.8
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Sibu",
+    6.3
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Siburan",
+    4.2
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Simunjan",
+    14.9
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Song",
+    11.3
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Sri Aman",
+    6.2
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Subis",
+    2.4
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Tanjung Manis",
+    15.4
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Tatau",
+    2.6
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Tebedu",
+    25.8
+   ],
+   [
+    "2024-01-01",
+    "Sarawak",
+    "Telang Usan",
+    1.3
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Gombak",
+    2.1
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Klang",
+    1.0
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Kuala Langat",
+    0.3
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Kuala Selangor",
+    1.8
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Petaling",
+    1.0
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Sabak Bernam",
+    2.7
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Sepang",
+    0.1
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Ulu Langat",
+    0.1
+   ],
+   [
+    "2024-01-01",
+    "Selangor",
+    "Ulu Selangor",
+    0.4
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Besut",
+    13.1
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Dungun",
+    4.4
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Hulu",
+    6.6
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Kemaman",
+    3.5
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Kuala Nerus",
+    1.6
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Kuala Terengganu",
+    4.2
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Marang",
+    7.3
+   ],
+   [
+    "2024-01-01",
+    "Terengganu",
+    "Setiu",
+    4.7
+   ]
+  ]
+ },
+ {
+  "id": 44,
+  "question": "Petrol RON97 sekarang berapa ringgit?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "date",
+   "ron97"
+  ],
+  "rows": [
+   [
+    "2026-10-22",
+    4.8
+   ]
+  ]
+ },
+ {
+  "id": 45,
+  "question": "Kereta baru registered paling banyak kat negeri mana?",
+  "lang": "rojak",
+  "status": "partial",
+  "note": "Most cars are registered via JPJ's dealer portal ('Rakan Niaga'), not a state office: answer must say so. No period named, so a latest-month answer is fair; only the state is graded.",
+  "key": [
+   "state"
+  ],
+  "columns": [
+   "state",
+   "cars"
+  ],
+  "rows": [
+   [
+    "W.P. Kuala Lumpur",
+    43614
+   ]
+  ]
+ },
+ {
+  "id": 46,
+  "question": "Population growth Malaysia slow down ke since COVID?",
+  "lang": "rojak",
+  "status": "ok",
+  "note": "",
+  "columns": [
+   "year",
+   "growth_pct"
+  ],
+  "rows": [
+   [
+    2015,
+    1.56
+   ],
+   [
+    2016,
+    1.43
+   ],
+   [
+    2017,
+    1.23
+   ],
+   [
+    2018,
+    1.12
+   ],
+   [
+    2019,
+    0.43
+   ],
+   [
+    2020,
+    -0.23
+   ],
+   [
+    2021,
+    0.4
+   ],
+   [
+    2022,
+    0.37
+   ],
+   [
+    2023,
+    2.15
+   ],
+   [
+    2024,
+    1.95
+   ],
+   [
+    2025,
+    0.49
+   ],
+   [
+    2026,
+    0.49
+   ]
+  ]
+ },
+ {
+  "id": 47,
+  "question": "Who will win the next general election?",
+  "lang": "EN",
+  "status": "refuse",
+  "note": "Opinion / forecast."
+ },
+ {
+  "id": 48,
+  "question": "Berapa harga rumah di Shah Alam tahun 2030?",
+  "lang": "BM",
+  "status": "refuse",
+  "note": "Forecast; also no house price data."
+ },
+ {
+  "id": 49,
+  "question": "What is the population of Singapore?",
+  "lang": "EN",
+  "status": "refuse",
+  "note": "Not Malaysian data."
+ },
+ {
+  "id": 50,
+  "question": "Gaji aku cukup ke untuk beli rumah kat KL?",
+  "lang": "rojak",
+  "status": "refuse",
+  "note": "Personal financial advice."
+ }
+]

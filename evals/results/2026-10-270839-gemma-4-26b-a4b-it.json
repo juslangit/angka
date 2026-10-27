@@ -1,0 +1,4527 @@
+{
+ "summary": {
+  "model": "@cf/google/gemma-4-26b-a4b-it",
+  "date": "2026-10-27T08:39:52.201Z",
+  "questions": 50,
+  "passed": 42,
+  "score": 84,
+  "by_kind": {
+   "ok": "35/42",
+   "refuse": "7/8"
+  },
+  "tokens": {
+   "input": 207616,
+   "output": 6939,
+   "neurons": 1930.045261144638
+  },
+  "neurons": 1930,
+  "est_usd": 0.0212,
+  "share_of_daily_free": "19%"
+ },
+ "results": [
+  {
+   "id": 1,
+   "lang": "EN",
+   "status": "ok",
+   "question": "What is the population of Selangor?",
+   "usage": {
+    "input": 4088,
+    "output": 98,
+    "neurons": 29.072717666625977
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT date, population * 1000 AS population_count FROM population_state WHERE state = 'Selangor' AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' ORDER BY date DESC LIMIT 1",
+   "chart": "table",
+   "columns": [
+    "date",
+    "population_count"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "population_count": 7454200
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "The population of Selangor is 7,454,200 as of 1 January 2026.",
+   "seconds": 4.3,
+   "verdict": "pass"
+  },
+  {
+   "id": 2,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Which state has the highest median household income?",
+   "usage": {
+    "input": 3798,
+    "output": 99,
+    "neurons": 37.227269887924194
+   },
+   "tables": [
+    "hh_income_state"
+   ],
+   "sql": "SELECT state, income_median, date FROM hh_income_state WHERE date = (SELECT MAX(date) FROM hh_income_state) ORDER BY income_median DESC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "income_median",
+    "date"
+   ],
+   "rows": [
+    {
+     "state": "W.P. Kuala Lumpur",
+     "income_median": 10802,
+     "date": "2024-01-01"
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "W.P. Kuala Lumpur has the highest median household income at RM10,802 for the period ending 2024-01-01.",
+   "seconds": 4.2,
+   "verdict": "pass"
+  },
+  {
+   "id": 3,
+   "lang": "EN",
+   "status": "ok",
+   "question": "How has Malaysia's unemployment rate changed since 2019?",
+   "usage": {
+    "input": 4590,
+    "output": 120,
+    "neurons": 44.999999046325684
+   },
+   "tables": [
+    "lfs_month"
+   ],
+   "sql": "SELECT date, u_rate AS unemployment_rate FROM lfs_month WHERE date >= '2019-01-01' ORDER BY date",
+   "chart": "line",
+   "columns": [
+    "date",
+    "unemployment_rate"
+   ],
+   "rows": [
+    {
+     "date": "2019-01-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2019-02-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2019-03-01",
+     "unemployment_rate": 3.4
+    },
+    {
+     "date": "2019-04-01",
+     "unemployment_rate": 3.4
+    },
+    {
+     "date": "2019-05-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2019-06-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2019-07-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2019-08-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2019-09-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2019-10-01",
+     "unemployment_rate": 3.2
+    },
+    {
+     "date": "2019-11-01",
+     "unemployment_rate": 3.2
+    },
+    {
+     "date": "2019-12-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2020-01-01",
+     "unemployment_rate": 3.2
+    },
+    {
+     "date": "2020-02-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2020-03-01",
+     "unemployment_rate": 3.8
+    },
+    {
+     "date": "2020-04-01",
+     "unemployment_rate": 5
+    },
+    {
+     "date": "2020-05-01",
+     "unemployment_rate": 5.3
+    },
+    {
+     "date": "2020-06-01",
+     "unemployment_rate": 4.9
+    },
+    {
+     "date": "2020-07-01",
+     "unemployment_rate": 4.7
+    },
+    {
+     "date": "2020-08-01",
+     "unemployment_rate": 4.7
+    },
+    {
+     "date": "2020-09-01",
+     "unemployment_rate": 4.6
+    },
+    {
+     "date": "2020-10-01",
+     "unemployment_rate": 4.7
+    },
+    {
+     "date": "2020-11-01",
+     "unemployment_rate": 4.8
+    },
+    {
+     "date": "2020-12-01",
+     "unemployment_rate": 4.8
+    },
+    {
+     "date": "2021-01-01",
+     "unemployment_rate": 4.9
+    },
+    {
+     "date": "2021-02-01",
+     "unemployment_rate": 4.8
+    },
+    {
+     "date": "2021-03-01",
+     "unemployment_rate": 4.7
+    },
+    {
+     "date": "2021-04-01",
+     "unemployment_rate": 4.6
+    },
+    {
+     "date": "2021-05-01",
+     "unemployment_rate": 4.5
+    },
+    {
+     "date": "2021-06-01",
+     "unemployment_rate": 4.8
+    },
+    {
+     "date": "2021-07-01",
+     "unemployment_rate": 4.8
+    },
+    {
+     "date": "2021-08-01",
+     "unemployment_rate": 4.6
+    },
+    {
+     "date": "2021-09-01",
+     "unemployment_rate": 4.5
+    },
+    {
+     "date": "2021-10-01",
+     "unemployment_rate": 4.3
+    },
+    {
+     "date": "2021-11-01",
+     "unemployment_rate": 4.3
+    },
+    {
+     "date": "2021-12-01",
+     "unemployment_rate": 4.2
+    },
+    {
+     "date": "2022-01-01",
+     "unemployment_rate": 4.2
+    },
+    {
+     "date": "2022-02-01",
+     "unemployment_rate": 4.1
+    },
+    {
+     "date": "2022-03-01",
+     "unemployment_rate": 4.1
+    },
+    {
+     "date": "2022-04-01",
+     "unemployment_rate": 3.9
+    },
+    {
+     "date": "2022-05-01",
+     "unemployment_rate": 3.9
+    },
+    {
+     "date": "2022-06-01",
+     "unemployment_rate": 3.8
+    },
+    {
+     "date": "2022-07-01",
+     "unemployment_rate": 3.7
+    },
+    {
+     "date": "2022-08-01",
+     "unemployment_rate": 3.7
+    },
+    {
+     "date": "2022-09-01",
+     "unemployment_rate": 3.6
+    },
+    {
+     "date": "2022-10-01",
+     "unemployment_rate": 3.6
+    },
+    {
+     "date": "2022-11-01",
+     "unemployment_rate": 3.6
+    },
+    {
+     "date": "2022-12-01",
+     "unemployment_rate": 3.6
+    },
+    {
+     "date": "2023-01-01",
+     "unemployment_rate": 3.6
+    },
+    {
+     "date": "2023-02-01",
+     "unemployment_rate": 3.5
+    },
+    {
+     "date": "2023-03-01",
+     "unemployment_rate": 3.5
+    },
+    {
+     "date": "2023-04-01",
+     "unemployment_rate": 3.5
+    },
+    {
+     "date": "2023-05-01",
+     "unemployment_rate": 3.5
+    },
+    {
+     "date": "2023-06-01",
+     "unemployment_rate": 3.4
+    },
+    {
+     "date": "2023-07-01",
+     "unemployment_rate": 3.4
+    },
+    {
+     "date": "2023-08-01",
+     "unemployment_rate": 3.4
+    },
+    {
+     "date": "2023-09-01",
+     "unemployment_rate": 3.4
+    },
+    {
+     "date": "2023-10-01",
+     "unemployment_rate": 3.4
+    },
+    {
+     "date": "2023-11-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2023-12-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-01-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-02-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-03-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-04-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-05-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-06-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-07-01",
+     "unemployment_rate": 3.3
+    },
+    {
+     "date": "2024-08-01",
+     "unemployment_rate": 3.2
+    },
+    {
+     "date": "2024-09-01",
+     "unemployment_rate": 3.2
+    },
+    {
+     "date": "2024-10-01",
+     "unemployment_rate": 3.2
+    },
+    {
+     "date": "2024-11-01",
+     "unemployment_rate": 3.2
+    },
+    {
+     "date": "2024-12-01",
+     "unemployment_rate": 3.1
+    },
+    {
+     "date": "2025-01-01",
+     "unemployment_rate": 3.1
+    },
+    {
+     "date": "2025-02-01",
+     "unemployment_rate": 3.1
+    },
+    {
+     "date": "2025-03-01",
+     "unemployment_rate": 3.1
+    },
+    {
+     "date": "2025-04-01",
+     "unemployment_rate": 3.1
+    },
+    {
+     "date": "2025-05-01",
+     "unemployment_rate": 3.1
+    },
+    {
+     "date": "2025-06-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2025-07-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2025-08-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2025-09-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2025-10-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2025-11-01",
+     "unemployment_rate": 2.9
+    },
+    {
+     "date": "2025-12-01",
+     "unemployment_rate": 2.9
+    },
+    {
+     "date": "2026-01-01",
+     "unemployment_rate": 2.9
+    },
+    {
+     "date": "2026-02-01",
+     "unemployment_rate": 2.9
+    },
+    {
+     "date": "2026-03-01",
+     "unemployment_rate": 2.9
+    },
+    {
+     "date": "2026-04-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2026-05-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2026-06-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2026-07-01",
+     "unemployment_rate": 3
+    },
+    {
+     "date": "2026-08-01",
+     "unemployment_rate": 2.9
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Malaysia's unemployment rate was around 3.3% in early 2019, but it spiked to a peak of 5.3% in May 2020. Since then, the rate has fluctuated and was at 4.8% by June 2021.",
+   "seconds": 3.9,
+   "verdict": "pass"
+  },
+  {
+   "id": 4,
+   "lang": "EN",
+   "status": "ok",
+   "question": "What was the inflation rate last month?",
+   "usage": {
+    "input": 3910,
+    "output": 103,
+    "neurons": 38.35454344749451
+   },
+   "tables": [
+    "cpi_headline_inflation"
+   ],
+   "sql": "SELECT date, inflation_yoy, inflation_mom FROM cpi_headline_inflation WHERE division = 'overall' AND date = (SELECT MAX(date) FROM cpi_headline_inflation WHERE division = 'overall')",
+   "chart": "table",
+   "columns": [
+    "date",
+    "inflation_yoy",
+    "inflation_mom"
+   ],
+   "rows": [
+    {
+     "date": "2026-09-01",
+     "inflation_yoy": 1.8,
+     "inflation_mom": 0.1
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "The inflation rate for September 2026 was 1.8% year-on-year and 0.1% month-on-month.",
+   "seconds": 10.5,
+   "verdict": "pass"
+  },
+  {
+   "id": 5,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Which district in Sabah has the most people?",
+   "usage": {
+    "input": 4086,
+    "output": 125,
+    "neurons": 23.68180203437805
+   },
+   "tables": [
+    "population_district"
+   ],
+   "sql": "SELECT district, population * 1000 AS population_count FROM population_district WHERE state = 'Sabah' AND date = (SELECT MAX(date) FROM population_district WHERE state = 'Sabah') AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' ORDER BY population DESC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "district",
+    "population_count"
+   ],
+   "rows": [
+    {
+     "district": "Kota Kinabalu",
+     "population_count": 556100
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Kota Kinabalu is the district in Sabah with the most people, with a population of 556,100 as of the latest available date.",
+   "seconds": 3.9,
+   "verdict": "pass"
+  },
+  {
+   "id": 6,
+   "lang": "EN",
+   "status": "ok",
+   "question": "How many babies were born in Malaysia in 2023?",
+   "usage": {
+    "input": 3645,
+    "output": 71,
+    "neurons": 35.072728633880615
+   },
+   "tables": [
+    "births_annual"
+   ],
+   "sql": "SELECT date, abs AS total_births FROM births_annual WHERE date = '2023-01-01'",
+   "chart": "table",
+   "columns": [
+    "date",
+    "total_births"
+   ],
+   "rows": [
+    {
+     "date": "2023-01-01",
+     "total_births": 455761
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "There were 455,761 babies born in Malaysia in 2023.",
+   "seconds": 3.1,
+   "verdict": "pass"
+  },
+  {
+   "id": 7,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Compare the mean household income of Kelantan and Kuala Lumpur.",
+   "usage": {
+    "input": 4645,
+    "output": 130,
+    "neurons": 41.11817455291748
+   },
+   "tables": [
+    "hh_income_state"
+   ],
+   "sql": "SELECT state, date, income_mean FROM hh_income_state WHERE state IN ('Kelantan', 'W.P. Kuala Lumpur') ORDER BY date DESC, state ASC",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "date",
+    "income_mean"
+   ],
+   "rows": [
+    {
+     "state": "Kelantan",
+     "date": "2024-01-01",
+     "income_mean": 5265
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2024-01-01",
+     "income_mean": 13985
+    },
+    {
+     "state": "Kelantan",
+     "date": "2022-01-01",
+     "income_mean": 4885
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2022-01-01",
+     "income_mean": 13325
+    },
+    {
+     "state": "Kelantan",
+     "date": "2020-01-01",
+     "income_mean": 4411
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2020-01-01",
+     "income_mean": 11728
+    },
+    {
+     "state": "Kelantan",
+     "date": "2019-01-01",
+     "income_mean": 4874
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2019-01-01",
+     "income_mean": 13257
+    },
+    {
+     "state": "Kelantan",
+     "date": "2016-01-01",
+     "income_mean": 4214
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2016-01-01",
+     "income_mean": 11692
+    },
+    {
+     "state": "Kelantan",
+     "date": "2014-01-01",
+     "income_mean": 3715
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2014-01-01",
+     "income_mean": 10629
+    },
+    {
+     "state": "Kelantan",
+     "date": "2012-01-01",
+     "income_mean": 3168
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2012-01-01",
+     "income_mean": 8586
+    },
+    {
+     "state": "Kelantan",
+     "date": "2009-01-01",
+     "income_mean": 2536
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2009-01-01",
+     "income_mean": 5488
+    },
+    {
+     "state": "Kelantan",
+     "date": "2007-01-01",
+     "income_mean": 2143
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2007-01-01",
+     "income_mean": 5322
+    },
+    {
+     "state": "Kelantan",
+     "date": "2004-01-01",
+     "income_mean": 1829
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2004-01-01",
+     "income_mean": 5011
+    },
+    {
+     "state": "Kelantan",
+     "date": "2002-01-01",
+     "income_mean": 1674
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2002-01-01",
+     "income_mean": 4930
+    },
+    {
+     "state": "Kelantan",
+     "date": "1999-01-01",
+     "income_mean": 1314
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1999-01-01",
+     "income_mean": 4105
+    },
+    {
+     "state": "Kelantan",
+     "date": "1997-01-01",
+     "income_mean": 1249
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1997-01-01",
+     "income_mean": 4768
+    },
+    {
+     "state": "Kelantan",
+     "date": "1995-01-01",
+     "income_mean": 1091
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1995-01-01",
+     "income_mean": 3371
+    },
+    {
+     "state": "Kelantan",
+     "date": "1992-01-01",
+     "income_mean": 907
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1992-01-01",
+     "income_mean": 2429
+    },
+    {
+     "state": "Kelantan",
+     "date": "1989-01-01",
+     "income_mean": 712
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1989-01-01",
+     "income_mean": 1824
+    },
+    {
+     "state": "Kelantan",
+     "date": "1987-01-01",
+     "income_mean": 667
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1987-01-01",
+     "income_mean": 1790
+    },
+    {
+     "state": "Kelantan",
+     "date": "1984-01-01",
+     "income_mean": 625
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1984-01-01",
+     "income_mean": 1920
+    },
+    {
+     "state": "Kelantan",
+     "date": "1979-01-01",
+     "income_mean": 341
+    },
+    {
+     "state": "Kelantan",
+     "date": "1976-01-01",
+     "income_mean": 269
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "1976-01-01",
+     "income_mean": 1058
+    },
+    {
+     "state": "Kelantan",
+     "date": "1974-01-01",
+     "income_mean": 231
+    },
+    {
+     "state": "Kelantan",
+     "date": "1970-01-01",
+     "income_mean": 151
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "For 2024, the mean household income in W.P. Kuala Lumpur is RM13,985, which is significantly higher than Kelantan's RM5,265. This trend of Kuala Lumpur having higher mean income compared to Kelantan has been consistent across all recorded years since 1992.",
+   "seconds": 6.9,
+   "verdict": "pass"
+  },
+  {
+   "id": 8,
+   "lang": "EN",
+   "status": "gap",
+   "question": "What are Malaysia's top 5 export partners?",
+   "usage": {
+    "input": 2413,
+    "output": 40,
+    "neurons": 23.027273178100586
+   },
+   "tables": [],
+   "refused": "Data on specific export partners is not available in the provided tables. The available trade data focuses on total exports, imports, and trade by product section (SITC).",
+   "seconds": 1.8,
+   "verdict": "pass"
+  },
+  {
+   "id": 9,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Show the poverty rate by state on a map.",
+   "usage": {
+    "input": 4056,
+    "output": 130,
+    "neurons": 29.072716236114502
+   },
+   "tables": [
+    "hh_poverty_state"
+   ],
+   "sql": "SELECT state, poverty_absolute FROM hh_poverty_state WHERE date = (SELECT MAX(date) FROM hh_poverty_state) ORDER BY poverty_absolute DESC",
+   "chart": "map",
+   "columns": [
+    "state",
+    "poverty_absolute"
+   ],
+   "rows": [
+    {
+     "state": "Sabah",
+     "poverty_absolute": 17.7
+    },
+    {
+     "state": "Kelantan",
+     "poverty_absolute": 11.5
+    },
+    {
+     "state": "Kedah",
+     "poverty_absolute": 8.4
+    },
+    {
+     "state": "Sarawak",
+     "poverty_absolute": 8.4
+    },
+    {
+     "state": "Perak",
+     "poverty_absolute": 6.9
+    },
+    {
+     "state": "Pahang",
+     "poverty_absolute": 5.9
+    },
+    {
+     "state": "Terengganu",
+     "poverty_absolute": 5.8
+    },
+    {
+     "state": "Negeri Sembilan",
+     "poverty_absolute": 4
+    },
+    {
+     "state": "Perlis",
+     "poverty_absolute": 3.6
+    },
+    {
+     "state": "Melaka",
+     "poverty_absolute": 3
+    },
+    {
+     "state": "Johor",
+     "poverty_absolute": 2.5
+    },
+    {
+     "state": "W.P. Labuan",
+     "poverty_absolute": 2
+    },
+    {
+     "state": "Pulau Pinang",
+     "poverty_absolute": 1.9
+    },
+    {
+     "state": "W.P. Kuala Lumpur",
+     "poverty_absolute": 1
+    },
+    {
+     "state": "Selangor",
+     "poverty_absolute": 0.9
+    },
+    {
+     "state": "W.P. Putrajaya",
+     "poverty_absolute": 0.2
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Based on the latest data, Sabah has the highest poverty rate at 17.7%, followed by Kelantan at 11.5% and Kedah and Sarawak both at 8.4%. The lowest rates are recorded in W.P. Putrajaya at 0.2% and Selangor at 0.9%.",
+   "seconds": 8.5,
+   "verdict": "pass"
+  },
+  {
+   "id": 10,
+   "lang": "EN",
+   "status": "ok",
+   "question": "How much has food inflation risen over the past 3 years?",
+   "usage": {
+    "input": 6011,
+    "output": 243,
+    "neurons": 60.69090557098389
+   },
+   "tables": [
+    "cpi_headline_inflation"
+   ],
+   "sql": "SELECT \n    date,\n    inflation_yoy AS food_inflation_yoy_percentage\nFROM cpi_headline_inflation\nWHERE division = '01'\n  AND date >= (SELECT CAST(date_trunc('year', MAX(date)) - INTERVAL '3' YEAR AS DATE) FROM cpi_headline_inflation)\nORDER BY date ASC",
+   "chart": "line",
+   "error": null,
+   "columns": [
+    "date",
+    "food_inflation_yoy_percentage"
+   ],
+   "rows": [
+    {
+     "date": "2023-01-01",
+     "food_inflation_yoy_percentage": 6.7
+    },
+    {
+     "date": "2023-02-01",
+     "food_inflation_yoy_percentage": 7
+    },
+    {
+     "date": "2023-03-01",
+     "food_inflation_yoy_percentage": 6.9
+    },
+    {
+     "date": "2023-04-01",
+     "food_inflation_yoy_percentage": 6.3
+    },
+    {
+     "date": "2023-05-01",
+     "food_inflation_yoy_percentage": 5.9
+    },
+    {
+     "date": "2023-06-01",
+     "food_inflation_yoy_percentage": 4.7
+    },
+    {
+     "date": "2023-07-01",
+     "food_inflation_yoy_percentage": 4.4
+    },
+    {
+     "date": "2023-08-01",
+     "food_inflation_yoy_percentage": 4.1
+    },
+    {
+     "date": "2023-09-01",
+     "food_inflation_yoy_percentage": 3.9
+    },
+    {
+     "date": "2023-10-01",
+     "food_inflation_yoy_percentage": 3.6
+    },
+    {
+     "date": "2023-11-01",
+     "food_inflation_yoy_percentage": 2.6
+    },
+    {
+     "date": "2023-12-01",
+     "food_inflation_yoy_percentage": 2.3
+    },
+    {
+     "date": "2024-01-01",
+     "food_inflation_yoy_percentage": 2
+    },
+    {
+     "date": "2024-02-01",
+     "food_inflation_yoy_percentage": 1.9
+    },
+    {
+     "date": "2024-03-01",
+     "food_inflation_yoy_percentage": 1.7
+    },
+    {
+     "date": "2024-04-01",
+     "food_inflation_yoy_percentage": 2
+    },
+    {
+     "date": "2024-05-01",
+     "food_inflation_yoy_percentage": 1.8
+    },
+    {
+     "date": "2024-06-01",
+     "food_inflation_yoy_percentage": 2
+    },
+    {
+     "date": "2024-07-01",
+     "food_inflation_yoy_percentage": 1.6
+    },
+    {
+     "date": "2024-08-01",
+     "food_inflation_yoy_percentage": 1.6
+    },
+    {
+     "date": "2024-09-01",
+     "food_inflation_yoy_percentage": 1.6
+    },
+    {
+     "date": "2024-10-01",
+     "food_inflation_yoy_percentage": 2.3
+    },
+    {
+     "date": "2024-11-01",
+     "food_inflation_yoy_percentage": 2.6
+    },
+    {
+     "date": "2024-12-01",
+     "food_inflation_yoy_percentage": 2.7
+    },
+    {
+     "date": "2025-01-01",
+     "food_inflation_yoy_percentage": 2.5
+    },
+    {
+     "date": "2025-02-01",
+     "food_inflation_yoy_percentage": 2.5
+    },
+    {
+     "date": "2025-03-01",
+     "food_inflation_yoy_percentage": 2.5
+    },
+    {
+     "date": "2025-04-01",
+     "food_inflation_yoy_percentage": 2.3
+    },
+    {
+     "date": "2025-05-01",
+     "food_inflation_yoy_percentage": 2.1
+    },
+    {
+     "date": "2025-06-01",
+     "food_inflation_yoy_percentage": 2.1
+    },
+    {
+     "date": "2025-07-01",
+     "food_inflation_yoy_percentage": 1.9
+    },
+    {
+     "date": "2025-08-01",
+     "food_inflation_yoy_percentage": 2
+    },
+    {
+     "date": "2025-09-01",
+     "food_inflation_yoy_percentage": 2.1
+    },
+    {
+     "date": "2025-10-01",
+     "food_inflation_yoy_percentage": 1.5
+    },
+    {
+     "date": "2025-11-01",
+     "food_inflation_yoy_percentage": 1.5
+    },
+    {
+     "date": "2025-12-01",
+     "food_inflation_yoy_percentage": 1.5
+    },
+    {
+     "date": "2026-01-01",
+     "food_inflation_yoy_percentage": 1.5
+    },
+    {
+     "date": "2026-02-01",
+     "food_inflation_yoy_percentage": 1.3
+    },
+    {
+     "date": "2026-03-01",
+     "food_inflation_yoy_percentage": 1.1
+    },
+    {
+     "date": "2026-04-01",
+     "food_inflation_yoy_percentage": 1.2
+    },
+    {
+     "date": "2026-05-01",
+     "food_inflation_yoy_percentage": 1.4
+    },
+    {
+     "date": "2026-06-01",
+     "food_inflation_yoy_percentage": 1.4
+    },
+    {
+     "date": "2026-07-01",
+     "food_inflation_yoy_percentage": 1.8
+    },
+    {
+     "date": "2026-08-01",
+     "food_inflation_yoy_percentage": 1.9
+    },
+    {
+     "date": "2026-09-01",
+     "food_inflation_yoy_percentage": 1.8
+    }
+   ],
+   "retried": true,
+   "answer": "Food inflation has fluctuated over the period from January 2023 to June 2025, starting at 6.7% in early 2023 and dropping to around 2.1% by mid-2025.",
+   "seconds": 6.8,
+   "verdict": "fail: 0/1 reference rows found"
+  },
+  {
+   "id": 11,
+   "lang": "EN",
+   "status": "ok",
+   "question": "What share of Malaysia's population is over 65?",
+   "usage": {
+    "input": 4139,
+    "output": 226,
+    "neurons": 43.79090976715088
+   },
+   "tables": [
+    "population_malaysia"
+   ],
+   "sql": "SELECT \n    date,\n    (SUM(CASE WHEN age IN ('65-69', '70-74', '75-79', '80-84', '85+') THEN population ELSE 0 END) * 1000.0) / \n    (SELECT population * 1000.0 FROM population_malaysia WHERE date = t.date AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' LIMIT 1) * 100.0 AS percentage_over_65\nFROM population_malaysia t\nWHERE sex = 'both' \n  AND ethnicity = 'overall' \n  AND date = (SELECT MAX(date) FROM population_malaysia)\nGROUP BY date",
+   "chart": "bar",
+   "columns": [
+    "date",
+    "percentage_over_65"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "percentage_over_65": 8.363914462014458
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "As of 1 January 2026, the share of Malaysia's population aged 65 and above is about 8.4%.",
+   "seconds": 4.3,
+   "verdict": "pass"
+  },
+  {
+   "id": 12,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Which state's GDP grew fastest in the last 5 years?",
+   "usage": {
+    "input": 4311,
+    "output": 373,
+    "neurons": 38.59998893737793
+   },
+   "tables": [
+    "gdp_state_real_supply"
+   ],
+   "sql": "SELECT \n    state, \n    ((MAX(CASE WHEN date = (SELECT MAX(date) FROM gdp_state_real_supply WHERE series = 'abs' AND sector = 'p0') THEN value END) - \n      MAX(CASE WHEN date = (SELECT MAX(date) - INTERVAL '5' YEAR FROM gdp_state_real_supply WHERE series = 'abs' AND sector = 'p0') THEN value END)) / \n      MAX(CASE WHEN date = (SELECT MAX(date) - INTERVAL '5' YEAR FROM gdp_state_real_supply WHERE series = 'abs' AND sector = 'p0') THEN value END)) * 100 AS total_growth_percentage\nFROM gdp_state_real_supply\nWHERE series = 'abs' \n  AND sector = 'p0' \n  AND state NOT IN ('Supranational', 'Supra')\nGROUP BY state\nHAVING MAX(CASE WHEN date = (SELECT MAX(date) FROM gdp_state_real_supply WHERE series = 'abs' AND sector = 'p0') THEN date END) IS NOT NULL\n  AND MAX(CASE WHEN date = (SELECT MAX(date) - INTERVAL '5' YEAR FROM gdp_state_real_supply WHERE series = 'abs' AND sector = 'p0') THEN date END) IS NOT NULL\nORDER BY total_growth_percentage DESC\nLIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "total_growth_percentage"
+   ],
+   "rows": [
+    {
+     "state": "Selangor",
+     "total_growth_percentage": 40.79136660268362
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Selangor recorded the fastest GDP growth at 40.79% over the 5-year period ending in the latest available year.",
+   "seconds": 8.1,
+   "verdict": "pass"
+  },
+  {
+   "id": 13,
+   "lang": "EN",
+   "status": "ok",
+   "question": "What is the price of RON95 petrol this week?",
+   "usage": {
+    "input": 4002,
+    "output": 89,
+    "neurons": 38.80908918380737
+   },
+   "tables": [
+    "fuelprice"
+   ],
+   "sql": "SELECT date, ron95 AS ron95_price_rm FROM fuelprice WHERE series_type = 'level' AND date = (SELECT MAX(date) FROM fuelprice WHERE series_type = 'level')",
+   "chart": "table",
+   "columns": [
+    "date",
+    "ron95_price_rm"
+   ],
+   "rows": [
+    {
+     "date": "2026-10-22",
+     "ron95_price_rm": 4.32
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "The price of RON95 petrol for 22 October 2026 is RM4.32.",
+   "seconds": 2.8,
+   "verdict": "pass"
+  },
+  {
+   "id": 14,
+   "lang": "EN",
+   "status": "ok",
+   "question": "How many new cars were registered in 2024?",
+   "usage": {
+    "input": 4073,
+    "output": 93,
+    "neurons": 39.563634395599365
+   },
+   "tables": [
+    "cars_monthly"
+   ],
+   "sql": "SELECT SUM(registrations) AS total_registrations_2024 FROM cars_monthly WHERE date >= '2024-01-01' AND date <= '2024-12-31'",
+   "chart": "bar",
+   "columns": [
+    "total_registrations_2024"
+   ],
+   "rows": [
+    {
+     "total_registrations_2024": 856237
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "A total of 856,237 new cars were registered throughout 2024.",
+   "seconds": 3.1,
+   "verdict": "pass"
+  },
+  {
+   "id": 15,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Is the population of Perlis growing or shrinking?",
+   "usage": {
+    "input": 4815,
+    "output": 125,
+    "neurons": 47.18181800842285
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT \n    date,\n    population * 1000 AS population_count\nFROM population_state\nWHERE state = 'Perlis'\n  AND sex = 'both'\n  AND age = 'overall'\n  AND ethnicity = 'overall'\nORDER BY date ASC",
+   "chart": "line",
+   "columns": [
+    "date",
+    "population_count"
+   ],
+   "rows": [
+    {
+     "date": "1970-01-01",
+     "population_count": 125500
+    },
+    {
+     "date": "1971-01-01",
+     "population_count": 127400
+    },
+    {
+     "date": "1972-01-01",
+     "population_count": 129699.99999999999
+    },
+    {
+     "date": "1973-01-01",
+     "population_count": 131700
+    },
+    {
+     "date": "1974-01-01",
+     "population_count": 133800
+    },
+    {
+     "date": "1975-01-01",
+     "population_count": 136200
+    },
+    {
+     "date": "1976-01-01",
+     "population_count": 138300
+    },
+    {
+     "date": "1977-01-01",
+     "population_count": 141000
+    },
+    {
+     "date": "1978-01-01",
+     "population_count": 143200
+    },
+    {
+     "date": "1979-01-01",
+     "population_count": 145800
+    },
+    {
+     "date": "1980-01-01",
+     "population_count": 148700
+    },
+    {
+     "date": "1981-01-01",
+     "population_count": 151600
+    },
+    {
+     "date": "1982-01-01",
+     "population_count": 154900
+    },
+    {
+     "date": "1983-01-01",
+     "population_count": 158200
+    },
+    {
+     "date": "1984-01-01",
+     "population_count": 161700
+    },
+    {
+     "date": "1985-01-01",
+     "population_count": 165900
+    },
+    {
+     "date": "1986-01-01",
+     "population_count": 170200
+    },
+    {
+     "date": "1987-01-01",
+     "population_count": 174500
+    },
+    {
+     "date": "1988-01-01",
+     "population_count": 178800
+    },
+    {
+     "date": "1989-01-01",
+     "population_count": 182900
+    },
+    {
+     "date": "1990-01-01",
+     "population_count": 187000
+    },
+    {
+     "date": "1991-01-01",
+     "population_count": 190700
+    },
+    {
+     "date": "1992-01-01",
+     "population_count": 192700
+    },
+    {
+     "date": "1993-01-01",
+     "population_count": 194700
+    },
+    {
+     "date": "1994-01-01",
+     "population_count": 196700
+    },
+    {
+     "date": "1995-01-01",
+     "population_count": 198800
+    },
+    {
+     "date": "1996-01-01",
+     "population_count": 200400
+    },
+    {
+     "date": "1997-01-01",
+     "population_count": 202100
+    },
+    {
+     "date": "1998-01-01",
+     "population_count": 203800
+    },
+    {
+     "date": "1999-01-01",
+     "population_count": 205700
+    },
+    {
+     "date": "2000-01-01",
+     "population_count": 207600
+    },
+    {
+     "date": "2001-01-01",
+     "population_count": 210400
+    },
+    {
+     "date": "2002-01-01",
+     "population_count": 213200
+    },
+    {
+     "date": "2003-01-01",
+     "population_count": 216000
+    },
+    {
+     "date": "2004-01-01",
+     "population_count": 218800
+    },
+    {
+     "date": "2005-01-01",
+     "population_count": 221600
+    },
+    {
+     "date": "2006-01-01",
+     "population_count": 224400
+    },
+    {
+     "date": "2007-01-01",
+     "population_count": 227200
+    },
+    {
+     "date": "2008-01-01",
+     "population_count": 230100
+    },
+    {
+     "date": "2009-01-01",
+     "population_count": 233000
+    },
+    {
+     "date": "2010-01-01",
+     "population_count": 235800
+    },
+    {
+     "date": "2011-01-01",
+     "population_count": 237300
+    },
+    {
+     "date": "2012-01-01",
+     "population_count": 239400
+    },
+    {
+     "date": "2013-01-01",
+     "population_count": 242100
+    },
+    {
+     "date": "2014-01-01",
+     "population_count": 245100
+    },
+    {
+     "date": "2015-01-01",
+     "population_count": 248500
+    },
+    {
+     "date": "2016-01-01",
+     "population_count": 251000
+    },
+    {
+     "date": "2017-01-01",
+     "population_count": 252000
+    },
+    {
+     "date": "2018-01-01",
+     "population_count": 253500
+    },
+    {
+     "date": "2019-01-01",
+     "population_count": 254000
+    },
+    {
+     "date": "2020-01-01",
+     "population_count": 284900
+    },
+    {
+     "date": "2021-01-01",
+     "population_count": 287600
+    },
+    {
+     "date": "2022-01-01",
+     "population_count": 289800
+    },
+    {
+     "date": "2023-01-01",
+     "population_count": 293100
+    },
+    {
+     "date": "2024-01-01",
+     "population_count": 296800
+    },
+    {
+     "date": "2025-01-01",
+     "population_count": 297000
+    },
+    {
+     "date": "2026-01-01",
+     "population_count": 297300
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "The population of Perlis has been growing steadily from 125,500 in 1970 to 205,700 in 1999.",
+   "seconds": 3.5,
+   "verdict": "pass"
+  },
+  {
+   "id": 16,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Which state has the lowest unemployment rate?",
+   "usage": {
+    "input": 3944,
+    "output": 94,
+    "neurons": 27.654534339904785
+   },
+   "tables": [
+    "lfs_qtr_state"
+   ],
+   "sql": "SELECT state, u_rate AS unemployment_rate FROM lfs_qtr_state WHERE date = (SELECT MAX(date) FROM lfs_qtr_state) ORDER BY u_rate ASC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "unemployment_rate"
+   ],
+   "rows": [
+    {
+     "state": "W.P. Putrajaya",
+     "unemployment_rate": 1.3
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "W.P. Putrajaya has the lowest unemployment rate at 1.3% for the latest quarter.",
+   "seconds": 3.6,
+   "verdict": "pass"
+  },
+  {
+   "id": 17,
+   "lang": "EN",
+   "status": "ok",
+   "question": "What is GDP per person in Penang compared to the national figure?",
+   "usage": {
+    "input": 7773,
+    "output": 733,
+    "neurons": 90.65454196929932
+   },
+   "tables": [
+    "gdp_gni_annual_real",
+    "gdp_state_real_supply"
+   ],
+   "sql": "SELECT \n    s.date,\n    s.value AS penang_gdp_rm_millions,\n    n.gdp_capita AS national_gdp_per_capita_rm\nFROM gdp_state_real_supply s\nJOIN gdp_gni_annual_real n ON s.date = n.date\nWHERE s.state = 'Pulau Pinang' \n  AND s.sector = 'p0' \n  AND s.series = 'abs'\n  AND n.series = 'abs'\nORDER BY s.date DESC\nLIMIT 10",
+   "chart": "table",
+   "error": null,
+   "columns": [
+    "date",
+    "penang_gdp_rm_millions",
+    "national_gdp_per_capita_rm"
+   ],
+   "rows": [
+    {
+     "date": "2025-01-01",
+     "penang_gdp_rm_millions": 130283.385,
+     "national_gdp_per_capita_rm": 50707.116967106835
+    },
+    {
+     "date": "2024-01-01",
+     "penang_gdp_rm_millions": 121437.238,
+     "national_gdp_per_capita_rm": 48491.73791018493
+    },
+    {
+     "date": "2023-01-01",
+     "penang_gdp_rm_millions": 115983.459,
+     "national_gdp_per_capita_rm": 47027.79160598773
+    },
+    {
+     "date": "2022-01-01",
+     "penang_gdp_rm_millions": 112281.052,
+     "national_gdp_per_capita_rm": 46378.890481054346
+    },
+    {
+     "date": "2021-01-01",
+     "penang_gdp_rm_millions": 99123.944,
+     "national_gdp_per_capita_rm": 42696.14922238708
+    },
+    {
+     "date": "2020-01-01",
+     "penang_gdp_rm_millions": 92690.682,
+     "national_gdp_per_capita_rm": 41489.775487704756
+    },
+    {
+     "date": "2019-01-01",
+     "penang_gdp_rm_millions": 94645.352,
+     "national_gdp_per_capita_rm": 43783
+    },
+    {
+     "date": "2018-01-01",
+     "penang_gdp_rm_millions": 91234.235,
+     "national_gdp_per_capita_rm": 42115
+    },
+    {
+     "date": "2017-01-01",
+     "penang_gdp_rm_millions": 86767.823,
+     "national_gdp_per_capita_rm": 40620
+    },
+    {
+     "date": "2016-01-01",
+     "penang_gdp_rm_millions": 82493.279,
+     "national_gdp_per_capita_rm": 38861
+    }
+   ],
+   "retried": true,
+   "answer": "For 2025, Penang's GDP is RM130,283.39 million compared to the national GDP per capita of RM50,707.12.",
+   "seconds": 18.9,
+   "verdict": "pass"
+  },
+  {
+   "id": 18,
+   "lang": "EN",
+   "status": "ok",
+   "question": "How did the ringgit move against the US dollar this year?",
+   "usage": {
+    "input": 5743,
+    "output": 129,
+    "neurons": 55.727269649505615
+   },
+   "tables": [
+    "exchangerates"
+   ],
+   "sql": "SELECT date, USD AS ringgit_per_usd FROM exchangerates WHERE indicator = 'avg' AND date >= '2026-01-01' AND date <= (SELECT MAX(date) FROM exchangerates) ORDER BY date",
+   "chart": "line",
+   "columns": [
+    "date",
+    "ringgit_per_usd"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "ringgit_per_usd": 4.0283
+    },
+    {
+     "date": "2026-02-01",
+     "ringgit_per_usd": 3.9146
+    },
+    {
+     "date": "2026-03-01",
+     "ringgit_per_usd": 3.9515
+    },
+    {
+     "date": "2026-04-01",
+     "ringgit_per_usd": 3.9784
+    },
+    {
+     "date": "2026-05-01",
+     "ringgit_per_usd": 3.9526
+    },
+    {
+     "date": "2026-06-01",
+     "ringgit_per_usd": 4.0778
+    },
+    {
+     "date": "2026-07-01",
+     "ringgit_per_usd": 4.0825
+    },
+    {
+     "date": "2026-08-01",
+     "ringgit_per_usd": 4.0687
+    },
+    {
+     "date": "2026-09-01",
+     "ringgit_per_usd": 4.0687
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "For the period from January to September 2026, the ringgit moved between RM3.91 and RM4.08 against the US dollar. The rate started at RM4.03 in January and ended at RM4.07 by September.",
+   "seconds": 5.1,
+   "verdict": "pass"
+  },
+  {
+   "id": 19,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Which state has the highest income inequality (Gini)?",
+   "usage": {
+    "input": 3732,
+    "output": 63,
+    "neurons": 35.645453453063965
+   },
+   "tables": [
+    "hh_inequality_state"
+   ],
+   "sql": "SELECT state, gini FROM hh_inequality_state ORDER BY gini DESC LIMIT 1",
+   "chart": "table",
+   "columns": [
+    "state",
+    "gini"
+   ],
+   "rows": [
+    {
+     "state": "Kelantan",
+     "gini": 0.612
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Kelantan has the highest income inequality with a Gini coefficient of 0.612.",
+   "seconds": 2.8,
+   "verdict": "fail: 0/1 reference rows found"
+  },
+  {
+   "id": 20,
+   "lang": "EN",
+   "status": "gap",
+   "question": "Total imports from China in 2024?",
+   "usage": {
+    "input": 3777,
+    "output": 102,
+    "neurons": 36.536362171173096
+   },
+   "tables": [
+    "trade_sitc_1d"
+   ],
+   "sql": "SELECT SUM(imports) AS total_imports_rm FROM trade_sitc_1d WHERE section = 'overall' AND date >= '2024-01-01' AND date <= '2024-12-31'",
+   "chart": "bar",
+   "columns": [
+    "total_imports_rm"
+   ],
+   "rows": [
+    {
+     "total_imports_rm": 1370237479546
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Total imports from China for the period of 2024 amounted to RM1.37 trillion.",
+   "seconds": 3.4,
+   "verdict": "fail: answered a question it should have refused"
+  },
+  {
+   "id": 21,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Berapa jumlah penduduk Johor?",
+   "usage": {
+    "input": 4086,
+    "output": 92,
+    "neurons": 39.07272672653198
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT date, population * 1000 AS total_population FROM population_state WHERE state = 'Johor' AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' ORDER BY date DESC LIMIT 1",
+   "chart": "table",
+   "columns": [
+    "date",
+    "total_population"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "total_population": 4224300
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Jumlah penduduk Johor bagi tahun 2026 adalah sebanyak 4.22 juta orang.",
+   "seconds": 3.2,
+   "verdict": "pass"
+  },
+  {
+   "id": 22,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Negeri mana pendapatan isi rumah naik paling laju sejak 2019?",
+   "usage": {
+    "input": 3961,
+    "output": 253,
+    "neurons": 31.563625812530518
+   },
+   "tables": [
+    "hh_income_state"
+   ],
+   "sql": "SELECT \n    state, \n    ((income_mean_2024 - income_mean_2019) * 1.0 / income_mean_2019) * 100 AS percentage_growth\nFROM (\n    SELECT \n        state, \n        MAX(CASE WHEN date = '2019-01-01' THEN income_mean END) AS income_mean_2019,\n        MAX(CASE WHEN date = (SELECT MAX(date) FROM hh_income_state) THEN income_mean END) AS income_mean_2024\n    FROM hh_income_state\n    GROUP BY state\n)\nWHERE income_mean_2019 IS NOT NULL AND income_mean_2024 IS NOT NULL\nORDER BY percentage_growth DESC\nLIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "percentage_growth"
+   ],
+   "rows": [
+    {
+     "state": "Selangor",
+     "percentage_growth": 22.804100858963704
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Selangor mencatatkan kenaikan pendapatan isi rumah paling laju sebanyak 22.8% bagi tempoh antara 2019 hingga 2024.",
+   "seconds": 6.5,
+   "verdict": "pass"
+  },
+  {
+   "id": 23,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Kadar pengangguran belia di Malaysia sekarang berapa?",
+   "usage": {
+    "input": 3886,
+    "output": 92,
+    "neurons": 37.83636236190796
+   },
+   "tables": [
+    "lfs_month_youth"
+   ],
+   "sql": "SELECT date, u_rate_15_30 AS youth_unemployment_rate_percentage FROM lfs_month_youth WHERE date = (SELECT MAX(date) FROM lfs_month_youth)",
+   "chart": "table",
+   "columns": [
+    "date",
+    "youth_unemployment_rate_percentage"
+   ],
+   "rows": [
+    {
+     "date": "2026-06-01",
+     "youth_unemployment_rate_percentage": 6.3
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Kadar pengangguran belia di Malaysia bagi Jun 2026 adalah sebanyak 6.3%.",
+   "seconds": 3.2,
+   "verdict": "pass"
+  },
+  {
+   "id": 24,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Berapa kadar inflasi di Sabah tahun lepas?",
+   "usage": {
+    "input": 4322,
+    "output": 124,
+    "neurons": 42.67272615432739
+   },
+   "tables": [
+    "cpi_state_inflation"
+   ],
+   "sql": "SELECT date, inflation_yoy AS \"Kadar Inflasi YoY (%)\"\nFROM cpi_state_inflation\nWHERE state = 'Sabah' \n  AND division = 'overall' \n  AND date >= '2025-01-01' \n  AND date <= '2025-12-31'",
+   "chart": "line",
+   "columns": [
+    "date",
+    "Kadar Inflasi YoY (%)"
+   ],
+   "rows": [
+    {
+     "date": "2025-01-01",
+     "Kadar Inflasi YoY (%)": 0.9
+    },
+    {
+     "date": "2025-02-01",
+     "Kadar Inflasi YoY (%)": 1
+    },
+    {
+     "date": "2025-03-01",
+     "Kadar Inflasi YoY (%)": 1.1
+    },
+    {
+     "date": "2025-04-01",
+     "Kadar Inflasi YoY (%)": 1.1
+    },
+    {
+     "date": "2025-05-01",
+     "Kadar Inflasi YoY (%)": 1.1
+    },
+    {
+     "date": "2025-06-01",
+     "Kadar Inflasi YoY (%)": 1.1
+    },
+    {
+     "date": "2025-07-01",
+     "Kadar Inflasi YoY (%)": 1.1
+    },
+    {
+     "date": "2025-08-01",
+     "Kadar Inflasi YoY (%)": 1.3
+    },
+    {
+     "date": "2025-09-01",
+     "Kadar Inflasi YoY (%)": 1.3
+    },
+    {
+     "date": "2025-10-01",
+     "Kadar Inflasi YoY (%)": 1.3
+    },
+    {
+     "date": "2025-11-01",
+     "Kadar Inflasi YoY (%)": 1.3
+    },
+    {
+     "date": "2025-12-01",
+     "Kadar Inflasi YoY (%)": 1.5
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Maaf, tiada data padanan dijumpai untuk kadar inflasi di Sabah bagi tahun lepas.",
+   "seconds": 3.6,
+   "verdict": "pass"
+  },
+  {
+   "id": 25,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Daerah mana di Selangor yang paling ramai penduduk?",
+   "usage": {
+    "input": 4089,
+    "output": 125,
+    "neurons": 40.581817865371704
+   },
+   "tables": [
+    "population_district"
+   ],
+   "sql": "SELECT district, population * 1000 AS population_count FROM population_district WHERE state = 'Selangor' AND date = (SELECT MAX(date) FROM population_district WHERE state = 'Selangor') AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' ORDER BY population DESC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "district",
+    "population_count"
+   ],
+   "rows": [
+    {
+     "district": "Petaling",
+     "population_count": 2382000
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Daerah Petaling merupakan daerah yang paling ramai penduduk di Selangor dengan jumlah seramai 2,382,000 orang bagi data tahun terkini.",
+   "seconds": 2.6,
+   "verdict": "pass"
+  },
+  {
+   "id": 26,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Berapa ramai kematian di Malaysia pada tahun 2022?",
+   "usage": {
+    "input": 3618,
+    "output": 67,
+    "neurons": 34.136361598968506
+   },
+   "tables": [
+    "deaths"
+   ],
+   "sql": "SELECT abs AS jumlah_kematian FROM deaths WHERE date = '2022-01-01'",
+   "chart": "table",
+   "columns": [
+    "jumlah_kematian"
+   ],
+   "rows": [
+    {
+     "jumlah_kematian": 206780
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Jumlah kematian di Malaysia bagi tahun 2022 adalah sebanyak 206,780 orang.",
+   "seconds": 2.9,
+   "verdict": "pass"
+  },
+  {
+   "id": 27,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Bandingkan kadar kemiskinan Kelantan dan Terengganu.",
+   "usage": {
+    "input": 4688,
+    "output": 129,
+    "neurons": 35.37271690368652
+   },
+   "tables": [
+    "hh_poverty_state"
+   ],
+   "sql": "SELECT date, state, poverty_absolute FROM hh_poverty_state WHERE state IN ('Kelantan', 'Terengganu') ORDER BY date DESC, state",
+   "chart": "line",
+   "columns": [
+    "date",
+    "state",
+    "poverty_absolute"
+   ],
+   "rows": [
+    {
+     "date": "2024-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 11.5
+    },
+    {
+     "date": "2024-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 5.8
+    },
+    {
+     "date": "2022-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 13.2
+    },
+    {
+     "date": "2022-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 6.2
+    },
+    {
+     "date": "2020-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 21.2
+    },
+    {
+     "date": "2020-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 12
+    },
+    {
+     "date": "2019-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 12.4
+    },
+    {
+     "date": "2019-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 6.1
+    },
+    {
+     "date": "2016-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 0.4
+    },
+    {
+     "date": "2016-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 0.4
+    },
+    {
+     "date": "2014-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 0.9
+    },
+    {
+     "date": "2014-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 0.6
+    },
+    {
+     "date": "2012-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 2.7
+    },
+    {
+     "date": "2012-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 1.7
+    },
+    {
+     "date": "2009-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 4.8
+    },
+    {
+     "date": "2009-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 4
+    },
+    {
+     "date": "2007-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 7.2
+    },
+    {
+     "date": "2007-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 6.4
+    },
+    {
+     "date": "2004-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 10.6
+    },
+    {
+     "date": "2004-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 15.4
+    },
+    {
+     "date": "2002-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 12.4
+    },
+    {
+     "date": "2002-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 10.7
+    },
+    {
+     "date": "1999-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 18.7
+    },
+    {
+     "date": "1999-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 14.9
+    },
+    {
+     "date": "1997-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 19.5
+    },
+    {
+     "date": "1997-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 17.3
+    },
+    {
+     "date": "1995-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 22.9
+    },
+    {
+     "date": "1995-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 23.4
+    },
+    {
+     "date": "1992-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 29.5
+    },
+    {
+     "date": "1992-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 25.6
+    },
+    {
+     "date": "1989-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 29.9
+    },
+    {
+     "date": "1989-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 31.2
+    },
+    {
+     "date": "1987-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 31.6
+    },
+    {
+     "date": "1987-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 36.1
+    },
+    {
+     "date": "1984-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 39.2
+    },
+    {
+     "date": "1984-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 28.9
+    },
+    {
+     "date": "1979-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 55
+    },
+    {
+     "date": "1979-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 53.1
+    },
+    {
+     "date": "1976-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 67.1
+    },
+    {
+     "date": "1976-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 60.3
+    },
+    {
+     "date": "1970-01-01",
+     "state": "Kelantan",
+     "poverty_absolute": 76.1
+    },
+    {
+     "date": "1970-01-01",
+     "state": "Terengganu",
+     "poverty_absolute": 68.9
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Bagi tahun 2024, kadar kemiskinan di Kelantan adalah 11.5% manakala di Terengganu pula adalah 5.8%. Secara keseluruhannya, Kelantan mencatatkan kadar kemiskinan yang lebih tinggi berbanding Terengganu bagi kebanyakan tahun yang direkodkan.",
+   "seconds": 5.1,
+   "verdict": "pass"
+  },
+  {
+   "id": 28,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Harga minyak diesel naik berapa banyak tahun ini?",
+   "usage": {
+    "input": 5131,
+    "output": 168,
+    "neurons": 51.227272033691406
+   },
+   "tables": [
+    "fuelprice"
+   ],
+   "sql": "SELECT \n    date,\n    diesel,\n    ron95,\n    ron97\nFROM fuelprice \nWHERE series_type = 'level' \n  AND date >= DATE_TRUNC('year', CAST('2026-10-27' AS DATE)) \n  AND date <= (SELECT MAX(date) FROM fuelprice)\nORDER BY date ASC",
+   "chart": "line",
+   "columns": [
+    "date",
+    "diesel",
+    "ron95",
+    "ron97"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "diesel": 2.94,
+     "ron95": 2.56,
+     "ron97": 3.16
+    },
+    {
+     "date": "2026-01-08",
+     "diesel": 2.89,
+     "ron95": 2.54,
+     "ron97": 3.11
+    },
+    {
+     "date": "2026-01-15",
+     "diesel": 2.84,
+     "ron95": 2.52,
+     "ron97": 3.08
+    },
+    {
+     "date": "2026-01-22",
+     "diesel": 2.88,
+     "ron95": 2.54,
+     "ron97": 3.1
+    },
+    {
+     "date": "2026-01-29",
+     "diesel": 2.92,
+     "ron95": 2.54,
+     "ron97": 3.1
+    },
+    {
+     "date": "2026-02-05",
+     "diesel": 2.96,
+     "ron95": 2.54,
+     "ron97": 3.1
+    },
+    {
+     "date": "2026-02-12",
+     "diesel": 2.99,
+     "ron95": 2.54,
+     "ron97": 3.1
+    },
+    {
+     "date": "2026-02-19",
+     "diesel": 2.99,
+     "ron95": 2.54,
+     "ron97": 3.1
+    },
+    {
+     "date": "2026-02-26",
+     "diesel": 3.04,
+     "ron95": 2.59,
+     "ron97": 3.15
+    },
+    {
+     "date": "2026-03-05",
+     "diesel": 3.12,
+     "ron95": 2.67,
+     "ron97": 3.25
+    },
+    {
+     "date": "2026-03-12",
+     "diesel": 3.92,
+     "ron95": 3.27,
+     "ron97": 3.85
+    },
+    {
+     "date": "2026-03-19",
+     "diesel": 4.72,
+     "ron95": 3.27,
+     "ron97": 4.55
+    },
+    {
+     "date": "2026-03-26",
+     "diesel": 5.52,
+     "ron95": 3.87,
+     "ron97": 5.15
+    },
+    {
+     "date": "2026-04-02",
+     "diesel": 6.02,
+     "ron95": 3.87,
+     "ron97": 4.95
+    },
+    {
+     "date": "2026-04-09",
+     "diesel": 6.72,
+     "ron95": 4.27,
+     "ron97": 5.35
+    },
+    {
+     "date": "2026-04-16",
+     "diesel": 5.97,
+     "ron95": 4.02,
+     "ron97": 5.1
+    },
+    {
+     "date": "2026-04-23",
+     "diesel": 5.12,
+     "ron95": 3.87,
+     "ron97": 4.85
+    },
+    {
+     "date": "2026-04-30",
+     "diesel": 5.12,
+     "ron95": 3.97,
+     "ron97": 4.9
+    },
+    {
+     "date": "2026-05-07",
+     "diesel": 5.17,
+     "ron95": 4.02,
+     "ron97": 4.9
+    },
+    {
+     "date": "2026-05-14",
+     "diesel": 4.87,
+     "ron95": 3.87,
+     "ron97": 4.7
+    },
+    {
+     "date": "2026-05-21",
+     "diesel": 4.97,
+     "ron95": 4.07,
+     "ron97": 4.85
+    },
+    {
+     "date": "2026-05-28",
+     "diesel": 4.87,
+     "ron95": 3.92,
+     "ron97": 4.65
+    },
+    {
+     "date": "2026-06-04",
+     "diesel": 4.67,
+     "ron95": 3.72,
+     "ron97": 4.35
+    },
+    {
+     "date": "2026-06-11",
+     "diesel": 4.67,
+     "ron95": 3.72,
+     "ron97": 4.35
+    },
+    {
+     "date": "2026-06-18",
+     "diesel": 4.37,
+     "ron95": 3.72,
+     "ron97": 4.35
+    },
+    {
+     "date": "2026-06-25",
+     "diesel": 4.07,
+     "ron95": 3.47,
+     "ron97": 4.1
+    },
+    {
+     "date": "2026-07-01",
+     "diesel": 3.97,
+     "ron95": 3.37,
+     "ron97": 4
+    },
+    {
+     "date": "2026-07-09",
+     "diesel": 3.97,
+     "ron95": 3.37,
+     "ron97": 4
+    },
+    {
+     "date": "2026-07-16",
+     "diesel": 4.07,
+     "ron95": 3.42,
+     "ron97": 4
+    },
+    {
+     "date": "2026-07-23",
+     "diesel": 4.42,
+     "ron95": 3.62,
+     "ron97": 4.2
+    },
+    {
+     "date": "2026-07-30",
+     "diesel": 4.62,
+     "ron95": 3.82,
+     "ron97": 4.4
+    },
+    {
+     "date": "2026-08-06",
+     "diesel": 4.57,
+     "ron95": 3.77,
+     "ron97": 4.35
+    },
+    {
+     "date": "2026-08-13",
+     "diesel": 4.47,
+     "ron95": 3.62,
+     "ron97": 4.15
+    },
+    {
+     "date": "2026-08-20",
+     "diesel": 4.67,
+     "ron95": 3.77,
+     "ron97": 4.25
+    },
+    {
+     "date": "2026-08-27",
+     "diesel": 4.72,
+     "ron95": 3.82,
+     "ron97": 4.3
+    },
+    {
+     "date": "2026-09-03",
+     "diesel": 4.67,
+     "ron95": 3.77,
+     "ron97": 4.25
+    },
+    {
+     "date": "2026-09-10",
+     "diesel": 4.92,
+     "ron95": 4.02,
+     "ron97": 4.5
+    },
+    {
+     "date": "2026-09-17",
+     "diesel": 5.27,
+     "ron95": 4.37,
+     "ron97": 4.85
+    },
+    {
+     "date": "2026-09-24",
+     "diesel": 5.42,
+     "ron95": 4.57,
+     "ron97": 5.05
+    },
+    {
+     "date": "2026-10-01",
+     "diesel": 5.27,
+     "ron95": 4.52,
+     "ron97": 5
+    },
+    {
+     "date": "2026-10-08",
+     "diesel": 5.27,
+     "ron95": 4.67,
+     "ron97": 5.15
+    },
+    {
+     "date": "2026-10-15",
+     "diesel": 5.17,
+     "ron95": 4.62,
+     "ron97": 5.1
+    },
+    {
+     "date": "2026-10-22",
+     "diesel": 5.07,
+     "ron95": 4.32,
+     "ron97": 4.8
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Harga diesel bagi tahun 2026 bermula pada RM2.94 pada 1 Januari dan telah meningkat sehingga mencecah RM4.42 pada 23 Julai. Peningkatan paling ketara berlaku sekitar bulan Mac hingga April di mana harga melonjak tinggi sebelum turun semula.",
+   "seconds": 3.8,
+   "verdict": "pass"
+  },
+  {
+   "id": 29,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Tunjukkan nisbah lelaki dan perempuan mengikut negeri.",
+   "usage": {
+    "input": 4908,
+    "output": 247,
+    "neurons": 51.354543685913086
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT \n    state, \n    date,\n    (SUM(CASE WHEN sex = 'male' THEN population ELSE 0 END) * 1000) / \n    (SUM(CASE WHEN sex = 'female' THEN population ELSE 0 END) * 1000) AS male_to_female_ratio\nFROM population_state\nWHERE date = (SELECT MAX(date) FROM population_state)\n  AND sex IN ('male', 'female')\n  AND age = 'overall'\n  AND ethnicity = 'overall'\nGROUP BY state, date\nORDER BY male_to_female_ratio DESC",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "date",
+    "male_to_female_ratio"
+   ],
+   "rows": [
+    {
+     "state": "W.P. Kuala Lumpur",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.1717772215269087
+    },
+    {
+     "state": "Johor",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.1517420537897312
+    },
+    {
+     "state": "Selangor",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.1446615070345543
+    },
+    {
+     "state": "Pahang",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.1382196297235607
+    },
+    {
+     "state": "Melaka",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.1211634904714143
+    },
+    {
+     "state": "Perak",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0915212981744422
+    },
+    {
+     "state": "Sabah",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0879059971178362
+    },
+    {
+     "state": "Negeri Sembilan",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0756442227763923
+    },
+    {
+     "state": "Sarawak",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0640390085331166
+    },
+    {
+     "state": "Terengganu",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0537459283387622
+    },
+    {
+     "state": "Pulau Pinang",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0506917668405533
+    },
+    {
+     "state": "W.P. Labuan",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0465587044534412
+    },
+    {
+     "state": "Kedah",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0399343544857769
+    },
+    {
+     "state": "Kelantan",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 1.0101273752349134
+    },
+    {
+     "state": "Perlis",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 0.993963782696177
+    },
+    {
+     "state": "W.P. Putrajaya",
+     "date": "2026-01-01",
+     "male_to_female_ratio": 0.9691558441558441
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Berikut adalah nisbah lelaki kepada perempuan mengikut negeri bagi 1 Januari 2026. Nisbah tertinggi adalah di W.P. Kuala Lumpur (1.17), diikuti Johor (1.15) dan Selangor (1.14), manakala nisbah terendah adalah di W.P. Putrajaya (0.97) dan Perlis (0.99).",
+   "seconds": 4.7,
+   "verdict": "pass"
+  },
+  {
+   "id": 30,
+   "lang": "BM",
+   "status": "partial",
+   "question": "Berapa nilai eksport minyak sawit Malaysia tahun lepas?",
+   "usage": {
+    "input": 4667,
+    "output": 191,
+    "neurons": 47.636362075805664
+   },
+   "tables": [
+    "trade_sitc_1d"
+   ],
+   "sql": "SELECT \n  EXTRACT(YEAR FROM date) AS tahun, \n  SUM(exports) AS nilai_eksport_rm\nFROM trade_sitc_1d\nWHERE section = '4' \n  AND EXTRACT(YEAR FROM date) = EXTRACT(YEAR FROM '2026-10-27') - 1\nGROUP BY 1",
+   "chart": "table",
+   "error": "Read from the tables by name, not from a file path.",
+   "retried": true,
+   "seconds": 5.7,
+   "verdict": "fail: no result (Read from the tables by name, not from a file path.)"
+  },
+  {
+   "id": 31,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Negeri mana kadar kelahiran paling rendah?",
+   "usage": {
+    "input": 3746,
+    "output": 73,
+    "neurons": 24.69998860359192
+   },
+   "tables": [
+    "births_annual_state"
+   ],
+   "sql": "SELECT state, rate AS birth_rate, date FROM births_annual_state ORDER BY rate ASC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "birth_rate",
+    "date"
+   ],
+   "rows": [
+    {
+     "state": "Pulau Pinang",
+     "birth_rate": 9.3,
+     "date": "2025-01-01"
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Negeri dengan kadar kelahiran paling rendah ialah Pulau Pinang dengan kadar 9.3 bagi tahun 2025.",
+   "seconds": 3.7,
+   "verdict": "pass"
+  },
+  {
+   "id": 32,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Purata perbelanjaan isi rumah sebulan di Kuala Lumpur?",
+   "usage": {
+    "input": 4587,
+    "output": 120,
+    "neurons": 44.97272443771362
+   },
+   "tables": [
+    "hies_state",
+    "hies_district"
+   ],
+   "sql": "SELECT date, expenditure_mean AS average_monthly_household_expenditure_rm FROM hies_state WHERE state = 'W.P. Kuala Lumpur' AND date = (SELECT MAX(date) FROM hies_state WHERE state = 'W.P. Kuala Lumpur')",
+   "chart": "table",
+   "columns": [
+    "date",
+    "average_monthly_household_expenditure_rm"
+   ],
+   "rows": [
+    {
+     "date": "2024-01-01",
+     "average_monthly_household_expenditure_rm": 8178
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Purata perbelanjaan isi rumah sebulan di W.P. Kuala Lumpur adalah sebanyak RM8,178 bagi tahun 2024.",
+   "seconds": 3.9,
+   "verdict": "pass"
+  },
+  {
+   "id": 33,
+   "lang": "BM",
+   "status": "gap",
+   "question": "Berapa peratus rakyat Malaysia tinggal di bandar?",
+   "usage": {
+    "input": 2414,
+    "output": 6,
+    "neurons": 22.10909080505371
+   },
+   "tables": [],
+   "refused": "This question can't be answered from the data here.",
+   "seconds": 0.6,
+   "verdict": "pass"
+  },
+  {
+   "id": 34,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Adakah inflasi makanan lebih tinggi daripada inflasi keseluruhan?",
+   "usage": {
+    "input": 4673,
+    "output": 160,
+    "neurons": 46.2636342048645
+   },
+   "tables": [
+    "cpi_headline_inflation",
+    "cpi_state_inflation"
+   ],
+   "sql": "SELECT \n    date,\n    (SELECT inflation_yoy FROM cpi_headline_inflation WHERE division = '01' AND date = t.date) AS food_inflation_yoy,\n    (SELECT inflation_yoy FROM cpi_headline_inflation WHERE division = 'overall' AND date = t.date) AS overall_inflation_yoy\nFROM (SELECT MAX(date) AS date FROM cpi_headline_inflation) t",
+   "chart": "table",
+   "columns": [
+    "date",
+    "food_inflation_yoy",
+    "overall_inflation_yoy"
+   ],
+   "rows": [
+    {
+     "date": "2026-09-01",
+     "food_inflation_yoy": 1.8,
+     "overall_inflation_yoy": 1.8
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Berdasarkan data bagi September 2026, inflasi makanan adalah sama dengan inflasi keseluruhan iaitu pada kadar 1.8%.",
+   "seconds": 4.5,
+   "verdict": "fail: 0/2 reference rows found"
+  },
+  {
+   "id": 35,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Pendapatan median isi rumah di Pahang berapa?",
+   "usage": {
+    "input": 4356,
+    "output": 79,
+    "neurons": 41.754544258117676
+   },
+   "tables": [
+    "hh_income_state",
+    "hies_state"
+   ],
+   "sql": "SELECT date, income_median FROM hh_income_state WHERE state = 'Pahang' ORDER BY date DESC LIMIT 1",
+   "chart": "table",
+   "columns": [
+    "date",
+    "income_median"
+   ],
+   "rows": [
+    {
+     "date": "2024-01-01",
+     "income_median": 4975
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Median pendapatan isi rumah di Pahang adalah sebanyak RM4,975 bagi tahun 2024.",
+   "seconds": 3.9,
+   "verdict": "pass"
+  },
+  {
+   "id": 36,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Negeri mana paling ramai orang tua?",
+   "usage": {
+    "input": 5872,
+    "output": 483,
+    "neurons": 65.97272562980652
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT state, SUM(population * 1000) AS elderly_population\nFROM population_state\nWHERE date = (SELECT MAX(date) FROM population_state)\n  AND sex = 'both'\n  AND ethnicity = 'overall'\n  AND age IN ('65-69', '70-74', '75-79', '80-84', '85+', '70+')\nGROUP BY state\nORDER BY elderly_population DESC\nLIMIT 1",
+   "chart": "bar",
+   "error": null,
+   "columns": [
+    "state",
+    "elderly_population"
+   ],
+   "rows": [
+    {
+     "state": "Selangor",
+     "elderly_population": 649800
+    }
+   ],
+   "retried": true,
+   "answer": "Selangor merupakan negeri yang paling ramai orang tua dengan jumlah seramai 649,800 orang bagi data tahun terbaru.",
+   "seconds": 12.1,
+   "verdict": "pass"
+  },
+  {
+   "id": 37,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "Berapa ramai orang kat Sarawak sekarang?",
+   "usage": {
+    "input": 4092,
+    "output": 97,
+    "neurons": 38.97272562980652
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT date, population * 1000 AS population_count FROM population_state WHERE state = 'Sarawak' AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' ORDER BY date DESC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "date",
+    "population_count"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "population_count": 2539800
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Populasi kat Sarawak bagi tahun 2026 adalah sebanyak 2,539,800 orang.",
+   "seconds": 4.3,
+   "verdict": "pass"
+  },
+  {
+   "id": 38,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "Gaji median Malaysia naik ke tak dari tahun lepas?",
+   "usage": {
+    "input": 3872,
+    "output": 230,
+    "neurons": 41.472726345062256
+   },
+   "tables": [
+    "hh_income"
+   ],
+   "sql": "SELECT \n    date AS \"Tahun\", \n    income_median AS \"Gaji Median (RM)\",\n    LAG(income_median) OVER (ORDER BY date) AS \"Gaji Median Tahun Sebelumnya\",\n    CASE \n        WHEN income_median > LAG(income_median) OVER (ORDER BY date) THEN 'Naik'\n        WHEN income_median < LAG(income_median) OVER (ORDER BY date) THEN 'Turun'\n        ELSE 'Sama'\n    END AS \"Status\"\nFROM hh_income\nWHERE date = (SELECT MAX(date) FROM hh_income) \n   OR date = (SELECT MAX(date) FROM hh_income WHERE date < (SELECT MAX(date) FROM hh_income))\nORDER BY date DESC\nLIMIT 2",
+   "chart": "table",
+   "columns": [
+    "Tahun",
+    "Gaji Median (RM)",
+    "Gaji Median Tahun Sebelumnya",
+    "Status"
+   ],
+   "rows": [
+    {
+     "Tahun": "2024-01-01",
+     "Gaji Median (RM)": 7017,
+     "Gaji Median Tahun Sebelumnya": 6338,
+     "Status": "Naik"
+    },
+    {
+     "Tahun": "2022-01-01",
+     "Gaji Median (RM)": 6338,
+     "Gaji Median Tahun Sebelumnya": null,
+     "Status": "Sama"
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Ya, gaji median Malaysia naik kepada RM7,017 bagi tahun 2024 berbanding RM6,338 pada tahun sebelumnya.",
+   "seconds": 6.1,
+   "verdict": "fail: 0/2 reference rows found"
+  },
+  {
+   "id": 39,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "KL ke Selangor yang household income lagi tinggi?",
+   "usage": {
+    "input": 3826,
+    "output": 133,
+    "neurons": 38.40908765792847
+   },
+   "tables": [
+    "hh_income_state"
+   ],
+   "sql": "SELECT state, income_mean, date FROM hh_income_state WHERE state IN ('W.P. Kuala Lumpur', 'Selangor') AND date = (SELECT MAX(date) FROM hh_income_state WHERE state IN ('W.P. Kuala Lumpur', 'Selangor')) ORDER BY income_mean DESC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "income_mean",
+    "date"
+   ],
+   "rows": [
+    {
+     "state": "W.P. Kuala Lumpur",
+     "income_mean": 13985,
+     "date": "2024-01-01"
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "W.P. Kuala Lumpur lagi tinggi dengan purata pendapatan isi rumah sebanyak RM13,985 bagi tahun 2024. Data untuk Selangor tidak dipaparkan dalam keputusan ini.",
+   "seconds": 4.5,
+   "verdict": "fail: 1/2 reference rows found"
+  },
+  {
+   "id": 40,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "Unemployment rate Penang berapa eh?",
+   "usage": {
+    "input": 3938,
+    "output": 81,
+    "neurons": 37.427271366119385
+   },
+   "tables": [
+    "lfs_qtr_state"
+   ],
+   "sql": "SELECT date, u_rate AS unemployment_rate_percentage FROM lfs_qtr_state WHERE state = 'Pulau Pinang' ORDER BY date DESC LIMIT 1",
+   "chart": "table",
+   "columns": [
+    "date",
+    "unemployment_rate_percentage"
+   ],
+   "rows": [
+    {
+     "date": "2026-04-01",
+     "unemployment_rate_percentage": 2.6
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Unemployment rate kat Penang untuk suku kedua 2026 adalah 2.6%.",
+   "seconds": 3.4,
+   "verdict": "pass"
+  },
+  {
+   "id": 41,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "Barang makanan naik harga berapa percent this year?",
+   "usage": {
+    "input": 4848,
+    "output": 177,
+    "neurons": 48.8999981880188
+   },
+   "tables": [
+    "cpi_headline_inflation",
+    "cpi_state_inflation"
+   ],
+   "sql": "SELECT date, inflation_yoy AS \"Food & Beverages Inflation (YoY) %\"\nFROM cpi_headline_inflation\nWHERE division = '01'\n  AND date >= '2026-01-01'\n  AND date <= '2026-12-31'\nORDER BY date",
+   "chart": "line",
+   "columns": [
+    "date",
+    "Food & Beverages Inflation (YoY) %"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "Food & Beverages Inflation (YoY) %": 1.5
+    },
+    {
+     "date": "2026-02-01",
+     "Food & Beverages Inflation (YoY) %": 1.3
+    },
+    {
+     "date": "2026-03-01",
+     "Food & Beverages Inflation (YoY) %": 1.1
+    },
+    {
+     "date": "2026-04-01",
+     "Food & Beverages Inflation (YoY) %": 1.2
+    },
+    {
+     "date": "2026-05-01",
+     "Food & Beverages Inflation (YoY) %": 1.4
+    },
+    {
+     "date": "2026-06-01",
+     "Food & Beverages Inflation (YoY) %": 1.4
+    },
+    {
+     "date": "2026-07-01",
+     "Food & Beverages Inflation (YoY) %": 1.8
+    },
+    {
+     "date": "2026-08-01",
+     "Food & Beverages Inflation (YoY) %": 1.9
+    },
+    {
+     "date": "2026-09-01",
+     "Food & Beverages Inflation (YoY) %": 1.8
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Untuk tahun 2026, kadar inflasi makanan dan minuman (YoY) bermula dari 1.5% pada Januari dan turun ke 1.1% pada Mac, sebelum naik semula sehingga 1.9% pada Ogos. Data bagi bulan September 2026 pula menunjukkan kadar sebanyak 1.8%.",
+   "seconds": 4.3,
+   "verdict": "pass"
+  },
+  {
+   "id": 42,
+   "lang": "rojak",
+   "status": "gap",
+   "question": "Mana state paling banyak export?",
+   "usage": {
+    "input": 2408,
+    "output": 6,
+    "neurons": 11.290899276733398
+   },
+   "tables": [],
+   "refused": "This question can't be answered from the data here.",
+   "seconds": 0.7,
+   "verdict": "pass"
+  },
+  {
+   "id": 43,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "Boleh show map kemiskinan ikut daerah?",
+   "usage": {
+    "input": 4413,
+    "output": 108,
+    "neurons": 43.06363391876221
+   },
+   "tables": [
+    "hh_poverty_district"
+   ],
+   "sql": "SELECT state, district, poverty_absolute FROM hh_poverty_district ORDER BY state, district",
+   "chart": "map",
+   "columns": [
+    "state",
+    "district",
+    "poverty_absolute"
+   ],
+   "rows": [
+    {
+     "state": "Johor",
+     "district": "Batu Pahat",
+     "poverty_absolute": 2.9
+    },
+    {
+     "state": "Johor",
+     "district": "Batu Pahat",
+     "poverty_absolute": 5.1
+    },
+    {
+     "state": "Johor",
+     "district": "Batu Pahat",
+     "poverty_absolute": 2.4
+    },
+    {
+     "state": "Johor",
+     "district": "Johor Bahru",
+     "poverty_absolute": 3.3
+    },
+    {
+     "state": "Johor",
+     "district": "Johor Bahru",
+     "poverty_absolute": 3.7
+    },
+    {
+     "state": "Johor",
+     "district": "Johor Bahru",
+     "poverty_absolute": 1.9
+    },
+    {
+     "state": "Johor",
+     "district": "Kluang",
+     "poverty_absolute": 5
+    },
+    {
+     "state": "Johor",
+     "district": "Kluang",
+     "poverty_absolute": 7.2
+    },
+    {
+     "state": "Johor",
+     "district": "Kluang",
+     "poverty_absolute": 5.7
+    },
+    {
+     "state": "Johor",
+     "district": "Kota Tinggi",
+     "poverty_absolute": 6
+    },
+    {
+     "state": "Johor",
+     "district": "Kota Tinggi",
+     "poverty_absolute": 5
+    },
+    {
+     "state": "Johor",
+     "district": "Kota Tinggi",
+     "poverty_absolute": 4.2
+    },
+    {
+     "state": "Johor",
+     "district": "Kulai",
+     "poverty_absolute": 3.2
+    },
+    {
+     "state": "Johor",
+     "district": "Kulai",
+     "poverty_absolute": 0.4
+    },
+    {
+     "state": "Johor",
+     "district": "Kulai",
+     "poverty_absolute": 0.1
+    },
+    {
+     "state": "Johor",
+     "district": "Mersing",
+     "poverty_absolute": 12.1
+    },
+    {
+     "state": "Johor",
+     "district": "Mersing",
+     "poverty_absolute": 12.7
+    },
+    {
+     "state": "Johor",
+     "district": "Mersing",
+     "poverty_absolute": 6.7
+    },
+    {
+     "state": "Johor",
+     "district": "Muar",
+     "poverty_absolute": 4.1
+    },
+    {
+     "state": "Johor",
+     "district": "Muar",
+     "poverty_absolute": 6.1
+    },
+    {
+     "state": "Johor",
+     "district": "Muar",
+     "poverty_absolute": 2.1
+    },
+    {
+     "state": "Johor",
+     "district": "Pontian",
+     "poverty_absolute": 5.8
+    },
+    {
+     "state": "Johor",
+     "district": "Pontian",
+     "poverty_absolute": 5.1
+    },
+    {
+     "state": "Johor",
+     "district": "Pontian",
+     "poverty_absolute": 2
+    },
+    {
+     "state": "Johor",
+     "district": "Segamat",
+     "poverty_absolute": 2.9
+    },
+    {
+     "state": "Johor",
+     "district": "Segamat",
+     "poverty_absolute": 7.4
+    },
+    {
+     "state": "Johor",
+     "district": "Segamat",
+     "poverty_absolute": 3.1
+    },
+    {
+     "state": "Johor",
+     "district": "Tangkak",
+     "poverty_absolute": 3.7
+    },
+    {
+     "state": "Johor",
+     "district": "Tangkak",
+     "poverty_absolute": 6.9
+    },
+    {
+     "state": "Johor",
+     "district": "Tangkak",
+     "poverty_absolute": 4
+    },
+    {
+     "state": "Kedah",
+     "district": "Baling",
+     "poverty_absolute": 17.9
+    },
+    {
+     "state": "Kedah",
+     "district": "Baling",
+     "poverty_absolute": 14.4
+    },
+    {
+     "state": "Kedah",
+     "district": "Baling",
+     "poverty_absolute": 14.7
+    },
+    {
+     "state": "Kedah",
+     "district": "Bandar Baharu",
+     "poverty_absolute": 7.2
+    },
+    {
+     "state": "Kedah",
+     "district": "Bandar Baharu",
+     "poverty_absolute": 3.9
+    },
+    {
+     "state": "Kedah",
+     "district": "Bandar Baharu",
+     "poverty_absolute": 5.8
+    },
+    {
+     "state": "Kedah",
+     "district": "Kota Setar",
+     "poverty_absolute": 6.4
+    },
+    {
+     "state": "Kedah",
+     "district": "Kota Setar",
+     "poverty_absolute": 5.1
+    },
+    {
+     "state": "Kedah",
+     "district": "Kota Setar",
+     "poverty_absolute": 5.5
+    },
+    {
+     "state": "Kedah",
+     "district": "Kuala Muda",
+     "poverty_absolute": 10.9
+    },
+    {
+     "state": "Kedah",
+     "district": "Kuala Muda",
+     "poverty_absolute": 13.8
+    },
+    {
+     "state": "Kedah",
+     "district": "Kuala Muda",
+     "poverty_absolute": 11.8
+    },
+    {
+     "state": "Kedah",
+     "district": "Kubang Pasu",
+     "poverty_absolute": 4.8
+    },
+    {
+     "state": "Kedah",
+     "district": "Kubang Pasu",
+     "poverty_absolute": 3.3
+    },
+    {
+     "state": "Kedah",
+     "district": "Kubang Pasu",
+     "poverty_absolute": 4
+    },
+    {
+     "state": "Kedah",
+     "district": "Kulim",
+     "poverty_absolute": 9.9
+    },
+    {
+     "state": "Kedah",
+     "district": "Kulim",
+     "poverty_absolute": 11.4
+    },
+    {
+     "state": "Kedah",
+     "district": "Kulim",
+     "poverty_absolute": 8.5
+    },
+    {
+     "state": "Kedah",
+     "district": "Langkawi",
+     "poverty_absolute": 0.9
+    },
+    {
+     "state": "Kedah",
+     "district": "Langkawi",
+     "poverty_absolute": 5.7
+    },
+    {
+     "state": "Kedah",
+     "district": "Langkawi",
+     "poverty_absolute": 6
+    },
+    {
+     "state": "Kedah",
+     "district": "Padang Terap",
+     "poverty_absolute": 9.1
+    },
+    {
+     "state": "Kedah",
+     "district": "Padang Terap",
+     "poverty_absolute": 8.9
+    },
+    {
+     "state": "Kedah",
+     "district": "Padang Terap",
+     "poverty_absolute": 8
+    },
+    {
+     "state": "Kedah",
+     "district": "Pendang",
+     "poverty_absolute": 8.1
+    },
+    {
+     "state": "Kedah",
+     "district": "Pendang",
+     "poverty_absolute": 7.3
+    },
+    {
+     "state": "Kedah",
+     "district": "Pendang",
+     "poverty_absolute": 7.3
+    },
+    {
+     "state": "Kedah",
+     "district": "Pokok Sena",
+     "poverty_absolute": 7.3
+    },
+    {
+     "state": "Kedah",
+     "district": "Pokok Sena",
+     "poverty_absolute": 7.2
+    },
+    {
+     "state": "Kedah",
+     "district": "Pokok Sena",
+     "poverty_absolute": 7.2
+    },
+    {
+     "state": "Kedah",
+     "district": "Sik",
+     "poverty_absolute": 7.6
+    },
+    {
+     "state": "Kedah",
+     "district": "Sik",
+     "poverty_absolute": 4
+    },
+    {
+     "state": "Kedah",
+     "district": "Sik",
+     "poverty_absolute": 8.7
+    },
+    {
+     "state": "Kedah",
+     "district": "Yan",
+     "poverty_absolute": 12.7
+    },
+    {
+     "state": "Kedah",
+     "district": "Yan",
+     "poverty_absolute": 6
+    },
+    {
+     "state": "Kedah",
+     "district": "Yan",
+     "poverty_absolute": 7.4
+    },
+    {
+     "state": "Kelantan",
+     "district": "Bachok",
+     "poverty_absolute": 13.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Bachok",
+     "poverty_absolute": 12.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Bachok",
+     "poverty_absolute": 11.3
+    },
+    {
+     "state": "Kelantan",
+     "district": "Gua Musang",
+     "poverty_absolute": 17.2
+    },
+    {
+     "state": "Kelantan",
+     "district": "Gua Musang",
+     "poverty_absolute": 18.5
+    },
+    {
+     "state": "Kelantan",
+     "district": "Gua Musang",
+     "poverty_absolute": 16.3
+    },
+    {
+     "state": "Kelantan",
+     "district": "Jeli",
+     "poverty_absolute": 18.5
+    },
+    {
+     "state": "Kelantan",
+     "district": "Jeli",
+     "poverty_absolute": 11.3
+    },
+    {
+     "state": "Kelantan",
+     "district": "Jeli",
+     "poverty_absolute": 10.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kecil Lojing",
+     "poverty_absolute": 33.3
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kecil Lojing",
+     "poverty_absolute": 43.8
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kecil Lojing",
+     "poverty_absolute": 20
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kota Bharu",
+     "poverty_absolute": 9.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kota Bharu",
+     "poverty_absolute": 10.5
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kota Bharu",
+     "poverty_absolute": 9.9
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kuala Krai",
+     "poverty_absolute": 22.4
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kuala Krai",
+     "poverty_absolute": 22.4
+    },
+    {
+     "state": "Kelantan",
+     "district": "Kuala Krai",
+     "poverty_absolute": 20.2
+    },
+    {
+     "state": "Kelantan",
+     "district": "Machang",
+     "poverty_absolute": 7.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Machang",
+     "poverty_absolute": 12
+    },
+    {
+     "state": "Kelantan",
+     "district": "Machang",
+     "poverty_absolute": 7.3
+    },
+    {
+     "state": "Kelantan",
+     "district": "Pasir Mas",
+     "poverty_absolute": 13.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Pasir Mas",
+     "poverty_absolute": 9
+    },
+    {
+     "state": "Kelantan",
+     "district": "Pasir Mas",
+     "poverty_absolute": 8.6
+    },
+    {
+     "state": "Kelantan",
+     "district": "Pasir Puteh",
+     "poverty_absolute": 12.7
+    },
+    {
+     "state": "Kelantan",
+     "district": "Pasir Puteh",
+     "poverty_absolute": 15.9
+    },
+    {
+     "state": "Kelantan",
+     "district": "Pasir Puteh",
+     "poverty_absolute": 11.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Tanah Merah",
+     "poverty_absolute": 12
+    },
+    {
+     "state": "Kelantan",
+     "district": "Tanah Merah",
+     "poverty_absolute": 17.9
+    },
+    {
+     "state": "Kelantan",
+     "district": "Tanah Merah",
+     "poverty_absolute": 14.9
+    },
+    {
+     "state": "Kelantan",
+     "district": "Tumpat",
+     "poverty_absolute": 12.5
+    },
+    {
+     "state": "Kelantan",
+     "district": "Tumpat",
+     "poverty_absolute": 13.5
+    },
+    {
+     "state": "Kelantan",
+     "district": "Tumpat",
+     "poverty_absolute": 12.7
+    },
+    {
+     "state": "Melaka",
+     "district": "Alor Gajah",
+     "poverty_absolute": 3.8
+    },
+    {
+     "state": "Melaka",
+     "district": "Alor Gajah",
+     "poverty_absolute": 4.8
+    },
+    {
+     "state": "Melaka",
+     "district": "Alor Gajah",
+     "poverty_absolute": 4.5
+    },
+    {
+     "state": "Melaka",
+     "district": "Jasin",
+     "poverty_absolute": 3
+    },
+    {
+     "state": "Melaka",
+     "district": "Jasin",
+     "poverty_absolute": 5.5
+    },
+    {
+     "state": "Melaka",
+     "district": "Jasin",
+     "poverty_absolute": 1.1
+    },
+    {
+     "state": "Melaka",
+     "district": "Melaka Tengah",
+     "poverty_absolute": 4.2
+    },
+    {
+     "state": "Melaka",
+     "district": "Melaka Tengah",
+     "poverty_absolute": 3.7
+    },
+    {
+     "state": "Melaka",
+     "district": "Melaka Tengah",
+     "poverty_absolute": 2.8
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Jelebu",
+     "poverty_absolute": 5.2
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Jelebu",
+     "poverty_absolute": 7.3
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Jelebu",
+     "poverty_absolute": 6.4
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Jempol",
+     "poverty_absolute": 6.2
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Jempol",
+     "poverty_absolute": 8
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Jempol",
+     "poverty_absolute": 7.1
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Kuala Pilah",
+     "poverty_absolute": 8.3
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Kuala Pilah",
+     "poverty_absolute": 6.8
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Kuala Pilah",
+     "poverty_absolute": 6.2
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Port Dickson",
+     "poverty_absolute": 4.3
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Port Dickson",
+     "poverty_absolute": 4.9
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Port Dickson",
+     "poverty_absolute": 4.4
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Rembau",
+     "poverty_absolute": 5.7
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Rembau",
+     "poverty_absolute": 3
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Rembau",
+     "poverty_absolute": 2.6
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Seremban",
+     "poverty_absolute": 3.2
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Seremban",
+     "poverty_absolute": 3
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Seremban",
+     "poverty_absolute": 2.8
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Tampin",
+     "poverty_absolute": 4.8
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Tampin",
+     "poverty_absolute": 7.3
+    },
+    {
+     "state": "Negeri Sembilan",
+     "district": "Tampin",
+     "poverty_absolute": 7
+    },
+    {
+     "state": "Pahang",
+     "district": "Bentong",
+     "poverty_absolute": 3.3
+    },
+    {
+     "state": "Pahang",
+     "district": "Bentong",
+     "poverty_absolute": 2.8
+    },
+    {
+     "state": "Pahang",
+     "district": "Bentong",
+     "poverty_absolute": 2
+    },
+    {
+     "state": "Pahang",
+     "district": "Bera",
+     "poverty_absolute": 2.9
+    },
+    {
+     "state": "Pahang",
+     "district": "Bera",
+     "poverty_absolute": 8.5
+    },
+    {
+     "state": "Pahang",
+     "district": "Bera",
+     "poverty_absolute": 9
+    },
+    {
+     "state": "Pahang",
+     "district": "Cameron Highlands",
+     "poverty_absolute": 0.4
+    },
+    {
+     "state": "Pahang",
+     "district": "Cameron Highlands",
+     "poverty_absolute": 1.9
+    },
+    {
+     "state": "Pahang",
+     "district": "Cameron Highlands",
+     "poverty_absolute": 5
+    },
+    {
+     "state": "Pahang",
+     "district": "Jerantut",
+     "poverty_absolute": 9.9
+    },
+    {
+     "state": "Pahang",
+     "district": "Jerantut",
+     "poverty_absolute": 8.6
+    },
+    {
+     "state": "Pahang",
+     "district": "Jerantut",
+     "poverty_absolute": 8.8
+    },
+    {
+     "state": "Pahang",
+     "district": "Kuantan",
+     "poverty_absolute": 1.8
+    },
+    {
+     "state": "Pahang",
+     "district": "Kuantan",
+     "poverty_absolute": 4.1
+    },
+    {
+     "state": "Pahang",
+     "district": "Kuantan",
+     "poverty_absolute": 3.7
+    },
+    {
+     "state": "Pahang",
+     "district": "Lipis",
+     "poverty_absolute": 5.8
+    },
+    {
+     "state": "Pahang",
+     "district": "Lipis",
+     "poverty_absolute": 9.2
+    },
+    {
+     "state": "Pahang",
+     "district": "Lipis",
+     "poverty_absolute": 9.2
+    },
+    {
+     "state": "Pahang",
+     "district": "Maran",
+     "poverty_absolute": 6.4
+    },
+    {
+     "state": "Pahang",
+     "district": "Maran",
+     "poverty_absolute": 8.8
+    },
+    {
+     "state": "Pahang",
+     "district": "Maran",
+     "poverty_absolute": 7.9
+    },
+    {
+     "state": "Pahang",
+     "district": "Pekan",
+     "poverty_absolute": 6.6
+    },
+    {
+     "state": "Pahang",
+     "district": "Pekan",
+     "poverty_absolute": 11.6
+    },
+    {
+     "state": "Pahang",
+     "district": "Pekan",
+     "poverty_absolute": 10.9
+    },
+    {
+     "state": "Pahang",
+     "district": "Raub",
+     "poverty_absolute": 4.7
+    },
+    {
+     "state": "Pahang",
+     "district": "Raub",
+     "poverty_absolute": 2.3
+    },
+    {
+     "state": "Pahang",
+     "district": "Raub",
+     "poverty_absolute": 3.4
+    },
+    {
+     "state": "Pahang",
+     "district": "Rompin",
+     "poverty_absolute": 6.7
+    },
+    {
+     "state": "Pahang",
+     "district": "Rompin",
+     "poverty_absolute": 12
+    },
+    {
+     "state": "Pahang",
+     "district": "Rompin",
+     "poverty_absolute": 8.2
+    },
+    {
+     "state": "Pahang",
+     "district": "Temerloh",
+     "poverty_absolute": 6.1
+    },
+    {
+     "state": "Pahang",
+     "district": "Temerloh",
+     "poverty_absolute": 6.6
+    },
+    {
+     "state": "Pahang",
+     "district": "Temerloh",
+     "poverty_absolute": 6.2
+    },
+    {
+     "state": "Perak",
+     "district": "Bagan Datuk",
+     "poverty_absolute": 6.4
+    },
+    {
+     "state": "Perak",
+     "district": "Bagan Datuk",
+     "poverty_absolute": 12.4
+    },
+    {
+     "state": "Perak",
+     "district": "Bagan Datuk",
+     "poverty_absolute": 11.5
+    },
+    {
+     "state": "Perak",
+     "district": "Batang Padang",
+     "poverty_absolute": 7.1
+    },
+    {
+     "state": "Perak",
+     "district": "Batang Padang",
+     "poverty_absolute": 13.3
+    },
+    {
+     "state": "Perak",
+     "district": "Batang Padang",
+     "poverty_absolute": 11.5
+    },
+    {
+     "state": "Perak",
+     "district": "Hilir Perak",
+     "poverty_absolute": 12
+    },
+    {
+     "state": "Perak",
+     "district": "Hilir Perak",
+     "poverty_absolute": 14.8
+    },
+    {
+     "state": "Perak",
+     "district": "Hilir Perak",
+     "poverty_absolute": 12.3
+    },
+    {
+     "state": "Perak",
+     "district": "Hulu Perak",
+     "poverty_absolute": 12.9
+    },
+    {
+     "state": "Perak",
+     "district": "Hulu Perak",
+     "poverty_absolute": 16.3
+    },
+    {
+     "state": "Perak",
+     "district": "Hulu Perak",
+     "poverty_absolute": 13.3
+    },
+    {
+     "state": "Perak",
+     "district": "Kampar",
+     "poverty_absolute": 7
+    },
+    {
+     "state": "Perak",
+     "district": "Kampar",
+     "poverty_absolute": 4.7
+    },
+    {
+     "state": "Perak",
+     "district": "Kampar",
+     "poverty_absolute": 4.5
+    },
+    {
+     "state": "Perak",
+     "district": "Kerian",
+     "poverty_absolute": 6
+    },
+    {
+     "state": "Perak",
+     "district": "Kerian",
+     "poverty_absolute": 8.7
+    },
+    {
+     "state": "Perak",
+     "district": "Kerian",
+     "poverty_absolute": 7.3
+    },
+    {
+     "state": "Perak",
+     "district": "Kinta",
+     "poverty_absolute": 4.9
+    },
+    {
+     "state": "Perak",
+     "district": "Kinta",
+     "poverty_absolute": 3.8
+    },
+    {
+     "state": "Perak",
+     "district": "Kinta",
+     "poverty_absolute": 3.8
+    },
+    {
+     "state": "Perak",
+     "district": "Kuala Kangsar",
+     "poverty_absolute": 10.6
+    },
+    {
+     "state": "Perak",
+     "district": "Kuala Kangsar",
+     "poverty_absolute": 13
+    },
+    {
+     "state": "Perak",
+     "district": "Kuala Kangsar",
+     "poverty_absolute": 11.3
+    },
+    {
+     "state": "Perak",
+     "district": "Larut & Matang",
+     "poverty_absolute": 9
+    },
+    {
+     "state": "Perak",
+     "district": "Larut dan Matang",
+     "poverty_absolute": 7.9
+    },
+    {
+     "state": "Perak",
+     "district": "Larut dan Matang",
+     "poverty_absolute": 9.2
+    },
+    {
+     "state": "Perak",
+     "district": "Manjung",
+     "poverty_absolute": 6.9
+    },
+    {
+     "state": "Perak",
+     "district": "Manjung",
+     "poverty_absolute": 3.8
+    },
+    {
+     "state": "Perak",
+     "district": "Manjung",
+     "poverty_absolute": 3.9
+    },
+    {
+     "state": "Perak",
+     "district": "Muallim",
+     "poverty_absolute": 11.6
+    },
+    {
+     "state": "Perak",
+     "district": "Muallim",
+     "poverty_absolute": 9.2
+    },
+    {
+     "state": "Perak",
+     "district": "Muallim",
+     "poverty_absolute": 7.7
+    },
+    {
+     "state": "Perak",
+     "district": "Perak Tengah",
+     "poverty_absolute": 10
+    },
+    {
+     "state": "Perak",
+     "district": "Perak Tengah",
+     "poverty_absolute": 11.1
+    },
+    {
+     "state": "Perak",
+     "district": "Perak Tengah",
+     "poverty_absolute": 10.2
+    },
+    {
+     "state": "Perak",
+     "district": "Selama",
+     "poverty_absolute": 5.3
+    },
+    {
+     "state": "Perak",
+     "district": "Selama",
+     "poverty_absolute": 10.4
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Maaf, saya tak dapat tunjuk map, tapi saya ada data kemiskinan mengikut daerah di Johor. Data ini menunjukkan jumlah kemiskinan mutlak bagi daerah seperti Batu Pahat, Johor Bahru, Kluang, dan lain-lain, namun data hardcore poverty tidak tersedia di peringkat daerah.",
+   "seconds": 3,
+   "verdict": "pass"
+  },
+  {
+   "id": 44,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "Petrol RON97 sekarang berapa ringgit?",
+   "usage": {
+    "input": 3985,
+    "output": 83,
+    "neurons": 38.490906715393066
+   },
+   "tables": [
+    "fuelprice"
+   ],
+   "sql": "SELECT date, ron97 AS \"RON97 Price (RM)\"\nFROM fuelprice\nWHERE series_type = 'level'\nORDER BY date DESC\nLIMIT 1",
+   "chart": "table",
+   "columns": [
+    "date",
+    "RON97 Price (RM)"
+   ],
+   "rows": [
+    {
+     "date": "2026-10-22",
+     "RON97 Price (RM)": 4.8
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Harga petrol RON97 untuk 22 Oktober 2026 adalah RM4.80.",
+   "seconds": 3.8,
+   "verdict": "pass"
+  },
+  {
+   "id": 45,
+   "lang": "rojak",
+   "status": "partial",
+   "question": "Kereta baru registered paling banyak kat negeri mana?",
+   "usage": {
+    "input": 4044,
+    "output": 81,
+    "neurons": 38.97272729873657
+   },
+   "tables": [
+    "cars_monthly"
+   ],
+   "sql": "SELECT state, SUM(registrations) AS total_registrations FROM cars_monthly GROUP BY state ORDER BY total_registrations DESC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "total_registrations"
+   ],
+   "rows": [
+    {
+     "state": "Rakan Niaga",
+     "total_registrations": 6638723
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Negeri dengan pendaftaran kereta baru paling banyak adalah Rakan Niaga dengan jumlah sebanyak 6,638,723 unit.",
+   "seconds": 3.1,
+   "verdict": "fail: 0/1 reference rows found"
+  },
+  {
+   "id": 46,
+   "lang": "rojak",
+   "status": "ok",
+   "question": "Population growth Malaysia slow down ke since COVID?",
+   "usage": {
+    "input": 5986,
+    "output": 187,
+    "neurons": 59.518178939819336
+   },
+   "tables": [
+    "population_malaysia"
+   ],
+   "sql": "SELECT \n    date,\n    population * 1000 AS population_count,\n    LAG(population * 1000) OVER (ORDER BY date) AS previous_year_population,\n    ((population - LAG(population) OVER (ORDER BY date)) / LAG(population) OVER (ORDER BY date)) * 100 AS growth_rate_percentage\nFROM population_malaysia\nWHERE sex = 'both' \n  AND age = 'overall' \n  AND ethnicity = 'overall'\nORDER BY date",
+   "chart": "line",
+   "columns": [
+    "date",
+    "population_count",
+    "previous_year_population",
+    "growth_rate_percentage"
+   ],
+   "rows": [
+    {
+     "date": "1970-01-01",
+     "population_count": 10881800,
+     "previous_year_population": null,
+     "growth_rate_percentage": null
+    },
+    {
+     "date": "1971-01-01",
+     "population_count": 11159700,
+     "previous_year_population": 10881800,
+     "growth_rate_percentage": 2.553805436600576
+    },
+    {
+     "date": "1972-01-01",
+     "population_count": 11441300,
+     "previous_year_population": 11159700,
+     "growth_rate_percentage": 2.523365323440581
+    },
+    {
+     "date": "1973-01-01",
+     "population_count": 11719800,
+     "previous_year_population": 11441300,
+     "growth_rate_percentage": 2.4341639499007983
+    },
+    {
+     "date": "1974-01-01",
+     "population_count": 12001300,
+     "previous_year_population": 11719800,
+     "growth_rate_percentage": 2.4019181214696497
+    },
+    {
+     "date": "1975-01-01",
+     "population_count": 12300300,
+     "previous_year_population": 12001300,
+     "growth_rate_percentage": 2.4913967653504203
+    },
+    {
+     "date": "1976-01-01",
+     "population_count": 12588100,
+     "previous_year_population": 12300300,
+     "growth_rate_percentage": 2.339780330561052
+    },
+    {
+     "date": "1977-01-01",
+     "population_count": 12901100,
+     "previous_year_population": 12588100,
+     "growth_rate_percentage": 2.48647532193103
+    },
+    {
+     "date": "1978-01-01",
+     "population_count": 13200200,
+     "previous_year_population": 12901100,
+     "growth_rate_percentage": 2.3184069575462587
+    },
+    {
+     "date": "1979-01-01",
+     "population_count": 13518300,
+     "previous_year_population": 13200200,
+     "growth_rate_percentage": 2.4098119725458593
+    },
+    {
+     "date": "1980-01-01",
+     "population_count": 13879300,
+     "previous_year_population": 13518300,
+     "growth_rate_percentage": 2.6704541251488725
+    },
+    {
+     "date": "1981-01-01",
+     "population_count": 14256900,
+     "previous_year_population": 13879300,
+     "growth_rate_percentage": 2.7205983010670596
+    },
+    {
+     "date": "1982-01-01",
+     "population_count": 14651100,
+     "previous_year_population": 14256900,
+     "growth_rate_percentage": 2.7649769585253505
+    },
+    {
+     "date": "1983-01-01",
+     "population_count": 15048200,
+     "previous_year_population": 14651100,
+     "growth_rate_percentage": 2.710376695265204
+    },
+    {
+     "date": "1984-01-01",
+     "population_count": 15450400,
+     "previous_year_population": 15048200,
+     "growth_rate_percentage": 2.6727449130128447
+    },
+    {
+     "date": "1985-01-01",
+     "population_count": 15882700,
+     "previous_year_population": 15450400,
+     "growth_rate_percentage": 2.7979858126650514
+    },
+    {
+     "date": "1986-01-01",
+     "population_count": 16329400,
+     "previous_year_population": 15882700,
+     "growth_rate_percentage": 2.812494097351199
+    },
+    {
+     "date": "1987-01-01",
+     "population_count": 16773500,
+     "previous_year_population": 16329400,
+     "growth_rate_percentage": 2.7196345242323687
+    },
+    {
+     "date": "1988-01-01",
+     "population_count": 17219100,
+     "previous_year_population": 16773500,
+     "growth_rate_percentage": 2.656571377470406
+    },
+    {
+     "date": "1989-01-01",
+     "population_count": 17662100,
+     "previous_year_population": 17219100,
+     "growth_rate_percentage": 2.5727244745660345
+    },
+    {
+     "date": "1990-01-01",
+     "population_count": 18102400,
+     "previous_year_population": 17662100,
+     "growth_rate_percentage": 2.4929085442841052
+    },
+    {
+     "date": "1991-01-01",
+     "population_count": 18547200,
+     "previous_year_population": 18102400,
+     "growth_rate_percentage": 2.4571327558776694
+    },
+    {
+     "date": "1992-01-01",
+     "population_count": 19067500,
+     "previous_year_population": 18547200,
+     "growth_rate_percentage": 2.8052751897860553
+    },
+    {
+     "date": "1993-01-01",
+     "population_count": 19601500,
+     "previous_year_population": 19067500,
+     "growth_rate_percentage": 2.8005768978628556
+    },
+    {
+     "date": "1994-01-01",
+     "population_count": 20141700,
+     "previous_year_population": 19601500,
+     "growth_rate_percentage": 2.755911537382347
+    },
+    {
+     "date": "1995-01-01",
+     "population_count": 20681800,
+     "previous_year_population": 20141700,
+     "growth_rate_percentage": 2.68150156143721
+    },
+    {
+     "date": "1996-01-01",
+     "population_count": 21222600,
+     "previous_year_population": 20681800,
+     "growth_rate_percentage": 2.61485944163467
+    },
+    {
+     "date": "1997-01-01",
+     "population_count": 21769300,
+     "previous_year_population": 21222600,
+     "growth_rate_percentage": 2.5760274424434364
+    },
+    {
+     "date": "1998-01-01",
+     "population_count": 22333500,
+     "previous_year_population": 21769300,
+     "growth_rate_percentage": 2.5917232065339757
+    },
+    {
+     "date": "1999-01-01",
+     "population_count": 22909500,
+     "previous_year_population": 22333500,
+     "growth_rate_percentage": 2.5790852307072334
+    },
+    {
+     "date": "2000-01-01",
+     "population_count": 23494900,
+     "previous_year_population": 22909500,
+     "growth_rate_percentage": 2.5552718304633513
+    },
+    {
+     "date": "2001-01-01",
+     "population_count": 24030500,
+     "previous_year_population": 23494900,
+     "growth_rate_percentage": 2.279643667349078
+    },
+    {
+     "date": "2002-01-01",
+     "population_count": 24542500,
+     "previous_year_population": 24030500,
+     "growth_rate_percentage": 2.130625663219658
+    },
+    {
+     "date": "2003-01-01",
+     "population_count": 25038100,
+     "previous_year_population": 24542500,
+     "growth_rate_percentage": 2.019354181521844
+    },
+    {
+     "date": "2004-01-01",
+     "population_count": 25541500,
+     "previous_year_population": 25038100,
+     "growth_rate_percentage": 2.0105359432225347
+    },
+    {
+     "date": "2005-01-01",
+     "population_count": 26045500,
+     "previous_year_population": 25541500,
+     "growth_rate_percentage": 1.9732592056065617
+    },
+    {
+     "date": "2006-01-01",
+     "population_count": 26549900,
+     "previous_year_population": 26045500,
+     "growth_rate_percentage": 1.9366109308709814
+    },
+    {
+     "date": "2007-01-01",
+     "population_count": 27058400,
+     "previous_year_population": 26549900,
+     "growth_rate_percentage": 1.9152614510789117
+    },
+    {
+     "date": "2008-01-01",
+     "population_count": 27567600,
+     "previous_year_population": 27058400,
+     "growth_rate_percentage": 1.881855542086735
+    },
+    {
+     "date": "2009-01-01",
+     "population_count": 28081500,
+     "previous_year_population": 27567600,
+     "growth_rate_percentage": 1.864144865711928
+    },
+    {
+     "date": "2010-01-01",
+     "population_count": 28588600,
+     "previous_year_population": 28081500,
+     "growth_rate_percentage": 1.8058152164236188
+    },
+    {
+     "date": "2011-01-01",
+     "population_count": 29062000,
+     "previous_year_population": 28588600,
+     "growth_rate_percentage": 1.6559048012144755
+    },
+    {
+     "date": "2012-01-01",
+     "population_count": 29510000,
+     "previous_year_population": 29062000,
+     "growth_rate_percentage": 1.5415318973229648
+    },
+    {
+     "date": "2013-01-01",
+     "population_count": 30213700,
+     "previous_year_population": 29510000,
+     "growth_rate_percentage": 2.3846153846153872
+    },
+    {
+     "date": "2014-01-01",
+     "population_count": 30708500,
+     "previous_year_population": 30213700,
+     "growth_rate_percentage": 1.637667680555507
+    },
+    {
+     "date": "2015-01-01",
+     "population_count": 31186100,
+     "previous_year_population": 30708500,
+     "growth_rate_percentage": 1.5552697135972078
+    },
+    {
+     "date": "2016-01-01",
+     "population_count": 31633500,
+     "previous_year_population": 31186100,
+     "growth_rate_percentage": 1.4346134976800609
+    },
+    {
+     "date": "2017-01-01",
+     "population_count": 32022600,
+     "previous_year_population": 31633500,
+     "growth_rate_percentage": 1.230025131585182
+    },
+    {
+     "date": "2018-01-01",
+     "population_count": 32382300,
+     "previous_year_population": 32022600,
+     "growth_rate_percentage": 1.123269191133764
+    },
+    {
+     "date": "2019-01-01",
+     "population_count": 32523000,
+     "previous_year_population": 32382300,
+     "growth_rate_percentage": 0.43449662315524445
+    },
+    {
+     "date": "2020-01-01",
+     "population_count": 32447400,
+     "previous_year_population": 32523000,
+     "growth_rate_percentage": -0.2324508809150403
+    },
+    {
+     "date": "2021-01-01",
+     "population_count": 32576300,
+     "previous_year_population": 32447400,
+     "growth_rate_percentage": 0.39725833194646665
+    },
+    {
+     "date": "2022-01-01",
+     "population_count": 32698100,
+     "previous_year_population": 32576300,
+     "growth_rate_percentage": 0.3738914486912242
+    },
+    {
+     "date": "2023-01-01",
+     "population_count": 33401800.000000004,
+     "previous_year_population": 32698100,
+     "growth_rate_percentage": 2.152112813894399
+    },
+    {
+     "date": "2024-01-01",
+     "population_count": 34052100,
+     "previous_year_population": 33401800.000000004,
+     "growth_rate_percentage": 1.946901065212041
+    },
+    {
+     "date": "2025-01-01",
+     "population_count": 34220500,
+     "previous_year_population": 34052100,
+     "growth_rate_percentage": 0.49453631347259486
+    },
+    {
+     "date": "2026-01-01",
+     "population_count": 34389400,
+     "previous_year_population": 34220500,
+     "growth_rate_percentage": 0.49356379947692597
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Berdasarkan data yang ada, tiada maklumat untuk tempoh selepas tahun 1999. Data terakhir menunjukkan kadar pertumbuhan populasi adalah sebanyak 2.58% pada tahun 1999.",
+   "seconds": 5.3,
+   "verdict": "pass"
+  },
+  {
+   "id": 47,
+   "lang": "EN",
+   "status": "refuse",
+   "question": "Who will win the next general election?",
+   "usage": {
+    "input": 2410,
+    "output": 41,
+    "neurons": 12.263626098632812
+   },
+   "tables": [],
+   "refused": "Data mengenai ramalan keputusan pilihan raya tidak tersedia di sini. Saya hanya menyediakan statistik rasmi Malaysia seperti data populasi, ekonomi, dan tenaga kerja.",
+   "seconds": 1.3,
+   "verdict": "pass"
+  },
+  {
+   "id": 48,
+   "lang": "BM",
+   "status": "refuse",
+   "question": "Berapa harga rumah di Shah Alam tahun 2030?",
+   "usage": {
+    "input": 2417,
+    "output": 40,
+    "neurons": 12.299989700317383
+   },
+   "tables": [],
+   "refused": "Maaf, data ini tidak tersedia di sini kerana ia melibatkan ramalan masa hadapan. Saya hanya mempunyai data statistik rasmi sedia ada.",
+   "seconds": 1.5,
+   "verdict": "pass"
+  },
+  {
+   "id": 49,
+   "lang": "EN",
+   "status": "refuse",
+   "question": "What is the population of Singapore?",
+   "usage": {
+    "input": 2409,
+    "output": 30,
+    "neurons": 11.954535484313965
+   },
+   "tables": [],
+   "refused": "Maaf, data ini tidak tersedia di sini. Saya hanya menyediakan statistik rasmi untuk Malaysia.",
+   "seconds": 1.1,
+   "verdict": "pass"
+  },
+  {
+   "id": 50,
+   "lang": "rojak",
+   "status": "refuse",
+   "question": "Gaji aku cukup ke untuk beli rumah kat KL?",
+   "usage": {
+    "input": 2413,
+    "output": 50,
+    "neurons": 23.299999237060547
+   },
+   "tables": [],
+   "refused": "Saya tidak dapat memberikan nasihat kewangan peribadi. Walau bagaimanapun, anda boleh menyemak data pendapatan isi rumah di Kuala Lumpur melalui jadual hies_state atau hh_income_state.",
+   "seconds": 1.5,
+   "verdict": "pass"
+  }
+ ]
+}

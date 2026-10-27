@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>angka</title>
+<meta name="description" content="Ask a question about Malaysia in BM, English or rojak; the answer is computed from official open data.">
+<style>
+  :root { --bg: #fff; --fg: #111; --muted: #666; --line: #ddd; --soft: #f5f5f5; --accent: #0b5; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111; --fg: #eee; --muted: #999; --line: #333; --soft: #1b1b1b; } }
+  * { box-sizing: border-box; }
+  body { font: 16px/1.5 system-ui, sans-serif; margin: 0; padding: 24px 16px 64px; background: var(--bg); color: var(--fg); }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 28px; }
+  p.lead { margin: 0 0 20px; color: var(--muted); }
+  form { display: flex; gap: 8px; }
+  input { flex: 1; min-width: 0; font: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); }
+  button { font: inherit; padding: 10px 16px; border: 0; border-radius: 8px; background: var(--fg); color: var(--bg); cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  #answer { font-size: 20px; margin: 24px 0 8px; }
+  #status { color: var(--muted); min-height: 1.5em; margin-top: 12px; }
+  details { margin-top: 12px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+  summary { cursor: pointer; color: var(--muted); }
+  pre { white-space: pre-wrap; background: var(--soft); padding: 10px; border-radius: 6px; overflow-x: auto; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; font-size: 14px; margin-top: 8px; }
+  th, td { border-bottom: 1px solid var(--line); padding: 4px 10px 4px 0; text-align: left; white-space: nowrap; }
+  ul.sources { padding-left: 18px; }
+  .examples { margin-top: 10px; font-size: 14px; color: var(--muted); }
+  .examples button { background: var(--soft); color: var(--fg); padding: 4px 10px; margin: 4px 4px 0 0; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>angka</h1>
+  <p class="lead">Ask about Malaysia in BM, English or rojak. Answers are computed from data.gov.my open data. (M2 test page)</p>
+  <form id="ask">
+    <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">Question</label>
+    <input id="q" name="q" autocomplete="off" maxlength="300" placeholder="Berapa jumlah penduduk Johor?" required>
+    <button id="go" type="submit">Ask</button>
+  </form>
+  <div class="examples" id="examples">Try:
+    <button type="button">Which state has the highest median household income?</button>
+    <button type="button">Kadar pengangguran belia sekarang berapa?</button>
+    <button type="button">Petrol RON97 sekarang berapa ringgit?</button>
+  </div>
+  <div id="status" role="status" aria-live="polite"></div>
+  <p id="answer"></p>
+  <div id="details"></div>
+</main>
+<script type="module">
+import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm";
+import * as E from "./engine.js";
+
+const $ = (id) => document.getElementById(id);
+const status = (s) => ($("status").textContent = s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+// Start the engine and the catalogue as soon as the page opens, while the visitor types
+const catalogueP = fetch("data/catalogue.json").then((r) => r.json());
+const connP = (async () => {
+  const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
+  const workerUrl = URL.createObjectURL(new Blob([`importScripts("${bundle.mainWorker}");`], { type: "text/javascript" }));
+  const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(workerUrl));
+  await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+  URL.revokeObjectURL(workerUrl);
+  return db.connect();
+})();
+const viewsMade = new Set();
+
+async function api(step, body) {
+  const res = await fetch(`/api/${step}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.message || data.error || `HTTP ${res.status}`);
+  return data;
+}
+
+async function runSql(sql, ids) {
+  const conn = await connP;
+  for (const id of ids) {
+    if (viewsMade.has(id)) continue;
+    const url = new URL(`data/${id}.parquet`, location.href).href;
+    await conn.query(`CREATE OR REPLACE VIEW ${id} AS SELECT * FROM read_parquet('${url}')`);
+    viewsMade.add(id);
+  }
+  const table = await conn.query(sql);
+  const columns = table.schema.fields.map((f) => f.name);
+  const rows = E.plainRows(table.toArray().slice(0, 200).map((r) => r.toJSON()));
+  return { columns, rows };
+}
+
+async function ask(question) {
+  const catalogue = await catalogueP;
+  $("answer").textContent = "";
+  $("details").innerHTML = "";
+  status("Choosing the data…");
+  const pick = await api("pick", { question });
+  if (!pick.tables.length) {
+    $("answer").textContent = pick.refuse;
+    status("");
+    return;
+  }
+  let previous = null, result = null, sql = "";
+  for (let attempt = 0; attempt < 2 && !result; attempt++) {
+    status(attempt ? "Fixing the query…" : "Writing the query…");
+    const s = await api("sql", { question, tables: pick.tables, previous });
+    sql = s.sql;
+    const problem = s.problem || E.checkSql(s.sql, pick.tables);
+    if (problem) { previous = { sql, error: problem }; continue; }
+    status("Running it on your device…");
+    try { result = await runSql(sql, pick.tables); }
+    catch (e) { previous = { sql, error: String(e.message).split("\n")[0].slice(0, 400) }; }
+  }
+  if (!result) {
+    $("answer").textContent = "Sorry, I couldn't build a working query for that. Try asking it another way.";
+    status("");
+    return;
+  }
+  status("Writing the answer…");
+  const a = await api("answer", { question, tables: pick.tables, sql, columns: result.columns, rows: E.sampleRows(result.rows, 30) });
+  $("answer").textContent = a.answer;
+  status("");
+
+  const sources = pick.tables.map((id) => catalogue.tables.find((t) => t.id === id))
+    .map((t) => `<li><a href="${esc(t.source_url)}" target="_blank" rel="noopener">${esc(t.title_en)}</a> · ${esc(t.source || "")} · data as of ${esc(t.data_as_of || "")}</li>`).join("");
+  const head = result.columns.map((c) => `<th>${esc(c)}</th>`).join("");
+  const body = result.rows.slice(0, 50).map((r) => `<tr>${result.columns.map((c) => `<td>${esc(r[c] ?? "")}</td>`).join("")}</tr>`).join("");
+  $("details").innerHTML = `
+    <details open><summary>Sources</summary><ul class="sources">${sources}</ul></details>
+    <details><summary>Result (${result.rows.length} ${result.rows.length === 1 ? "row" : "rows"})</summary><div class="scroll"><table><tr>${head}</tr>${body}</table></div></details>
+    <details><summary>SQL</summary><pre>${esc(sql)}</pre></details>`;
+}
+
+$("ask").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const q = $("q").value.trim();
+  if (!q) return;
+  $("go").disabled = true;
+  try { await ask(q); }
+  catch (err) { status(""); $("answer").textContent = err.message; }
+  finally { $("go").disabled = false; }
+});
+for (const b of $("examples").querySelectorAll("button")) {
+  b.addEventListener("click", () => { $("q").value = b.textContent; $("ask").requestSubmit(); });
+}
+</script>
+</body>
+</html>

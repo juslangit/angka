@@ -103,7 +103,8 @@ Q = [
                 SELECT a.state, round(100 * (a.income_median / b.income_median - 1), 1) AS pct_growth
                 FROM h a JOIN h b ON a.state = b.state AND year(b.date) = 2019
                 WHERE a.date = (SELECT max(date) FROM h) ORDER BY pct_growth DESC LIMIT 1""",
-         note="Median income, 2019 survey vs latest survey."),
+         key=["state"],
+         note="Median income, 2019 survey vs latest survey. Mean income is a fair reading too (also Selangor), so only the state is graded."),
     dict(id=23, lang="BM", status="ok", question="Kadar pengangguran belia di Malaysia sekarang berapa?",
          sql="SELECT date, u_rate_15_24, u_rate_15_30 FROM lfs_month_youth ORDER BY date DESC LIMIT 1",
          note="Give both youth definitions (15-24 and 15-30)."),
@@ -154,7 +155,8 @@ Q = [
     dict(id=34, lang="BM", status="ok", question="Adakah inflasi makanan lebih tinggi daripada inflasi keseluruhan?",
          sql="""SELECT date, division, inflation_yoy FROM cpi_headline_inflation
                 WHERE division IN ('01', 'overall') AND date = (SELECT max(date) FROM cpi_headline_inflation)
-                ORDER BY division"""),
+                ORDER BY division""",
+         key=["inflation_yoy"], note="Graded on the two rates; they can come back as one row or two."),
     dict(id=35, lang="BM", status="ok", question="Pendapatan median isi rumah di Pahang berapa?",
          sql="""SELECT date, income_median FROM hh_income_state WHERE state = 'Pahang' ORDER BY date DESC LIMIT 1"""),
     dict(id=36, lang="BM", status="ok", question="Negeri mana paling ramai orang tua?",
@@ -192,7 +194,8 @@ Q = [
          sql="""SELECT state, sum(registrations) AS cars FROM cars_monthly
                 WHERE year(date) = year(current_date) - 1 AND state <> 'Rakan Niaga'
                 GROUP BY state ORDER BY cars DESC LIMIT 1""",
-         note="Most cars are registered via JPJ's dealer portal ('Rakan Niaga'), not a state office: answer must say so."),
+         key=["state"],
+         note="Most cars are registered via JPJ's dealer portal ('Rakan Niaga'), not a state office: answer must say so. No period named, so a latest-month answer is fair; only the state is graded."),
     dict(id=46, lang="rojak", status="ok", question="Population growth Malaysia slow down ke since COVID?",
          sql="""WITH p AS (SELECT date, population FROM population_malaysia
                            WHERE sex = 'both' AND age = 'overall' AND ethnicity = 'overall')

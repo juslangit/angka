@@ -1,0 +1,55 @@
+{
+ "summary": {
+  "model": "@cf/google/gemma-4-26b-a4b-it",
+  "date": "2026-10-27T08:52:25.263Z",
+  "questions": 1,
+  "passed": 1,
+  "score": 100,
+  "by_kind": {
+   "ok": "1/1"
+  },
+  "tokens": {
+   "input": 3989,
+   "output": 97,
+   "neurons": 38.909090757369995
+  },
+  "neurons": 39,
+  "est_usd": 0.0004,
+  "share_of_daily_free": "0%"
+ },
+ "results": [
+  {
+   "id": 19,
+   "lang": "EN",
+   "status": "ok",
+   "question": "Which state has the highest income inequality (Gini)?",
+   "usage": {
+    "input": 3989,
+    "output": 97,
+    "neurons": 38.909090757369995
+   },
+   "tables": [
+    "hh_inequality_state"
+   ],
+   "sql": "SELECT state, gini, date FROM hh_inequality_state WHERE date = (SELECT max(date) FROM hh_inequality_state) ORDER BY gini DESC LIMIT 1",
+   "chart": "bar",
+   "columns": [
+    "state",
+    "gini",
+    "date"
+   ],
+   "rows": [
+    {
+     "state": "Sabah",
+     "gini": 0.405,
+     "date": "2024-01-01"
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "Sabah has the highest income inequality with a Gini coefficient of 0.405 for the period ending 2024-01-01.",
+   "seconds": 4.4,
+   "verdict": "pass"
+  }
+ ]
+}

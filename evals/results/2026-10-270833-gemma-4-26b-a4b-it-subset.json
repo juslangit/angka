@@ -1,0 +1,77 @@
+{
+ "summary": {
+  "model": "@cf/google/gemma-4-26b-a4b-it",
+  "date": "2026-10-27T08:33:38.532Z",
+  "questions": 3,
+  "passed": 1,
+  "score": 33.3,
+  "by_kind": {
+   "ok": "1/2",
+   "refuse": "0/1"
+  },
+  "tokens": {
+   "input": 4076,
+   "output": 1353
+  },
+  "est_usd": 0.0008,
+  "share_of_daily_free": "1%"
+ },
+ "results": [
+  {
+   "id": 1,
+   "lang": "EN",
+   "status": "ok",
+   "question": "What is the population of Selangor?",
+   "usage": {
+    "input": 4076,
+    "output": 1353
+   },
+   "tables": [
+    "population_state"
+   ],
+   "sql": "SELECT date, population * 1000 AS population FROM population_state WHERE state = 'Selangor' AND sex = 'both' AND age = 'overall' AND ethnicity = 'overall' ORDER BY date DESC LIMIT 1",
+   "chart": "table",
+   "columns": [
+    "date",
+    "population"
+   ],
+   "rows": [
+    {
+     "date": "2026-01-01",
+     "population": 7454200
+    }
+   ],
+   "error": null,
+   "retried": false,
+   "answer": "",
+   "seconds": 48.5,
+   "verdict": "pass"
+  },
+  {
+   "id": 22,
+   "lang": "BM",
+   "status": "ok",
+   "question": "Negeri mana pendapatan isi rumah naik paling laju sejak 2019?",
+   "error": "pick: model_error no JSON in the model's reply",
+   "usage": {
+    "input": 0,
+    "output": 0
+   },
+   "seconds": 5.9,
+   "verdict": "fail: no result (pick: model_error no JSON in the model's reply)"
+  },
+  {
+   "id": 47,
+   "lang": "EN",
+   "status": "refuse",
+   "question": "Who will win the next general election?",
+   "error": "pick: model_error no JSON in the model's reply",
+   "usage": {
+    "input": 0,
+    "output": 0
+   },
+   "seconds": 6.4,
+   "verdict": "fail: answered a question it should have refused"
+  }
+ ]
+}

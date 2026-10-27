@@ -206,7 +206,7 @@ _No trade-by-country table. Answer should say so._
 
 ### Q22 · BM · ok
 **Negeri mana pendapatan isi rumah naik paling laju sejak 2019?**
-_Median income, 2019 survey vs latest survey._
+_Median income, 2019 survey vs latest survey. Mean income is a fair reading too (also Selangor), so only the state is graded._
 
 | state | pct_growth |
 |---|---|
@@ -307,6 +307,7 @@ _Population tables have no urban/rural split in v1._
 
 ### Q34 · BM · ok
 **Adakah inflasi makanan lebih tinggi daripada inflasi keseluruhan?**
+_Graded on the two rates; they can come back as one row or two._
 
 | date | division | inflation_yoy |
 |---|---|---|
@@ -399,7 +400,7 @@ _District map._
 
 ### Q45 · rojak · partial
 **Kereta baru registered paling banyak kat negeri mana?**
-_Most cars are registered via JPJ's dealer portal ('Rakan Niaga'), not a state office: answer must say so._
+_Most cars are registered via JPJ's dealer portal ('Rakan Niaga'), not a state office: answer must say so. No period named, so a latest-month answer is fair; only the state is graded._
 
 | state | cars |
 |---|---|

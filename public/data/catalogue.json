@@ -802,7 +802,7 @@
    "title_ms": "Pendapatan Isi Rumah",
    "description_en": "Mean and median monthly gross household income in Malaysia from 1970 to 2024.",
    "description_ms": "Purata dan penengah pendapatan kasar bulanan isi rumah di Malaysia dari 1970 hingga 2024.",
-   "why": "national household income over time",
+   "why": "national household income (all income of a household, pendapatan isi rumah) over time; not salaries",
    "frequency": "YEARLY",
    "geography": [
     "NATIONAL"
@@ -868,7 +868,7 @@
    "title_ms": "Pendapatan Isi Rumah Mengikut Negeri",
    "description_en": "Mean and median gross monthly household income by state from 1970 to 2024.",
    "description_ms": "Purata dan penengah pendapatan kasar bulanan isi rumah mengikut negeri dari 1970 hingga 2024.",
-   "why": "household income by state over time (Q2, Q7, Q22, Q35, Q39)",
+   "why": "household income (pendapatan isi rumah) by state over time; not salaries (Q2, Q7, Q22, Q35, Q39)",
    "frequency": "YEARLY",
    "geography": [
     "STATE"
@@ -1534,7 +1534,7 @@
    "title_ms": "IHP Bulanan mengikut Bahagian (2-digit)",
    "description_en": "National-level CPI for 13 main groups of goods and services.",
    "description_ms": "IHP peringkat nasional bagi 13 kumpulan utama barangan dan perkhidmatan.",
-   "why": "CPI index by division (Q10, Q41)",
+   "why": "consumer price index by category (food, transport, housing and 10 more) and overall; price changes over any period (Q10, Q41)",
    "frequency": "MONTHLY",
    "geography": [
     "NATIONAL"
@@ -1673,7 +1673,7 @@
    "title_ms": "Inflasi IHP Bulanan mengikut Bahagian (2-digit)",
    "description_en": "National-level CPI inflation for 13 main groups of goods and services",
    "description_ms": "Inflasi IHP peringkat nasional bagi 13 kumpulan utama barangan dan perkhidmatan.",
-   "why": "inflation by division (Q4, Q34)",
+   "why": "inflation rate, overall and by category such as food (inflasi makanan), transport, housing (Q4, Q34)",
    "frequency": "MONTHLY",
    "geography": [
     "NATIONAL"
@@ -1823,7 +1823,7 @@
    "title_ms": "IHP Bulanan mengikut Negeri & Bahagian (2-digit)",
    "description_en": "State-level CPI for 13 main groups of goods and services.",
    "description_ms": "IHP peringkat negeri bagi 13 kumpulan utama barangan dan perkhidmatan.",
-   "why": "CPI index by state, for annual inflation by state (Q24)",
+   "why": "consumer price index by state and category, for yearly inflation by state (Q24)",
    "frequency": "MONTHLY",
    "geography": [
     "NATIONAL"
@@ -1992,7 +1992,7 @@
    "title_ms": "Inflasi IHP Bulanan mengikut Negeri & Bahagian (2-digit)",
    "description_en": "State-level CPI inflation for 13 main groups of goods and services",
    "description_ms": "Inflasi IHP peringkat negeri bagi 13 kumpulan utama barangan dan perkhidmatan.",
-   "why": "monthly inflation by state",
+   "why": "monthly inflation rate by state and category",
    "frequency": "MONTHLY",
    "geography": [
     "NATIONAL"
@@ -2522,7 +2522,7 @@
    "title_ms": "Gaji & Upah Tahunan mengikut Negeri & Jantina",
    "description_en": "Number of recipients, median and mean monthly salaries & wages of employees who are Malaysian citizens by state and sex.",
    "description_ms": "Bilangan penerima, penengah dan purata gaji & upah bulanan pekerja warganegara Malaysia mengikut negeri dan jantina.",
-   "why": "salaries and wages by state (Q38)",
+   "why": "salaries and wages of employees (gaji, upah), by state and for Malaysia as a whole (Q38)",
    "frequency": "YEARLY",
    "geography": [
     "STATE"
@@ -3851,7 +3851,7 @@
    "file": "data/cars_monthly.parquet",
    "title_en": "Monthly New Car Registrations by State, Maker & Fuel",
    "title_ms": "Pendaftaran Kereta Baharu Bulanan mengikut Negeri, Pengeluar & Bahan Api",
-   "description_en": "New car registrations summed per month from JPJ's registration records (data.gov.my 'Car Registration Transactions'), 2015 onwards.",
+   "description_en": "New car registrations summed per month from JPJ's registration records (data.gov.my 'Car Registration Transactions'), 2015 onwards. Most cars are registered through JPJ's dealer portal, recorded as state 'Rakan Niaga', which is not a state: leave it out of any by-state answer and say so.",
    "description_ms": "Pendaftaran kereta baharu dijumlahkan setiap bulan daripada rekod pendaftaran JPJ (data.gov.my 'Car Registration Transactions'), dari 2015.",
    "why": "new car registrations by state and maker (Q45)",
    "frequency": "MONTHLY",
@@ -3866,7 +3866,7 @@
    "data_as_of": "2026-09-30 23:59",
    "caveat_en": "This dataset captures the registration of cars, not the sale or import or any other transaction. Therefore, if a car is not registered for use on the road, it will not be present in this dataset (e.g. cars which are purchased purely for private display).\n\nFurthermore, it should be noted that this dataset was extremely difficult to prepare, especially for data from the early 2000s when data collection systems were not as sophisticated as they are now. Accordingly, if you spot any errors in the dataset or have any suggestions to improve its quality, please write to help.dtsa@jdn.gov.my so the data.gov.my team can work with JPJ to fix or improve it as soon as possible.",
    "rows": 110562,
-   "bytes": 207727,
+   "bytes": 208677,
    "columns": [
     {
      "name": "date",
@@ -3970,17 +3970,17 @@
      "date": "2015-05-01",
      "state": "Perak",
      "maker": "Lexus",
-     "type": "motokar",
+     "type": "jip",
      "fuel": "petrol",
-     "registrations": 6
+     "registrations": 8
     },
     {
      "date": "2015-07-01",
      "state": "Selangor",
      "maker": "Proton",
-     "type": "motokar",
-     "fuel": "petrol",
-     "registrations": 146
+     "type": "motokar_pelbagai_utiliti",
+     "fuel": "petrol_ng",
+     "registrations": 35
     },
     {
      "date": "2016-02-01",

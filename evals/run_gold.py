@@ -69,6 +69,20 @@ def main():
         lines.append("")
 
     (ROOT / "evals" / "coverage.md").write_text("\n".join(lines))
+
+    # The same answers as data, for the model eval (evals/run_model.mjs)
+    gold = []
+    for q in Q:
+        item = {k: q[k] for k in ("id", "question", "lang", "status")}
+        item["note"] = q.get("note", "")
+        if q.get("key"):
+            item["key"] = q["key"]
+        if q["id"] in results:
+            cols, rows = results[q["id"]]
+            item["columns"] = cols
+            item["rows"] = [[v.isoformat() if hasattr(v, "isoformat") else v for v in r] for r in rows]
+        gold.append(item)
+    (ROOT / "evals" / "gold.json").write_text(json.dumps(gold, ensure_ascii=False, indent=1, default=str))
     print(counts, "failures:", failures)
 
 
