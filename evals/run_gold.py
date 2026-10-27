@@ -8,7 +8,16 @@ from pathlib import Path
 
 import duckdb
 
-from gold import Q
+from gold import Q as SEED
+from gold_more import Q as MORE
+
+Q = SEED + MORE
+
+
+def split_of(q):
+    """dev: the 50 seed questions (used to tune prompts) plus every third new one; test: the rest,
+    held out — only its overall score is looked at, never its individual questions."""
+    return "dev" if q["id"] <= 50 or q["id"] % 3 == 0 else "test"
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "public" / "data"
@@ -50,9 +59,20 @@ def main():
     for i, err in failures:
         lines.append(f"- Q{i}: {err}")
 
+    splits = {}
+    for q in Q:
+        sp = splits.setdefault(split_of(q), {"EN": 0, "BM": 0, "rojak": 0, "answer": 0, "refuse": 0})
+        sp[q["lang"]] += 1
+        sp["refuse" if q["status"] in ("gap", "refuse") else "answer"] += 1
+    lines += ["", "## Dev / test split", "", "| Split | Questions | EN | BM | rojak | to answer | to refuse |", "|---|---|---|---|---|---|---|"]
+    for name, sp in sorted(splits.items()):
+        lines.append(f"| {name} | {sp['answer'] + sp['refuse']} | {sp['EN']} | {sp['BM']} | {sp['rojak']} | {sp['answer']} | {sp['refuse']} |")
+    lines.append("")
+    lines.append("The test answers are listed below like the rest, but only the test set's overall score is used: its individual results are never looked at while tuning.")
+
     lines += ["", "## Answers", ""]
     for q in Q:
-        lines.append(f"### Q{q['id']} · {q['lang']} · {q['status']}")
+        lines.append(f"### Q{q['id']} · {q['lang']} · {q['status']} · {split_of(q)}")
         lines.append(f"**{q['question']}**")
         if q.get("note"):
             lines.append(f"_{q['note']}_")
@@ -74,9 +94,11 @@ def main():
     gold = []
     for q in Q:
         item = {k: q[k] for k in ("id", "question", "lang", "status")}
+        item["split"] = split_of(q)
         item["note"] = q.get("note", "")
-        if q.get("key"):
-            item["key"] = q["key"]
+        for k in ("key", "match"):
+            if q.get(k):
+                item[k] = q[k]
         if q["id"] in results:
             cols, rows = results[q["id"]]
             item["columns"] = cols

@@ -60,8 +60,27 @@ against the reference answers. Runs are kept in `evals/results/`:
 | 3 | 46/50 (92%) | clearer rules for dates, ratios and comparisons; better table descriptions |
 | 4 | 48/50 (96%) | retry when a query never filters by date |
 
-These 50 questions were also used to tune the prompts, so 96% flatters the engine. The next
-milestone adds a larger, held-out question set for an honest score.
+These 50 questions were also used to tune the prompts, so 96% flatters the engine.
+
+### 200 questions, dev and test (M3)
+
+`evals/gold_more.py` adds 150 questions (ids 51–200) across every table, including joins, ratios,
+"since" periods and 26 that should be refused or have no data here. The 200 split into:
+
+- **dev** (100): the 50 seed questions plus every third new one. Prompts are tuned on these.
+- **test** (100): held out. Only the overall test score is looked at, never which questions failed,
+  so it stays an honest measure. `run_model.mjs --split test` prints just ✓/✗ marks.
+
+Grading has two parts:
+
+1. **Data** (`run_model.mjs`): every number and name in the reference row must appear in the
+   result, unless a question is marked as having two fair readings.
+2. **Answer** (`judge.mjs`): the `claude` CLI checks that the sentence is in the question's
+   language, uses only numbers from the result, says which period they are for, and states any
+   required caveat.
+
+A question is **fully correct** only when both pass. On the 50 seed questions, the M2 engine gets
+the data right for 48 but only 34 are fully correct: most misses are answers that don't name the year.
 
 ## Licence
 

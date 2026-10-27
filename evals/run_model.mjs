@@ -2,7 +2,8 @@
 // the results against the reference answers in evals/gold.json.
 //
 //   npx wrangler dev --port 8787            (in another terminal)
-//   node evals/run_model.mjs [--model @cf/...] [--only 1,4,22] [--base http://localhost:8787]
+//   node evals/run_model.mjs [--split dev|test|all] [--model @cf/...] [--only 1,4,22] [--base http://localhost:8787]
+//   then: node evals/judge.mjs evals/results/<file>.json   (checks the wording of each answer)
 //
 // Every run spends the account's free Workers AI allowance (10,000 neurons, about US$0.11 a day),
 // so the estimated cost of each run is printed and saved with the results.
@@ -19,6 +20,7 @@ const arg = (name, fallback) => {
 const model = arg("model", E.DEFAULT_MODEL);
 const base = arg("base", "http://localhost:8787");
 const only = arg("only", "") ? new Set(arg("only").split(",").map(Number)) : null;
+const split = arg("split", "dev"); // dev | test | all
 
 // US$ per million tokens (input, output), from the Workers AI model list on 2026-10-27
 const PRICES = {
@@ -116,21 +118,25 @@ const near = (a, b) => {
   return [1, 1000, 0.001, 100, 0.01].some((k) => Math.abs(a * k - b) <= tol * Math.max(k, 1));
 };
 
-function rowMatches(goldRow, gotRow) {
+function rowMatches(goldRow, gotRow, any = false) {
   const nums = gotRow.filter((v) => typeof v === "number");
   const years = gotRow.filter(isDate).map((v) => Number(v.slice(0, 4)));
   const texts = gotRow.filter((v) => typeof v === "string").map((v) => v.toLowerCase());
   const numMatch = (v) => (Number.isInteger(v) && v >= 1900 && v <= 2100 && years.includes(v)) || nums.some((n) => near(v, n));
   const words = goldRow.filter((v) => typeof v === "string" && !isDate(v));
   const numbers = goldRow.filter((v) => typeof v === "number");
-  // every name must match; of several numbers, one is enough for now (M3 brings stricter grading)
-  return words.every((v) => texts.includes(v.toLowerCase())) && (!numbers.length || numbers.some(numMatch));
+  // every name and every number must match, unless the question has two fair readings (match: "any")
+  const numbersOk = !numbers.length || (any ? numbers.some(numMatch) : numbers.every(numMatch));
+  return words.every((v) => texts.includes(v.toLowerCase())) && numbersOk;
 }
 
 function score(g, t) {
   if (!t.refused && !t.rows && !t.sql && t.error) return `error: ${t.error}`;
   if (g.status === "gap" || g.status === "refuse") {
-    return t.refused ? "pass" : "fail: answered a question it should have refused";
+    if (t.refused) return "pass";
+    const empty = t.rows && (!t.rows.length || t.rows.every((r) => Object.values(r).every((v) => v === null)));
+    if (g.status === "gap" && empty) return "pass";
+    return "fail: answered a question it should have refused";
   }
   if (t.refused) return "fail: refused";
   if (!t.rows) return `fail: no result (${t.error})`;
@@ -140,7 +146,7 @@ function score(g, t) {
     const keep = g.key.map((k) => g.columns.indexOf(k));
     goldRows = goldRows.map((r) => keep.map((i) => r[i]));
   }
-  const matched = goldRows.filter((gr) => gotRows.some((r) => rowMatches(gr, r))).length;
+  const matched = goldRows.filter((gr) => gotRows.some((r) => rowMatches(gr, r, g.match === "any"))).length;
   const need = goldRows.length === 1 ? 1 : Math.ceil(goldRows.length * 0.8);
   return matched >= need ? "pass" : `fail: ${matched}/${goldRows.length} reference rows found`;
 }
@@ -150,7 +156,7 @@ function score(g, t) {
 const results = [];
 let usage = { input: 0, output: 0, neurons: 0 };
 for (const g of gold) {
-  if (only && !only.has(g.id)) continue;
+  if (only ? !only.has(g.id) : split !== "all" && g.split !== split) continue;
   const started = Date.now();
   let t;
   try {
@@ -167,7 +173,12 @@ for (const g of gold) {
   usage.input += t.usage.input;
   usage.output += t.usage.output;
   usage.neurons += t.usage.neurons;
-  results.push({ id: g.id, lang: g.lang, status: g.status, question: g.question, ...t });
+  results.push({ id: g.id, lang: g.lang, status: g.status, split: g.split, note: g.note, question: g.question, ...t });
+  // test questions are held out: show only the running tally, never what went wrong
+  if (g.split === "test" && !only) {
+    process.stdout.write(t.verdict.startsWith("pass") ? "✓" : "✗");
+    continue;
+  }
   console.log(`Q${g.id} ${g.lang.padEnd(5)} ${t.verdict.startsWith("pass") ? "✓" : "✗"} ${t.verdict}${t.answer ? "\n      " + t.answer.replace(/\s+/g, " ").slice(0, 200) : t.refused ? "\n      [refused] " + t.refused.slice(0, 160) : ""}`);
 }
 
@@ -182,8 +193,10 @@ for (const r of results) {
   byStatus[k][1]++;
   if (r.verdict === "pass") byStatus[k][0]++;
 }
+if (split === "test") console.log();
 const summary = {
   model,
+  split: only ? "subset" : split,
   date: new Date().toISOString(),
   questions: results.length,
   passed,
@@ -197,6 +210,6 @@ const summary = {
 console.log("\n" + JSON.stringify(summary, null, 1));
 
 mkdirSync(`${ROOT}evals/results`, { recursive: true });
-const name = `${summary.date.slice(0, 16).replace(/[:T]/g, "")}-${model.split("/").pop()}${only ? "-subset" : ""}.json`;
+const name = `${summary.date.slice(0, 16).replace(/[:T]/g, "")}-${model.split("/").pop()}-${summary.split}.json`;
 writeFileSync(`${ROOT}evals/results/${name}`, JSON.stringify({ summary, results }, null, 1));
 console.log(`saved evals/results/${name}`);

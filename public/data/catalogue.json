@@ -1228,6 +1228,61 @@
    ]
   },
   {
+   "id": "hh_inequality",
+   "file": "data/hh_inequality.parquet",
+   "title_en": "Income Inequality",
+   "title_ms": "Ketidaksamarataan Pendapatan",
+   "description_en": "Gini coefficient for Malaysia from 1970 to 2024.",
+   "description_ms": "Pekali Gini untuk Malaysia dari 1970 hingga 2024.",
+   "why": "Gini coefficient for Malaysia as a whole over time",
+   "frequency": "YEARLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hh_inequality",
+   "data_as_of": "2024",
+   "caveat_en": "Given that the data is produced from surveys spanning over half a century, the following methodological changes should be noted:\n - Data for 1970 and 1974 refers to Peninsular Malaysia only. 1976 was the first year in which Sabah and Sarawak were included in the survey.\n - Data from 1989 onwards refers to Malaysian citizens only. Although non-citizens are also included in the surveys, the official statistics (which form the basis for national welfare policy) are based on citizens only.",
+   "rows": 21,
+   "bytes": 560,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "1970-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "gini",
+     "type": "DOUBLE",
+     "title_en": "Gini Coefficient",
+     "title_ms": "Pekali Gini",
+     "description_en": "[Float] The Gini coefficient based on the distribution of households' gross monthly income",
+     "description_ms": "[Apung] Pekali Gini berdasarkan taburan pendapatan bulanankasar isi rumah"
+    }
+   ],
+   "sample": [
+    {
+     "date": "1992-01-01",
+     "gini": 0.451
+    },
+    {
+     "date": "2002-01-01",
+     "gini": 0.461
+    },
+    {
+     "date": "2024-01-01",
+     "gini": 0.39
+    }
+   ]
+  },
+  {
    "id": "hh_inequality_state",
    "file": "data/hh_inequality_state.parquet",
    "title_en": "Income Inequality by State",
@@ -1309,6 +1364,83 @@
      "state": "W.P. Labuan",
      "date": "2016-01-01",
      "gini": 0.398
+    }
+   ]
+  },
+  {
+   "id": "hh_poverty",
+   "file": "data/hh_poverty.parquet",
+   "title_en": "Poverty",
+   "title_ms": "Kemiskinan",
+   "description_en": "Poverty rates in Malaysia from 1970 to 2024.",
+   "description_ms": "Kadar kemiskinan di Malaysia dari 1970 hingga 2024.",
+   "why": "poverty rates for Malaysia as a whole over time",
+   "frequency": "YEARLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hh_poverty",
+   "data_as_of": "2024",
+   "caveat_en": "Given that the data is produced from surveys spanning over half a century, the following methodological changes should be noted:\n - Data for 1970 and 1974 refers to Peninsular Malaysia only. 1976 was the first year in which Sabah and Sarawak were included in the survey.\n - Data from 1989 onwards refers to Malaysian citizens only. Although non-citizens are also included in the surveys, the official statistics (which form the basis for national welfare policy) are based on citizens only.",
+   "rows": 21,
+   "bytes": 1007,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "1970-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "poverty_absolute",
+     "type": "DOUBLE",
+     "title_en": "Absolute Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Mutlak",
+     "description_en": "[Float] Proportion of households with monthly income below the Poverty Line Income (PLI)",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada Pendapatan Garis Kemiskinan (PGK)"
+    },
+    {
+     "name": "poverty_hardcore",
+     "type": "DOUBLE",
+     "title_en": "Hardcore Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Tegar",
+     "description_en": "[Float] Proportion of households with monthly income below the Food Poverty Line Income (Food PLI)",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada Pendapatan Garis Kemiskinan Makanan (PGK Makanan)"
+    },
+    {
+     "name": "poverty_relative",
+     "type": "DOUBLE",
+     "title_en": "Relative Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Relatif",
+     "description_en": "[Float] Proportion of households with monthly income below half the national median income",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada separuh pendapatan penengah nasional"
+    }
+   ],
+   "sample": [
+    {
+     "date": "1995-01-01",
+     "poverty_absolute": 8.7,
+     "poverty_hardcore": 2.0,
+     "poverty_relative": 19.5
+    },
+    {
+     "date": "2004-01-01",
+     "poverty_absolute": 5.7,
+     "poverty_hardcore": 1.2,
+     "poverty_relative": 19.9
+    },
+    {
+     "date": "2024-01-01",
+     "poverty_absolute": 5.1,
+     "poverty_hardcore": 0.09,
+     "poverty_relative": 16.7
     }
    ]
   },
@@ -3866,7 +3998,7 @@
    "data_as_of": "2026-09-30 23:59",
    "caveat_en": "This dataset captures the registration of cars, not the sale or import or any other transaction. Therefore, if a car is not registered for use on the road, it will not be present in this dataset (e.g. cars which are purchased purely for private display).\n\nFurthermore, it should be noted that this dataset was extremely difficult to prepare, especially for data from the early 2000s when data collection systems were not as sophisticated as they are now. Accordingly, if you spot any errors in the dataset or have any suggestions to improve its quality, please write to help.dtsa@jdn.gov.my so the data.gov.my team can work with JPJ to fix or improve it as soon as possible.",
    "rows": 110562,
-   "bytes": 208677,
+   "bytes": 208264,
    "columns": [
     {
      "name": "date",
@@ -3970,9 +4102,9 @@
      "date": "2015-05-01",
      "state": "Perak",
      "maker": "Lexus",
-     "type": "jip",
+     "type": "motokar",
      "fuel": "petrol",
-     "registrations": 8
+     "registrations": 6
     },
     {
      "date": "2015-07-01",
