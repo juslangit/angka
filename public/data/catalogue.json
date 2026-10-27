@@ -1,0 +1,3996 @@
+{
+ "built": "2026-10-27",
+ "licence": "Data from data.gov.my / OpenDOSM, CC BY 4.0. Department of Statistics Malaysia and other agencies as listed per table.",
+ "notes": [
+  "Tables are kept as published on data.gov.my; only timestamps were turned into dates.",
+  "Dates of yearly data are YYYY-01-01; monthly data use the first day of the month.",
+  "Many tables mix 'overall' / 'both' total rows with breakdown rows: filter to one level before summing.",
+  "Population age groups: the oldest group is '70+' or '80+' for 1970-1990 and '85+' from 1991. An 'aged 65 and over' total must use the groups that exist for that year, and never sum 'overall' with the age groups.",
+  "GDP by state puts W.P. Putrajaya inside W.P. Kuala Lumpur and has a 'Supra' row for output not tied to a state."
+ ],
+ "tables": [
+  {
+   "id": "population_malaysia",
+   "file": "data/population_malaysia.parquet",
+   "title_en": "Population Table: Malaysia",
+   "title_ms": "Jadual Penduduk: Malaysia",
+   "description_en": "Population at national level from 1970 to 2026, by sex, age group and ethnicity. The preview table shows data for the latest year only, but you may download the data in full.",
+   "description_ms": "Jumlah penduduk di peringkat nasional dari 1970 ke 2026, mengikut jantina, kumpulan umur dan kumpulan etnik. Jadual pratonton hanya menunjukkan data bagi tahun terkini, tetapi data penuh boleh dimuat turun.",
+   "why": "national population by sex, age, ethnicity",
+   "frequency": "YEARLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/population_malaysia",
+   "data_as_of": "2026",
+   "caveat_en": "Values for breakdowns may be slightly different to totals when summed, due to rounding to one decimal place. Furthermore, caution should be exercised when using the dataset in full because the granularity of Malaysia's population data has been deepened over the years. Specficially, there are 3 differing ranges of granularity as follows:\n - The data from 1991 onwards is the most granular, with ethnic group breakdowns providing differentiation between Malay and Other Bumiputera, as well as Other Citizen and Other Non-Citizen. Furthermore, the oldest age category is 85+, i.e. 85 years and above.\n - The data from 1980-1990 contains a breakdown by ethnic group, but without differentiation between Malay and Other Bumiputera (i.e. there is only one Bumiputera category), or Other Citizen and Other Non-Citizen (i.e. there is only one residual category, Other). Furthermore, the 85+ age group is not present; the oldest age category is 80+. \n - For data from 1970-1979, there is no breakdown by ethnic group. Furthermore, the 75+, 80+ and 85+ age groups are not present; the oldest age category is 70+.",
+   "rows": 17814,
+   "bytes": 52017,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as this is annual data",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01 kerana ini adalah data tahunan",
+     "min": "1970-01-01",
+     "max": "2026-01-01"
+    },
+    {
+     "name": "sex",
+     "type": "VARCHAR",
+     "title_en": "Sex",
+     "title_ms": "Jantina",
+     "description_en": "[Categorical] Either both sexes ('both'), male ('male') or female ('female')",
+     "description_ms": "[Kategori] Sama ada kedua-dua jantina ('both'), lelaki ('male') atau perempuan ('female')",
+     "distinct_values": 3,
+     "values": [
+      "both",
+      "female",
+      "male"
+     ]
+    },
+    {
+     "name": "age",
+     "type": "VARCHAR",
+     "title_en": "Age Group",
+     "title_ms": "Kumpulan Umur",
+     "description_en": "[Categorical] Either all age groups ('overall') or five-year age groups e.g. 0-4, 5-9, 10-14, etc. 85+ is the oldest category.",
+     "description_ms": "[Kategori] Sama ada semua kumpulan umur ('overall') atau kumpulan umur dengan julat 5 tahun, contohnya 0-4, 5-9, 10-14, dsb. 85+ adalah kumpulan yang tertua.",
+     "distinct_values": 21,
+     "values": [
+      "0-4",
+      "10-14",
+      "15-19",
+      "20-24",
+      "25-29",
+      "30-34",
+      "35-39",
+      "40-44",
+      "45-49",
+      "5-9",
+      "50-54",
+      "55-59",
+      "60-64",
+      "65-69",
+      "70+",
+      "70-74",
+      "75-79",
+      "80+",
+      "80-84",
+      "85+",
+      "overall"
+     ]
+    },
+    {
+     "name": "ethnicity",
+     "type": "VARCHAR",
+     "title_en": "Ethnicity",
+     "title_ms": "Kumpulan Etnik",
+     "description_en": "[Categorical] All ethnic groups ('overall'), Malay ('bumi_malay'), other Bumiputera ('bumi_other'), Chinese ('chinese'), Indian ('indian'), other citizens ('other_citizen'), or non-citizen residents ('other_noncitizen').",
+     "description_ms": "[Kategori] Semua kumpulan etnik ('overall'), Melayu ('bumi_malay'), Bumiputera lain ('bumi_other'), Cina ('chinese'), India ('indian'), lain-lain warganegara ('other_citizen'), atau penduduk bukan warganegara ('other_noncitizen')",
+     "distinct_values": 9,
+     "values": [
+      "bumi",
+      "bumi_malay",
+      "bumi_other",
+      "chinese",
+      "indian",
+      "other",
+      "other_citizen",
+      "other_noncitizen",
+      "overall"
+     ]
+    },
+    {
+     "name": "population",
+     "type": "DOUBLE",
+     "title_en": "Population ('000)",
+     "title_ms": "Penduduk ('000)",
+     "description_en": "[Float] Thousands of people ('000 people)",
+     "description_ms": "[Apung] Ribuan orang ('000 orang)"
+    }
+   ],
+   "sample": [
+    {
+     "date": "1992-01-01",
+     "sex": "female",
+     "age": "70-74",
+     "ethnicity": "bumi_malay",
+     "population": 47.2
+    },
+    {
+     "date": "1998-01-01",
+     "sex": "both",
+     "age": "5-9",
+     "ethnicity": "other_noncitizen",
+     "population": 78.1
+    },
+    {
+     "date": "2011-01-01",
+     "sex": "male",
+     "age": "60-64",
+     "ethnicity": "overall",
+     "population": 436.3
+    }
+   ]
+  },
+  {
+   "id": "population_state",
+   "file": "data/population_state.parquet",
+   "title_en": "Population Table: States",
+   "title_ms": "Jadual Penduduk: Negeri",
+   "description_en": "Population at state level from 1970 to 2026, by sex, age group and ethnicity. The preview table shows data for the latest year only, but you may download the data in full.",
+   "description_ms": "Jumlah penduduk di peringkat negeri dari 1970 ke 2026, mengikut jantina, kumpulan umur dan kumpulan etnik. Jadual pratonton hanya menunjukkan data bagi tahun terkini, tetapi data penuh boleh dimuat turun.",
+   "why": "population by state (Q1, Q15, Q21, Q29, Q36, Q37)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/population_state",
+   "data_as_of": "2026",
+   "caveat_en": "Values for breakdowns may be slightly different to totals when summed, due to rounding to one decimal place. Furthermore, caution should be exercised when using the dataset in full because the granularity of Malaysia's population data has been deepened over the years. Specficially, there are 3 differing ranges of granularity as follows:\n - The data from 1991 onwards is the most granular, with ethnic group breakdowns providing differentiation between Malay and Other Bumiputera, as well as Other Citizen and Other Non-Citizen. Furthermore, the oldest age category is 85+, i.e. 85 years and above.\n - The data from 1980-1990 contains a breakdown by ethnic group, but without differentiation between Malay and Other Bumiputera (i.e. there is only one Bumiputera category), or Other Citizen and Other Non-Citizen (i.e. there is only one residual category, Other). Furthermore, the 85+ age group is not present; the oldest age category is 80+. \n - For data from 1970-1979, there is no breakdown by ethnic group. Furthermore, the 75+, 80+ and 85+ age groups are not present; the oldest age category is 70+.",
+   "rows": 270063,
+   "bytes": 420300,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as this is annual data",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01 kerana ini adalah data tahunan",
+     "min": "1970-01-01",
+     "max": "2026-01-01"
+    },
+    {
+     "name": "sex",
+     "type": "VARCHAR",
+     "title_en": "Sex",
+     "title_ms": "Jantina",
+     "description_en": "[Categorical] Either both sexes ('both'), male ('male') or female ('female')",
+     "description_ms": "[Kategori] Sama ada kedua-dua jantina ('both'), lelaki ('male') atau perempuan ('female')",
+     "distinct_values": 3,
+     "values": [
+      "both",
+      "female",
+      "male"
+     ]
+    },
+    {
+     "name": "age",
+     "type": "VARCHAR",
+     "title_en": "Age Group",
+     "title_ms": "Kumpulan Umur",
+     "description_en": "[Categorical] Either all age groups ('overall') or five-year age groups e.g. 0-4, 5-9, 10-14, etc. 85+ is the oldest category.",
+     "description_ms": "[Kategori] Sama ada semua kumpulan umur ('overall') atau kumpulan umur dengan julat 5 tahun, contohnya 0-4, 5-9, 10-14, dsb. 85+ adalah kumpulan yang tertua.",
+     "distinct_values": 21,
+     "values": [
+      "0-4",
+      "10-14",
+      "15-19",
+      "20-24",
+      "25-29",
+      "30-34",
+      "35-39",
+      "40-44",
+      "45-49",
+      "5-9",
+      "50-54",
+      "55-59",
+      "60-64",
+      "65-69",
+      "70+",
+      "70-74",
+      "75-79",
+      "80+",
+      "80-84",
+      "85+",
+      "overall"
+     ]
+    },
+    {
+     "name": "ethnicity",
+     "type": "VARCHAR",
+     "title_en": "Ethnicity",
+     "title_ms": "Kumpulan Etnik",
+     "description_en": "[Categorical] All ethnic groups ('overall'), Malay ('bumi_malay'), other Bumiputera ('bumi_other'), Chinese ('chinese'), Indian ('indian'), other citizens ('other_citizen'), or non-citizen residents ('other_noncitizen').",
+     "description_ms": "[Kategori] Semua kumpulan etnik ('overall'), Melayu ('bumi_malay'), Bumiputera lain ('bumi_other'), Cina ('chinese'), India ('indian'), lain-lain warganegara ('other_citizen'), atau penduduk bukan warganegara ('other_noncitizen')",
+     "distinct_values": 9,
+     "values": [
+      "bumi",
+      "bumi_malay",
+      "bumi_other",
+      "chinese",
+      "indian",
+      "other",
+      "other_citizen",
+      "other_noncitizen",
+      "overall"
+     ]
+    },
+    {
+     "name": "population",
+     "type": "DOUBLE",
+     "title_en": "Population ('000)",
+     "title_ms": "Penduduk ('000)",
+     "description_en": "[Float] Thousands of people ('000 people)",
+     "description_ms": "[Apung] Ribuan orang ('000 orang)"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Johor",
+     "date": "1992-01-01",
+     "sex": "female",
+     "age": "70-74",
+     "ethnicity": "bumi_malay",
+     "population": 5.8
+    },
+    {
+     "state": "Johor",
+     "date": "1998-01-01",
+     "sex": "both",
+     "age": "5-9",
+     "ethnicity": "other_noncitizen",
+     "population": 2.5
+    },
+    {
+     "state": "Johor",
+     "date": "2011-01-01",
+     "sex": "male",
+     "age": "60-64",
+     "ethnicity": "overall",
+     "population": 54.3
+    }
+   ]
+  },
+  {
+   "id": "population_district",
+   "file": "data/population_district.parquet",
+   "title_en": "Population Table: Administrative Districts",
+   "title_ms": "Jadual Penduduk: Daerah Pentadbiran",
+   "description_en": "Population at district level from 2020 to 2026, by sex, age group and ethnicity. The preview table shows data for the latest year only, but you may download the data in full.",
+   "description_ms": "Jumlah penduduk di peringkat daerah dari 2020 ke 2026, mengikut jantina, kumpulan umur dan kumpulan etnik. Jadual pratonton hanya menunjukkan data bagi tahun terkini, tetapi data penuh boleh dimuat turun.",
+   "why": "population by district (Q5, Q25)",
+   "frequency": "YEARLY",
+   "geography": [
+    "DISTRICT"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/population_district",
+   "data_as_of": "2026",
+   "caveat_en": "Values for breakdowns may be slightly different to totals when summed, due to rounding to one decimal place.",
+   "rows": 451668,
+   "bytes": 362881,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "district",
+     "type": "VARCHAR",
+     "title_en": "District",
+     "title_ms": "Daerah",
+     "description_en": "[Categorical] One of 160 administrative districts, including the 4 states (Perlis and the 3 Federal Territories) which do not have subdivisions",
+     "description_ms": "[Kategori] Satu daripada 160 daerah pentadbiran, termasuk 4 negeri (Perlis dan 3 Wilayah Persekutuan) yang tidak dipecahkan lagi",
+     "distinct_values": 166
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as this is annual data",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01 kerana ini adalah data tahunan",
+     "min": "2020-01-01",
+     "max": "2026-01-01"
+    },
+    {
+     "name": "sex",
+     "type": "VARCHAR",
+     "title_en": "Sex",
+     "title_ms": "Jantina",
+     "description_en": "[Categorical] Either both sexes ('both'), male ('male') or female ('female')",
+     "description_ms": "[Kategori] Sama ada kedua-dua jantina ('both'), lelaki ('male') atau perempuan ('female')",
+     "distinct_values": 3,
+     "values": [
+      "both",
+      "female",
+      "male"
+     ]
+    },
+    {
+     "name": "age",
+     "type": "VARCHAR",
+     "title_en": "Age Group",
+     "title_ms": "Kumpulan Umur",
+     "description_en": "[Categorical] Either all age groups ('overall') or five-year age groups e.g. 0-4, 5-9, 10-14, etc. 85+ is the oldest category.",
+     "description_ms": "[Kategori] Sama ada semua kumpulan umur ('overall') atau kumpulan umur dengan julat 5 tahun, contohnya 0-4, 5-9, 10-14, dsb. 85+ adalah kumpulan yang tertua.",
+     "distinct_values": 19,
+     "values": [
+      "0-4",
+      "10-14",
+      "15-19",
+      "20-24",
+      "25-29",
+      "30-34",
+      "35-39",
+      "40-44",
+      "45-49",
+      "5-9",
+      "50-54",
+      "55-59",
+      "60-64",
+      "65-69",
+      "70-74",
+      "75-79",
+      "80-84",
+      "85+",
+      "overall"
+     ]
+    },
+    {
+     "name": "ethnicity",
+     "type": "VARCHAR",
+     "title_en": "Ethnicity",
+     "title_ms": "Kumpulan Etnik",
+     "description_en": "[Categorical] All ethnic groups ('overall'), Malay ('bumi_malay'), other Bumiputera ('bumi_other'), Chinese ('chinese'), Indian ('indian'), other citizens ('other_citizen'), or non-citizen residents ('other_noncitizen').",
+     "description_ms": "[Kategori] Semua kumpulan etnik ('overall'), Melayu ('bumi_malay'), Bumiputera lain ('bumi_other'), Cina ('chinese'), India ('indian'), lain-lain warganegara ('other_citizen'), atau penduduk bukan warganegara ('other_noncitizen')",
+     "distinct_values": 7,
+     "values": [
+      "bumi_malay",
+      "bumi_other",
+      "chinese",
+      "indian",
+      "other_citizen",
+      "other_noncitizen",
+      "overall"
+     ]
+    },
+    {
+     "name": "population",
+     "type": "DOUBLE",
+     "title_en": "Population ('000)",
+     "title_ms": "Penduduk ('000)",
+     "description_en": "[Float] Thousands of people ('000 people)",
+     "description_ms": "[Apung] Ribuan orang ('000 orang)"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Kedah",
+     "district": "Baling",
+     "date": "2020-01-01",
+     "sex": "both",
+     "age": "65-69",
+     "ethnicity": "overall",
+     "population": 4.2
+    },
+    {
+     "state": "Kedah",
+     "district": "Kulim",
+     "date": "2020-01-01",
+     "sex": "male",
+     "age": "0-4",
+     "ethnicity": "other_citizen",
+     "population": 0.1
+    },
+    {
+     "state": "Kelantan",
+     "district": "Pasir Mas",
+     "date": "2020-01-01",
+     "sex": "female",
+     "age": "50-54",
+     "ethnicity": "other_noncitizen",
+     "population": 0.1
+    }
+   ]
+  },
+  {
+   "id": "births_annual",
+   "file": "data/births_annual.parquet",
+   "title_en": "Annual Live Births",
+   "title_ms": "Kelahiran Hidup Tahunan",
+   "description_en": "Annual number of births with signs of life upon delivery.",
+   "description_ms": "Jumlah kelahiran tahunan yang bernyawa semasa dilahirkan.",
+   "why": "national births (Q6)",
+   "frequency": "YEARLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "JPN",
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/births_annual",
+   "data_as_of": "2025",
+   "caveat_en": "This data is derived based on births registered with JPN. Accordingly, if a birth is not registered with JPN (for instance, if a foreigner chooses to register their child in their home country, or if a resident in a remote area does not register the birth of their child), it will not count in this dataset.",
+   "rows": 26,
+   "bytes": 783,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 since the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD ditetapkan sebagai 01-01 kerana data berfrekuensi tahunan",
+     "min": "2000-01-01",
+     "max": "2025-01-01"
+    },
+    {
+     "name": "abs",
+     "type": "BIGINT",
+     "title_en": "Live Births",
+     "title_ms": "Kelahiran Hidup",
+     "description_en": "[Integer] Number of live births in that year",
+     "description_ms": "[Integer] Jumlah kelahiran hidup dalam tahun tersebut"
+    },
+    {
+     "name": "rate",
+     "type": "DOUBLE",
+     "title_en": "Crude Birth Rate",
+     "title_ms": "Kadar Kelahiran Kasar",
+     "description_en": "[Float] Number of live births per 1000 population",
+     "description_ms": "[Integer] Jumlah kelahiran hidup bagi setiap 1000 penduduk"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2009-01-01",
+     "abs": 501644,
+     "rate": 17.9
+    },
+    {
+     "date": "2013-01-01",
+     "abs": 518501,
+     "rate": 17.1
+    },
+    {
+     "date": "2025-01-01",
+     "abs": 396175,
+     "rate": 11.6
+    }
+   ]
+  },
+  {
+   "id": "births_annual_state",
+   "file": "data/births_annual_state.parquet",
+   "title_en": "Annual Live Births by State",
+   "title_ms": "Kelahiran Hidup Tahunan mengikut Negeri",
+   "description_en": "Annual number of births with signs of life upon delivery, by state.",
+   "description_ms": "Jumlah kelahiran tahunan yang bernyawa semasa dilahirkan, mengikut negeri.",
+   "why": "births by state (Q31)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "JPN",
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/births_annual_state",
+   "data_as_of": "2025",
+   "caveat_en": "This data is derived based on births registered with JPN. Accordingly, if a birth is not registered with JPN (for instance, if a foreigner chooses to register their child in their home country, or if a resident in a remote area does not register the birth of their child), it will not count in this dataset.",
+   "rows": 406,
+   "bytes": 2872,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategori] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 since the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD ditetapkan sebagai 01-01 kerana data berfrekuensi tahunan",
+     "min": "2000-01-01",
+     "max": "2025-01-01"
+    },
+    {
+     "name": "abs",
+     "type": "BIGINT",
+     "title_en": "Live Births",
+     "title_ms": "Kelahiran Hidup",
+     "description_en": "[Integer] Number of live births in that year",
+     "description_ms": "[Integer] Jumlah kelahiran hidup dalam tahun tersebut"
+    },
+    {
+     "name": "rate",
+     "type": "DOUBLE",
+     "title_en": "Crude Birth Rate",
+     "title_ms": "Kadar Kelahiran Kasar",
+     "description_en": "[Float] Number of live births per 1000 population",
+     "description_ms": "[Integer] Jumlah kelahiran hidup bagi setiap 1000 penduduk"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Negeri Sembilan",
+     "date": "2006-01-01",
+     "abs": 16622,
+     "rate": 17.2
+    },
+    {
+     "state": "Perak",
+     "date": "2013-01-01",
+     "abs": 36200,
+     "rate": 14.9
+    },
+    {
+     "state": "W.P. Labuan",
+     "date": "2025-01-01",
+     "abs": 1147,
+     "rate": 11.4
+    }
+   ]
+  },
+  {
+   "id": "deaths",
+   "file": "data/deaths.parquet",
+   "title_en": "Annual Deaths",
+   "title_ms": "Kematian Tahunan",
+   "description_en": "Annual number of deaths registered with JPN.",
+   "description_ms": "Jumlah kematian tahunan yang didaftarkan dengan JPN.",
+   "why": "national deaths (Q26)",
+   "frequency": "YEARLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "JPN",
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/deaths",
+   "data_as_of": "2025",
+   "caveat_en": "This data is derived based on deaths registered with JPN. Therefore, if a death is not registered with JPN (for instance, if the death of a foreigner is registered in their home country, or the death of resident in a remote area is not registered), it will generally not count in this dataset. However, adjustment has been made to the number of deaths in Sabah to account for the under-reporting of deaths detected based on the 'Study of Under Reporting of Deaths in Sabah', which was conducted by DOSM and approved by the Steering Committee on Implementation of Civil Registration and Vital Statistics in 2016.",
+   "rows": 26,
+   "bytes": 752,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 since the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD ditetapkan sebagai 01-01 kerana data berfrekuensi tahunan",
+     "min": "2000-01-01",
+     "max": "2025-01-01"
+    },
+    {
+     "name": "abs",
+     "type": "BIGINT",
+     "title_en": "Deaths",
+     "title_ms": "Kematian",
+     "description_en": "[Integer] Number of deaths in that year",
+     "description_ms": "[Integer] Jumlah kematian dalam tahun tersebut"
+    },
+    {
+     "name": "rate",
+     "type": "DOUBLE",
+     "title_en": "Crude Death Rate",
+     "title_ms": "Kadar Kematian Kasar",
+     "description_en": "[Float] Number of deaths per 1000 population",
+     "description_ms": "[Integer] Jumlah kematian bagi setiap 1000 penduduk"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2009-01-01",
+     "abs": 131328,
+     "rate": 4.7
+    },
+    {
+     "date": "2013-01-01",
+     "abs": 147960,
+     "rate": 4.9
+    },
+    {
+     "date": "2025-01-01",
+     "abs": 199807,
+     "rate": 5.8
+    }
+   ]
+  },
+  {
+   "id": "deaths_state",
+   "file": "data/deaths_state.parquet",
+   "title_en": "Annual Deaths by State",
+   "title_ms": "Kematian Tahunan mengikut Negeri",
+   "description_en": "Annual number of deaths registered with JPN, by state.",
+   "description_ms": "Jumlah kematian tahunan yang didaftarkan dengan JPN, mengikut negeri.",
+   "why": "deaths by state",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "JPN",
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/deaths_state",
+   "data_as_of": "2025",
+   "caveat_en": "This data is derived based on deaths registered with JPN. Therefore, if a death is not registered with JPN (for instance, if the death of a foreigner is registered in their home country, or the death of resident in a remote area is not registered), it will generally not count in this dataset. However, adjustment has been made to the number of deaths in Sabah to account for the under-reporting of deaths detected based on the 'Study of Under Reporting of Deaths in Sabah', which was conducted by DOSM and approved by the Steering Committee on Implementation of Civil Registration and Vital Statistics in 2016.",
+   "rows": 406,
+   "bytes": 2725,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategori] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 since the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD ditetapkan sebagai 01-01 kerana data berfrekuensi tahunan",
+     "min": "2000-01-01",
+     "max": "2025-01-01"
+    },
+    {
+     "name": "abs",
+     "type": "BIGINT",
+     "title_en": "Deaths",
+     "title_ms": "Kematian",
+     "description_en": "[Integer] Number of deaths in that year",
+     "description_ms": "[Integer] Jumlah kematian dalam tahun tersebut"
+    },
+    {
+     "name": "rate",
+     "type": "DOUBLE",
+     "title_en": "Crude Death Rate",
+     "title_ms": "Kadar Kematian Kasar",
+     "description_en": "[Float] Number of deaths per 1000 population",
+     "description_ms": "[Integer] Jumlah kematian bagi setiap 1000 penduduk"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Negeri Sembilan",
+     "date": "2006-01-01",
+     "abs": 5204,
+     "rate": 5.4
+    },
+    {
+     "state": "Perak",
+     "date": "2013-01-01",
+     "abs": 16497,
+     "rate": 6.8
+    },
+    {
+     "state": "W.P. Labuan",
+     "date": "2025-01-01",
+     "abs": 388,
+     "rate": 3.8
+    }
+   ]
+  },
+  {
+   "id": "hh_income",
+   "file": "data/hh_income.parquet",
+   "title_en": "Household Income",
+   "title_ms": "Pendapatan Isi Rumah",
+   "description_en": "Mean and median monthly gross household income in Malaysia from 1970 to 2024.",
+   "description_ms": "Purata dan penengah pendapatan kasar bulanan isi rumah di Malaysia dari 1970 hingga 2024.",
+   "why": "national household income over time",
+   "frequency": "YEARLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hh_income",
+   "data_as_of": "2024",
+   "caveat_en": "This data presents nominal values, i.e. they have not been adjusted for inflation. Furthermore, given that the data is produced from surveys spanning over half a century, the following methodological changes should be noted:\n - Data for 1970 and 1974 refers to Peninsular Malaysia only. 1976 was the first year in which Sabah and Sarawak were included in the survey.\n - Data from 1989 onwards refers to Malaysian citizens only. Although non-citizens are also included in the surveys, the official statistics (which form the basis for national welfare policy) are based on citizens only.",
+   "rows": 22,
+   "bytes": 761,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "1970-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "income_mean",
+     "type": "BIGINT",
+     "title_en": "Mean Income",
+     "title_ms": "Pendapatan Purata",
+     "description_en": "[Integer, RM] Average gross monthly household income",
+     "description_ms": "[Integer, RM] Purata pendapatan kasar bulanan isi rumah"
+    },
+    {
+     "name": "income_median",
+     "type": "BIGINT",
+     "title_en": "Median Income",
+     "title_ms": "Pendapatan Penengah",
+     "description_en": "[Integer] Median gross monthly household income; this is generally less than the mean income due to the right-skewed distribution of income",
+     "description_ms": "[Integer] Penengah pendapatan kasar bulanan isi rumah; ini biasanya kurang daripada pendapatan purata kerana taburan pendapatan yang condong ke kanan"
+    }
+   ],
+   "sample": [
+    {
+     "date": "1995-01-01",
+     "income_mean": 2020,
+     "income_median": 1377
+    },
+    {
+     "date": "2002-01-01",
+     "income_mean": 3011,
+     "income_median": 2049
+    },
+    {
+     "date": "2024-01-01",
+     "income_mean": 9155,
+     "income_median": 7017
+    }
+   ]
+  },
+  {
+   "id": "hh_income_state",
+   "file": "data/hh_income_state.parquet",
+   "title_en": "Household Income by State",
+   "title_ms": "Pendapatan Isi Rumah Mengikut Negeri",
+   "description_en": "Mean and median gross monthly household income by state from 1970 to 2024.",
+   "description_ms": "Purata dan penengah pendapatan kasar bulanan isi rumah mengikut negeri dari 1970 hingga 2024.",
+   "why": "household income by state over time (Q2, Q7, Q22, Q35, Q39)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hh_income_state",
+   "data_as_of": "2024",
+   "caveat_en": "This data presents nominal values, i.e. they have not been adjusted for inflation. Furthermore, given that the data is produced from surveys spanning over half a century, the following methodological changes should be noted:\n - Data for 1970 and 1974 refers to Peninsular Malaysia only. 1976 was the first year in which Sabah and Sarawak were included in the survey.\n - Data from 1989 onwards refers to Malaysian citizens only. Although non-citizens are also included in the surveys, the official statistics (which form the basis for national welfare policy) are based on citizens only\n - Kuala Lumpur was gazzeted as a Federal Territory on 1 February 1974. Accordingly, data for W.P. Kuala Lumpur is only available from 1976. Prior to that, data for residents of W.P. Kuala Lumpur was included under Selangor.\n - Labuan was gazetted as a Federal Territory on 16 April 1984. However, due to limitations in sampling, data for W.P. Labuan is only available from 2007. Prior to that, data for residents of W.P. Labuan was included under Sabah.\n - Putrajaya was gazzeted as a Federal Territory on 1 February 2001. However, due to limitations in sampling, data for W.P. Putrajaya is only available from 2007. Prior to that, data for residents of W.P. Putrajaya was included under Selangor.",
+   "rows": 319,
+   "bytes": 2590,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states, including the 3 Federal Territories",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri, termasuk 3 Wilayah Persekutuan",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "1970-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "income_mean",
+     "type": "BIGINT",
+     "title_en": "Mean Income",
+     "title_ms": "Pendapatan Purata",
+     "description_en": "[Integer, RM] Average gross monthly household income",
+     "description_ms": "[Integer, RM] Purata pendapatan kasar bulanan isi rumah"
+    },
+    {
+     "name": "income_median",
+     "type": "DOUBLE",
+     "title_en": "Median Income",
+     "title_ms": "Pendapatan Penengah",
+     "description_en": "[Integer, RM] Median gross monthly household income; this is generally less than the mean income due to the right-skewed distribution of income",
+     "description_ms": "[Integer, RM] Penengah pendapatan kasar bulanan isi rumah; ini biasanya kurang daripada pendapatan purata kerana taburan pendapatan yang condong ke kanan"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Melaka",
+     "date": "2024-01-01",
+     "income_mean": 8686,
+     "income_median": 6891.0
+    },
+    {
+     "state": "Perak",
+     "date": "1974-01-01",
+     "income_mean": 305,
+     "income_median": 213.0
+    },
+    {
+     "state": "W.P. Labuan",
+     "date": "2019-01-01",
+     "income_mean": 8319,
+     "income_median": 6726.0
+    }
+   ]
+  },
+  {
+   "id": "hies_state",
+   "file": "data/hies_state.parquet",
+   "title_en": "Household Income and Expenditure: States",
+   "title_ms": "Pendapatan dan Perbelanjaan Isi Rumah: Negeri",
+   "description_en": "This dataset tabulates household-level income, expenditure, poverty, and income inequality at state level. It is based on the Household Income & Expenditure Surveys (HIES) carried in 2022.",
+   "description_ms": "Set data ini menunjukkan pendapatan, perbelanjaan, ketidaksamaan pendapatan, dan kadar kemiskinan bagi isi rumah di peringkat negeri. Data ini dihasilkan berdasarkan Survei Pendapatan dan Isi Rumah (HIES) yang dilaksanakan pada tahun 2022.",
+   "why": "income, spending, Gini, poverty by state (Q32)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hies_state",
+   "data_as_of": "2024",
+   "caveat_en": "For a full account of the relative standard errors for the survey as well as the detailed survey methodology, please refer to the [HIES Technical Notes](https://storage.googleapis.com/dosm-public-publications/technote_hies_income_en.pdf).",
+   "rows": 32,
+   "bytes": 2113,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as this is annual data",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01 kerana ini adalah data tahunan",
+     "min": "2022-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "income_mean",
+     "type": "BIGINT",
+     "title_en": "Mean Income",
+     "title_ms": "Pendapatan Purata",
+     "description_en": "[Integer] Average (across households) gross monthly household income, in RM",
+     "description_ms": "[Integer] Purata (antara isi rumah) pendapatan kasar bulanan isi rumah, dalam RM"
+    },
+    {
+     "name": "income_median",
+     "type": "BIGINT",
+     "title_en": "Median Income",
+     "title_ms": "Pendapatan Penengah",
+     "description_en": "[Integer] Median (across households) gross monthly household income, in RM",
+     "description_ms": "[Integer] Penengah (antara isi rumah) pendapatan kasar bulanan isi rumah, dalam RM"
+    },
+    {
+     "name": "expenditure_mean",
+     "type": "BIGINT",
+     "title_en": "Mean Expenditure",
+     "title_ms": "Perbelanjaan Purata",
+     "description_en": "[Integer] Average (across households) gross monthly household expenditure, in RM",
+     "description_ms": "[Integer] Purata (antara isi rumah) perbelanjaan kasar bulanan isi rumah, dalam RM"
+    },
+    {
+     "name": "gini",
+     "type": "DOUBLE",
+     "title_en": "Gini Coefficient",
+     "title_ms": "Pekali Gini",
+     "description_en": "[Float] Gini coefficient, with higher values indicating greater inequality of income between households",
+     "description_ms": "[Apung] Pekali gini, dengan nilai yang lebih tinggi melambangkan ketidaksaksamaan pendapatan yang lebih antara isi rumah"
+    },
+    {
+     "name": "poverty",
+     "type": "DOUBLE",
+     "title_en": "Poverty Rate",
+     "title_ms": "Kadar Kemiskinan",
+     "description_en": "[Float] Proportion of households with monthly income below the Poverty Line Income (PLI)",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada Pendapatan Garis Kemiskinan (PGK)"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2022-01-01",
+     "state": "Pahang",
+     "income_mean": 5777,
+     "income_median": 4753,
+     "expenditure_mean": 4107,
+     "gini": 0.308,
+     "poverty": 6.3
+    },
+    {
+     "date": "2022-01-01",
+     "state": "Perlis",
+     "income_mean": 5664,
+     "income_median": 4713,
+     "expenditure_mean": 3834,
+     "gini": 0.336,
+     "poverty": 4.0
+    },
+    {
+     "date": "2022-01-01",
+     "state": "W.P. Putrajaya",
+     "income_mean": 13473,
+     "income_median": 10056,
+     "expenditure_mean": 8897,
+     "gini": 0.368,
+     "poverty": 0.1
+    }
+   ]
+  },
+  {
+   "id": "hies_district",
+   "file": "data/hies_district.parquet",
+   "title_en": "Household Income and Expenditure: Administrative Districts",
+   "title_ms": "Pendapatan dan Perbelanjaan Isi Rumah: Daerah Pentadbiran",
+   "description_en": "This dataset tabulates household-level income, expenditure, poverty, and income inequality at administrative district level. It is based on the Household Income & Expenditure Surveys (HIES) carried in 2022.",
+   "description_ms": "Set data ini menunjukkan pendapatan, perbelanjaan, ketidaksamaan pendapatan, dan kadar kemiskinan bagi isi rumah di peringkat daerah pentadbiran. Data ini dihasilkan berdasarkan Survei Pendapatan dan Isi Rumah (HIES) yang dilaksanakan pada tahun 2022.",
+   "why": "income, spending, Gini, poverty by district",
+   "frequency": "YEARLY",
+   "geography": [
+    "DISTRICT"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hies_district",
+   "data_as_of": "2024",
+   "caveat_en": "For a full account of the relative standard errors for the survey as well as the detailed survey methodology, please refer to the [HIES Technical Notes](https://storage.googleapis.com/dosm-public-publications/technote_hies_income_en.pdf).",
+   "rows": 322,
+   "bytes": 7015,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as this is annual data",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01 kerana ini adalah data tahunan",
+     "min": "2022-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "district",
+     "type": "VARCHAR",
+     "title_en": "District",
+     "title_ms": "Daerah",
+     "description_en": "[Categorical] One of 160 administrative districts, including the 4 states (Perlis and the 3 Federal Territories) which do not have subdivisions",
+     "description_ms": "[Kategori] Satu daripada 160 daerah pentadbiran, termasuk 4 negeri (Perlis dan 3 Wilayah Persekutuan) yang tidak dipecahkan lagi",
+     "distinct_values": 172
+    },
+    {
+     "name": "income_mean",
+     "type": "BIGINT",
+     "title_en": "Mean Income",
+     "title_ms": "Pendapatan Purata",
+     "description_en": "[Integer] Average (across households) gross monthly household income, in RM",
+     "description_ms": "[Integer] Purata (antara isi rumah) pendapatan kasar bulanan isi rumah, dalam RM"
+    },
+    {
+     "name": "income_median",
+     "type": "BIGINT",
+     "title_en": "Median Income",
+     "title_ms": "Pendapatan Penengah",
+     "description_en": "[Integer] Median (across households) gross monthly household income, in RM",
+     "description_ms": "[Integer] Penengah (antara isi rumah) pendapatan kasar bulanan isi rumah, dalam RM"
+    },
+    {
+     "name": "expenditure_mean",
+     "type": "BIGINT",
+     "title_en": "Mean Expenditure",
+     "title_ms": "Perbelanjaan Purata",
+     "description_en": "[Integer] Average (across households) gross monthly household expenditure, in RM",
+     "description_ms": "[Integer] Purata (antara isi rumah) perbelanjaan kasar bulanan isi rumah, dalam RM"
+    },
+    {
+     "name": "gini",
+     "type": "DOUBLE",
+     "title_en": "Gini Coefficient",
+     "title_ms": "Pekali Gini",
+     "description_en": "[Float] Gini coefficient, with higher values indicating greater inequality of income between households",
+     "description_ms": "[Apung] Pekali gini, dengan nilai yang lebih tinggi melambangkan ketidaksaksamaan pendapatan yang lebih antara isi rumah"
+    },
+    {
+     "name": "poverty",
+     "type": "DOUBLE",
+     "title_en": "Poverty Rate",
+     "title_ms": "Kadar Kemiskinan",
+     "description_en": "[Float] Proportion of households with monthly income below the Poverty Line Income (PLI)",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada Pendapatan Garis Kemiskinan (PGK)"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2024-01-01",
+     "state": "Pahang",
+     "district": "Bentong",
+     "income_mean": 6278,
+     "income_median": 5015,
+     "expenditure_mean": 4631,
+     "gini": 0.286,
+     "poverty": 2.0
+    },
+    {
+     "date": "2022-01-01",
+     "state": "Perak",
+     "district": "Muallim",
+     "income_mean": 6122,
+     "income_median": 5015,
+     "expenditure_mean": 4374,
+     "gini": 0.359,
+     "poverty": 9.2
+    },
+    {
+     "date": "2022-01-01",
+     "state": "W.P. Putrajaya",
+     "district": "W.P. Putrajaya",
+     "income_mean": 13473,
+     "income_median": 10056,
+     "expenditure_mean": 8897,
+     "gini": 0.368,
+     "poverty": 0.1
+    }
+   ]
+  },
+  {
+   "id": "hh_inequality_state",
+   "file": "data/hh_inequality_state.parquet",
+   "title_en": "Income Inequality by State",
+   "title_ms": "Ketidaksamarataan Pendapatan mengikut Negeri",
+   "description_en": "Gini coefficient by state from 1974 to 2024.",
+   "description_ms": "Pekali Gini mengikut negeri dari 1974 hingga 2024.",
+   "why": "Gini by state over time (Q19)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hh_inequality_state",
+   "data_as_of": "2024",
+   "caveat_en": "Given that the data is produced from surveys spanning over half a century, it should be noted that:\n - Kuala Lumpur was gazzeted as a Federal Territory on 1 February 1974. Accordingly, data for W.P. Kuala Lumpur is only available from 1976. Prior to that, data for residents of W.P. Kuala Lumpur was included under Selangor.\n - Labuan was gazetted as a Federal Territory on 16 April 1984. However, due to limitations in sampling, data for W.P. Labuan is only available from 2007. Prior to that, data for residents of W.P. Labuan was included under Sabah.\n - Putrajaya was gazzeted as a Federal Territory on 1 February 2001. However, due to limitations in sampling, data for W.P. Putrajaya is only available from 2007. Prior to that, data for residents of W.P. Putrajaya was included under Selangor.",
+   "rows": 289,
+   "bytes": 2064,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states, including the 3 Federal Territories",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri, termasuk 3 Wilayah Persekutuan",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "1974-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "gini",
+     "type": "DOUBLE",
+     "title_en": "Gini Coefficient",
+     "title_ms": "Pekali Gini",
+     "description_en": "[Float] The Gini coefficient based on the distribution of households' gross monthly income",
+     "description_ms": "[Apung] Pekali Gini berdasarkan taburan pendapatan bulanankasar isi rumah"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Melaka",
+     "date": "2024-01-01",
+     "gini": 0.337
+    },
+    {
+     "state": "Perak",
+     "date": "1976-01-01",
+     "gini": 0.525
+    },
+    {
+     "state": "W.P. Labuan",
+     "date": "2016-01-01",
+     "gini": 0.398
+    }
+   ]
+  },
+  {
+   "id": "hh_poverty_state",
+   "file": "data/hh_poverty_state.parquet",
+   "title_en": "Poverty by State",
+   "title_ms": "Kemiskinan Mengikut Negeri",
+   "description_en": "Poverty rates by state from 1970 to 2024.",
+   "description_ms": "Kadar kemiskinan mengikut negeri dari 1970 hingga 2024.",
+   "why": "poverty by state over time (Q9, Q27)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hh_poverty_state",
+   "data_as_of": "2024",
+   "caveat_en": "Given that the data is produced from surveys spanning over half a century, the following methodological changes should be noted:\n - Data for 1970 and 1974 refers to Peninsular Malaysia only. 1976 was the first year in which Sabah and Sarawak were included in the survey.\n - Data from 1989 onwards refers to Malaysian citizens only. Although non-citizens are also included in the surveys, the official statistics (which form the basis for national welfare policy) are based on citizens only\n - Kuala Lumpur was gazzeted as a Federal Territory on 1 February 1974. Accordingly, data for W.P. Kuala Lumpur is only available from 1976. Prior to that, data for residents of W.P. Kuala Lumpur was included under Selangor.\n - Labuan was gazetted as a Federal Territory on 16 April 1984. However, due to limitations in sampling, data for W.P. Labuan is only available from 2004. Prior to that, data for residents of W.P. Labuan was included under Sabah.\n - Putrajaya was gazzeted as a Federal Territory on 1 February 2001. However, due to limitations in sampling, data for W.P. Putrajaya is only available from 2007. Prior to that, data for residents of W.P. Putrajaya was included under Selangor.",
+   "rows": 310,
+   "bytes": 3332,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states, including the 3 Federal Territories",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri, termasuk 3 Wilayah Persekutuan",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "1970-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "poverty_absolute",
+     "type": "DOUBLE",
+     "title_en": "Absolute Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Mutlak",
+     "description_en": "[Float] Proportion of households with monthly income below the Poverty Line Income (PLI)",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada Pendapatan Garis Kemiskinan (PGK)"
+    },
+    {
+     "name": "poverty_hardcore",
+     "type": "DOUBLE",
+     "title_en": "Hardcore Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Tegar",
+     "description_en": "[Float] Proportion of households with monthly income below the Food Poverty Line Income (Food PLI)",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada Pendapatan Garis Kemiskinan Makanan (PGK Makanan)"
+    },
+    {
+     "name": "poverty_relative",
+     "type": "DOUBLE",
+     "title_en": "Relative Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Relatif",
+     "description_en": "[Float] Proportion of households with monthly income below half the state median income",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada separuh pendapatan penengah negeri"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Negeri Sembilan",
+     "date": "1970-01-01",
+     "poverty_absolute": 44.8,
+     "poverty_hardcore": null,
+     "poverty_relative": null
+    },
+    {
+     "state": "Perak",
+     "date": "1984-01-01",
+     "poverty_absolute": 20.3,
+     "poverty_hardcore": 6.7,
+     "poverty_relative": null
+    },
+    {
+     "state": "W.P. Labuan",
+     "date": "2019-01-01",
+     "poverty_absolute": 3.1,
+     "poverty_hardcore": 0.0,
+     "poverty_relative": 12.9
+    }
+   ]
+  },
+  {
+   "id": "hh_poverty_district",
+   "file": "data/hh_poverty_district.parquet",
+   "title_en": "Poverty by Administrative District",
+   "title_ms": "Kemiskinan mengikut Daerah Pentadbiran",
+   "description_en": "Poverty rates by administrative district from 2019 to 2024.",
+   "description_ms": "Kadar kemiskinan mengikut daerah pentadbiran dari 2019 hingga 2024.",
+   "why": "poverty by district (Q43)",
+   "frequency": "YEARLY",
+   "geography": [
+    "DISTRICT"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/hh_poverty_district",
+   "data_as_of": "2024",
+   "caveat_en": "Data on hardcore poverty is not available at district level. Furthermore, district-level data is only published from 2019 (relative to [state-level data](https://open.dosm.gov.my/data-catalogue/hh_poverty_state) which is available from 1970) as prior HIES samples were not sufficient to support district-level granularity.",
+   "rows": 480,
+   "bytes": 4964,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states, including the 3 Federal Territories",
+     "description_ms": "[Kategoril] Satu daripada 16 negeri, termasuk 3 Wilayah Persekutuan",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "district",
+     "type": "VARCHAR",
+     "title_en": "District",
+     "title_ms": "Daerah",
+     "description_en": "[Categorical] One of 160 administrative districts, including the 4 states (Perlis and the 3 Federal Territories) which do not have subdivisions",
+     "description_ms": "[Kategori] Satu daripada 160 daerah pentadbiran, termasuk 4 negeri (Perlis dan 3 Wilayah Persekutuan) yang tidak dipecahkan lagi",
+     "distinct_values": 172
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "2019-01-01",
+     "max": "2024-01-01"
+    },
+    {
+     "name": "poverty_absolute",
+     "type": "DOUBLE",
+     "title_en": "Absolute Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Mutlak",
+     "description_en": "[Float] Proportion of households with monthly income below the Poverty Line Income (PLI)",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada Pendapatan Garis Kemiskinan (PGK)"
+    },
+    {
+     "name": "poverty_relative",
+     "type": "DOUBLE",
+     "title_en": "Relative Poverty Rate",
+     "title_ms": "Kadar Kemiskinan Relatif",
+     "description_en": "[Float] Proportion of households with monthly income below half the district median income",
+     "description_ms": "[Apung] Nisbah isi rumah dengan pendapatan bulanan yang rendah daripada separuh pendapatan penengah daerah"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Pahang",
+     "district": "Bentong",
+     "date": "2019-01-01",
+     "poverty_absolute": 3.3,
+     "poverty_relative": 3.9
+    },
+    {
+     "state": "Perak",
+     "district": "Larut & Matang",
+     "date": "2024-01-01",
+     "poverty_absolute": 9.0,
+     "poverty_relative": 7.9
+    },
+    {
+     "state": "Terengganu",
+     "district": "Kemaman",
+     "date": "2024-01-01",
+     "poverty_absolute": 3.5,
+     "poverty_relative": 6.7
+    }
+   ]
+  },
+  {
+   "id": "cpi_headline",
+   "file": "data/cpi_headline.parquet",
+   "title_en": "Monthly CPI by Division (2-digit)",
+   "title_ms": "IHP Bulanan mengikut Bahagian (2-digit)",
+   "description_en": "National-level CPI for 13 main groups of goods and services.",
+   "description_ms": "IHP peringkat nasional bagi 13 kumpulan utama barangan dan perkhidmatan.",
+   "why": "CPI index by division (Q10, Q41)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/cpi_headline",
+   "data_as_of": "2026-09",
+   "caveat_en": "When interpreting inflation rates derived from the CPI, it is important to remember that the rate of inflation experienced by a specific individual may be higher or lower than this number. This does not invalidate the CPI, which is meant to be an average value representative of the entire population.",
+   "rows": 7854,
+   "bytes": 19670,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 as the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD diberi nilai 01 kerana data berfrekuensi bulanan",
+     "min": "1980-01-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "division",
+     "type": "VARCHAR",
+     "title_en": "Division",
+     "title_ms": "Bahagian",
+     "description_en": "[String] 2-digit code from 01-13 or 'overall', to be matched using the 'division' column in the [MCOICOP Lookup](https://open.dosm.gov.my/data-catalogue/mcoicop). The MCOICOP lookup table will give you the English and Malay definitions.",
+     "description_ms": "[Rentetan] Kod 2 digit dari 01-13 ataupun keseluruhan ('overall'), yang perlu dipadankan dengan medan 'division' dalam [Jadual MCOICOP](https://open.dosm.gov.my/ms-MY/data-catalogue/mcoicop). Padanan tersebut akan membolehkan anda mendapat keterangan dalam Bahasa Inggeris dan Bahasa Melayu.",
+     "distinct_values": 14,
+     "values": [
+      {
+       "value": "01",
+       "en": "Food & Beverages",
+       "ms": "Makanan & Minuman"
+      },
+      {
+       "value": "02",
+       "en": "Alcoholic Beverages & Tobacco",
+       "ms": "Minuman Alkohol & Tembakau"
+      },
+      {
+       "value": "03",
+       "en": "Clothing & Footwear",
+       "ms": "Pakaian & Kasut"
+      },
+      {
+       "value": "04",
+       "en": "Housing, Water, Electricity, Gas & Other Fuels",
+       "ms": "Perumahan, Air, Elektrik, Gas & Bahan Api Lain"
+      },
+      {
+       "value": "05",
+       "en": "Furnishings, Household Equipment & Routine Household Maintenance",
+       "ms": "Hiasan, Perkakasan & Penyelenggaraan Isi Rumah"
+      },
+      {
+       "value": "06",
+       "en": "Health",
+       "ms": "Kesihatan"
+      },
+      {
+       "value": "07",
+       "en": "Transport",
+       "ms": "Pengangkutan"
+      },
+      {
+       "value": "08",
+       "en": "Information & Communication",
+       "ms": "Maklumat & Komunikasi"
+      },
+      {
+       "value": "09",
+       "en": "Recreation, Sport & Culture",
+       "ms": "Rekreasi, Sukan & Kebudayaan"
+      },
+      {
+       "value": "10",
+       "en": "Education",
+       "ms": "Pendidikan"
+      },
+      {
+       "value": "11",
+       "en": "Restaurant & Accommodation Services",
+       "ms": "Restoran & Perkhidmatan Penginapan"
+      },
+      {
+       "value": "12",
+       "en": "Insurance & Financial Services",
+       "ms": "Insurans & Perkhidmatan Kewangan"
+      },
+      {
+       "value": "13",
+       "en": "Personal Care, Social Protection & Miscellaneous Goods & Services",
+       "ms": "Penjagaan Diri, Perlindungan Sosial & Pelbagai Barangan & Perkhidmatan"
+      },
+      {
+       "value": "overall",
+       "en": "All items (headline)",
+       "ms": "Semua barangan (keseluruhan)"
+      }
+     ]
+    },
+    {
+     "name": "index",
+     "type": "DOUBLE",
+     "title_en": "Index",
+     "title_ms": "Indeks",
+     "description_en": "[Float] Index value, with base 2010 = 100",
+     "description_ms": "[Apung] Nilai indeks dengan asas 2010 = 100"
+    }
+   ],
+   "sample": [
+    {
+     "date": "1991-03-01",
+     "division": "06",
+     "index": 59.1
+    },
+    {
+     "date": "1993-06-01",
+     "division": "07",
+     "index": 66.7
+    },
+    {
+     "date": "1986-02-01",
+     "division": "11",
+     "index": null
+    }
+   ]
+  },
+  {
+   "id": "cpi_headline_inflation",
+   "file": "data/cpi_headline_inflation.parquet",
+   "title_en": "Monthly CPI Inflation by Division (2-digit)",
+   "title_ms": "Inflasi IHP Bulanan mengikut Bahagian (2-digit)",
+   "description_en": "National-level CPI inflation for 13 main groups of goods and services",
+   "description_ms": "Inflasi IHP peringkat nasional bagi 13 kumpulan utama barangan dan perkhidmatan.",
+   "why": "inflation by division (Q4, Q34)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/cpi_headline_inflation",
+   "data_as_of": "2026-09",
+   "caveat_en": "When interpreting inflation rates derived from the CPI, it is important to remember that the rate of inflation experienced by a specific individual may be higher or lower than this number. This does not invalidate the CPI, which is meant to be an average value representative of the entire population.",
+   "rows": 7840,
+   "bytes": 17235,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 as the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD diberi nilai 01 kerana data berfrekuensi bulanan",
+     "min": "1980-02-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "division",
+     "type": "VARCHAR",
+     "title_en": "Division",
+     "title_ms": "Bahagian",
+     "description_en": "[String] 2-digit code from 01-13 or 'overall', to be matched using the 'division' column in the [MCOICOP Lookup](https://open.dosm.gov.my/data-catalogue/mcoicop). The MCOICOP lookup table will give you the English and Malay definitions.",
+     "description_ms": "[Rentetan] Kod 2 digit dari 01-13 ataupun keseluruhan ('overall'), yang perlu dipadankan dengan medan 'division' dalam [Jadual MCOICOP](https://open.dosm.gov.my/ms-MY/data-catalogue/mcoicop). Padanan tersebut akan membolehkan anda mendapat keterangan dalam Bahasa Inggeris dan Bahasa Melayu.",
+     "distinct_values": 14,
+     "values": [
+      {
+       "value": "01",
+       "en": "Food & Beverages",
+       "ms": "Makanan & Minuman"
+      },
+      {
+       "value": "02",
+       "en": "Alcoholic Beverages & Tobacco",
+       "ms": "Minuman Alkohol & Tembakau"
+      },
+      {
+       "value": "03",
+       "en": "Clothing & Footwear",
+       "ms": "Pakaian & Kasut"
+      },
+      {
+       "value": "04",
+       "en": "Housing, Water, Electricity, Gas & Other Fuels",
+       "ms": "Perumahan, Air, Elektrik, Gas & Bahan Api Lain"
+      },
+      {
+       "value": "05",
+       "en": "Furnishings, Household Equipment & Routine Household Maintenance",
+       "ms": "Hiasan, Perkakasan & Penyelenggaraan Isi Rumah"
+      },
+      {
+       "value": "06",
+       "en": "Health",
+       "ms": "Kesihatan"
+      },
+      {
+       "value": "07",
+       "en": "Transport",
+       "ms": "Pengangkutan"
+      },
+      {
+       "value": "08",
+       "en": "Information & Communication",
+       "ms": "Maklumat & Komunikasi"
+      },
+      {
+       "value": "09",
+       "en": "Recreation, Sport & Culture",
+       "ms": "Rekreasi, Sukan & Kebudayaan"
+      },
+      {
+       "value": "10",
+       "en": "Education",
+       "ms": "Pendidikan"
+      },
+      {
+       "value": "11",
+       "en": "Restaurant & Accommodation Services",
+       "ms": "Restoran & Perkhidmatan Penginapan"
+      },
+      {
+       "value": "12",
+       "en": "Insurance & Financial Services",
+       "ms": "Insurans & Perkhidmatan Kewangan"
+      },
+      {
+       "value": "13",
+       "en": "Personal Care, Social Protection & Miscellaneous Goods & Services",
+       "ms": "Penjagaan Diri, Perlindungan Sosial & Pelbagai Barangan & Perkhidmatan"
+      },
+      {
+       "value": "overall",
+       "en": "All items (headline)",
+       "ms": "Semua barangan (keseluruhan)"
+      }
+     ]
+    },
+    {
+     "name": "inflation_yoy",
+     "type": "DOUBLE",
+     "title_en": "Inflation (YoY)",
+     "title_ms": "Inflasi (tahunan)",
+     "description_en": "[Float] Year-on-year inflation, i.e. the percentage change in the CPI since 12 months ago",
+     "description_ms": "[Apung] Inflasi tahunan, iaitu peratusan perubahan IHP sejak 12 bulan lalu"
+    },
+    {
+     "name": "inflation_mom",
+     "type": "DOUBLE",
+     "title_en": "Inflation (MoM)",
+     "title_ms": "Inflasi (bulanan)",
+     "description_en": "[Float] Month-on-month inflation, i.e. Percentage change in the CPI since 1 month ago",
+     "description_ms": "[Apung] Inflasi bulanan, iaitu peratusan perubahan IHP sejak 1 bulan laliu"
+    }
+   ],
+   "sample": [
+    {
+     "date": "1991-10-01",
+     "division": "06",
+     "inflation_yoy": 5.9,
+     "inflation_mom": 0.3
+    },
+    {
+     "date": "1994-02-01",
+     "division": "07",
+     "inflation_yoy": 4.7,
+     "inflation_mom": 0.1
+    },
+    {
+     "date": "1987-01-01",
+     "division": "11",
+     "inflation_yoy": null,
+     "inflation_mom": null
+    }
+   ]
+  },
+  {
+   "id": "cpi_state",
+   "file": "data/cpi_state.parquet",
+   "title_en": "Monthly CPI by State & Division (2-digit)",
+   "title_ms": "IHP Bulanan mengikut Negeri & Bahagian (2-digit)",
+   "description_en": "State-level CPI for 13 main groups of goods and services.",
+   "description_ms": "IHP peringkat negeri bagi 13 kumpulan utama barangan dan perkhidmatan.",
+   "why": "CPI index by state, for annual inflation by state (Q24)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/cpi_state",
+   "data_as_of": "2026-09",
+   "caveat_en": "When interpreting inflation rates derived from the CPI, it is important to remember that the rate of inflation experienced by a specific individual may be higher or lower than this number. This does not invalidate the CPI, which is meant to be an average value representative of the entire population.",
+   "rows": 45024,
+   "bytes": 60039,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategori] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 as the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD diberi nilai 01 kerana data berfrekuensi bulanan",
+     "min": "2010-01-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "division",
+     "type": "VARCHAR",
+     "title_en": "Division",
+     "title_ms": "Bahagian",
+     "description_en": "[String] 2-digit code from 01-13 or 'overall', to be matched using the 'division' column in the [MCOICOP Lookup](https://open.dosm.gov.my/data-catalogue/mcoicop). The MCOICOP lookup table will give you the English and Malay definitions.",
+     "description_ms": "[Rentetan] Kod 2 digit dari 01-13 ataupun keseluruhan ('overall'), yang perlu dipadankan dengan medan 'division' dalam [Jadual MCOICOP](https://open.dosm.gov.my/ms-MY/data-catalogue/mcoicop). Padanan tersebut akan membolehkan anda mendapat keterangan dalam Bahasa Inggeris dan Bahasa Melayu.",
+     "distinct_values": 14,
+     "values": [
+      {
+       "value": "01",
+       "en": "Food & Beverages",
+       "ms": "Makanan & Minuman"
+      },
+      {
+       "value": "02",
+       "en": "Alcoholic Beverages & Tobacco",
+       "ms": "Minuman Alkohol & Tembakau"
+      },
+      {
+       "value": "03",
+       "en": "Clothing & Footwear",
+       "ms": "Pakaian & Kasut"
+      },
+      {
+       "value": "04",
+       "en": "Housing, Water, Electricity, Gas & Other Fuels",
+       "ms": "Perumahan, Air, Elektrik, Gas & Bahan Api Lain"
+      },
+      {
+       "value": "05",
+       "en": "Furnishings, Household Equipment & Routine Household Maintenance",
+       "ms": "Hiasan, Perkakasan & Penyelenggaraan Isi Rumah"
+      },
+      {
+       "value": "06",
+       "en": "Health",
+       "ms": "Kesihatan"
+      },
+      {
+       "value": "07",
+       "en": "Transport",
+       "ms": "Pengangkutan"
+      },
+      {
+       "value": "08",
+       "en": "Information & Communication",
+       "ms": "Maklumat & Komunikasi"
+      },
+      {
+       "value": "09",
+       "en": "Recreation, Sport & Culture",
+       "ms": "Rekreasi, Sukan & Kebudayaan"
+      },
+      {
+       "value": "10",
+       "en": "Education",
+       "ms": "Pendidikan"
+      },
+      {
+       "value": "11",
+       "en": "Restaurant & Accommodation Services",
+       "ms": "Restoran & Perkhidmatan Penginapan"
+      },
+      {
+       "value": "12",
+       "en": "Insurance & Financial Services",
+       "ms": "Insurans & Perkhidmatan Kewangan"
+      },
+      {
+       "value": "13",
+       "en": "Personal Care, Social Protection & Miscellaneous Goods & Services",
+       "ms": "Penjagaan Diri, Perlindungan Sosial & Pelbagai Barangan & Perkhidmatan"
+      },
+      {
+       "value": "overall",
+       "en": "All items (headline)",
+       "ms": "Semua barangan (keseluruhan)"
+      }
+     ]
+    },
+    {
+     "name": "index",
+     "type": "DOUBLE",
+     "title_en": "Index",
+     "title_ms": "Indeks",
+     "description_en": "[Float] Index value, with base 2010 = 100",
+     "description_ms": "[Apung] Nilai indeks dengan asas 2010 = 100"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Negeri Sembilan",
+     "date": "2015-09-01",
+     "division": "01",
+     "index": 120.9
+    },
+    {
+     "state": "W.P. Putrajaya",
+     "date": "2012-09-01",
+     "division": "01",
+     "index": 106.2
+    },
+    {
+     "state": "Sarawak",
+     "date": "2020-10-01",
+     "division": "03",
+     "index": 90.2
+    }
+   ]
+  },
+  {
+   "id": "cpi_state_inflation",
+   "file": "data/cpi_state_inflation.parquet",
+   "title_en": "Monthly CPI Inflation by State & Division (2-digit)",
+   "title_ms": "Inflasi IHP Bulanan mengikut Negeri & Bahagian (2-digit)",
+   "description_en": "State-level CPI inflation for 13 main groups of goods and services",
+   "description_ms": "Inflasi IHP peringkat negeri bagi 13 kumpulan utama barangan dan perkhidmatan.",
+   "why": "monthly inflation by state",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/cpi_state_inflation",
+   "data_as_of": "2026-09",
+   "caveat_en": "When interpreting inflation rates derived from the CPI, it is important to remember that the rate of inflation experienced by a specific individual may be higher or lower than this number. This does not invalidate the CPI, which is meant to be an average value representative of the entire population.",
+   "rows": 44800,
+   "bytes": 68115,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategori] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 as the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD diberi nilai 01 kerana data berfrekuensi bulanan",
+     "min": "2010-02-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "division",
+     "type": "VARCHAR",
+     "title_en": "Division",
+     "title_ms": "Bahagian",
+     "description_en": "[String] 2-digit code from 01-13 or 'overall', to be matched using the 'division' column in the [MCOICOP Lookup](https://open.dosm.gov.my/data-catalogue/mcoicop). The MCOICOP lookup table will give you the English and Malay definitions.",
+     "description_ms": "[Rentetan] Kod 2 digit dari 01-13 ataupun keseluruhan ('overall'), yang perlu dipadankan dengan medan 'division' dalam [Jadual MCOICOP](https://open.dosm.gov.my/ms-MY/data-catalogue/mcoicop). Padanan tersebut akan membolehkan anda mendapat keterangan dalam Bahasa Inggeris dan Bahasa Melayu.",
+     "distinct_values": 14,
+     "values": [
+      {
+       "value": "01",
+       "en": "Food & Beverages",
+       "ms": "Makanan & Minuman"
+      },
+      {
+       "value": "02",
+       "en": "Alcoholic Beverages & Tobacco",
+       "ms": "Minuman Alkohol & Tembakau"
+      },
+      {
+       "value": "03",
+       "en": "Clothing & Footwear",
+       "ms": "Pakaian & Kasut"
+      },
+      {
+       "value": "04",
+       "en": "Housing, Water, Electricity, Gas & Other Fuels",
+       "ms": "Perumahan, Air, Elektrik, Gas & Bahan Api Lain"
+      },
+      {
+       "value": "05",
+       "en": "Furnishings, Household Equipment & Routine Household Maintenance",
+       "ms": "Hiasan, Perkakasan & Penyelenggaraan Isi Rumah"
+      },
+      {
+       "value": "06",
+       "en": "Health",
+       "ms": "Kesihatan"
+      },
+      {
+       "value": "07",
+       "en": "Transport",
+       "ms": "Pengangkutan"
+      },
+      {
+       "value": "08",
+       "en": "Information & Communication",
+       "ms": "Maklumat & Komunikasi"
+      },
+      {
+       "value": "09",
+       "en": "Recreation, Sport & Culture",
+       "ms": "Rekreasi, Sukan & Kebudayaan"
+      },
+      {
+       "value": "10",
+       "en": "Education",
+       "ms": "Pendidikan"
+      },
+      {
+       "value": "11",
+       "en": "Restaurant & Accommodation Services",
+       "ms": "Restoran & Perkhidmatan Penginapan"
+      },
+      {
+       "value": "12",
+       "en": "Insurance & Financial Services",
+       "ms": "Insurans & Perkhidmatan Kewangan"
+      },
+      {
+       "value": "13",
+       "en": "Personal Care, Social Protection & Miscellaneous Goods & Services",
+       "ms": "Penjagaan Diri, Perlindungan Sosial & Pelbagai Barangan & Perkhidmatan"
+      },
+      {
+       "value": "overall",
+       "en": "All items (headline)",
+       "ms": "Semua barangan (keseluruhan)"
+      }
+     ]
+    },
+    {
+     "name": "inflation_yoy",
+     "type": "DOUBLE",
+     "title_en": "Inflation (YoY)",
+     "title_ms": "Inflasi (tahunan)",
+     "description_en": "[Float] Year-on-year inflation, i.e. the percentage change in the CPI since 12 months ago",
+     "description_ms": "[Apung] Inflasi tahunan, iaitu peratusan perubahan IHP sejak 12 bulan lalu"
+    },
+    {
+     "name": "inflation_mom",
+     "type": "DOUBLE",
+     "title_en": "Inflation (MoM)",
+     "title_ms": "Inflasi (bulanan)",
+     "description_en": "[Float] Month-on-month inflation, i.e. Percentage change in the CPI since 1 month ago",
+     "description_ms": "[Apung] Inflasi bulanan, iaitu peratusan perubahan IHP sejak 1 bulan laliu"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Negeri Sembilan",
+     "date": "2017-06-01",
+     "division": "01",
+     "inflation_yoy": 3.4,
+     "inflation_mom": 0.4
+    },
+    {
+     "state": "W.P. Putrajaya",
+     "date": "2015-05-01",
+     "division": "01",
+     "inflation_yoy": 3.3,
+     "inflation_mom": 0.8
+    },
+    {
+     "state": "Sarawak",
+     "date": "2025-09-01",
+     "division": "03",
+     "inflation_yoy": -0.2,
+     "inflation_mom": 0.0
+    }
+   ]
+  },
+  {
+   "id": "lfs_month",
+   "file": "data/lfs_month.parquet",
+   "title_en": "Monthly Principal Labour Force Statistics",
+   "title_ms": "Statistik Tenaga Buruh Bulanan Utama",
+   "description_en": "Monthly principal labour force statistics, including unemployment and participation rates.",
+   "description_ms": "Statistik bulanan utama berkaitan tenaga buruh termasuk guna tenaga, pengangguran dan penyertaan.",
+   "why": "monthly unemployment (Q3)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/lfs_month",
+   "data_as_of": "2026-08",
+   "caveat_en": "Data prior to 2025 is compiled in concordance with population data from the 2010 Census. Data from 2025 onwards is compiled in concordance with population data from the 2020 Census. As such, you may observe a trend break in the series due to the different references used. Furthermore, sums of each category may not always equal to the totals shown in related tables because of independent rounding to one decimal place. However, the differences are not obvious.",
+   "rows": 200,
+   "bytes": 5348,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 since the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD ditetapkan sebagai 01 kerana data berfrekuensi bulanan",
+     "min": "2010-01-01",
+     "max": "2026-08-01"
+    },
+    {
+     "name": "lf",
+     "type": "DOUBLE",
+     "title_en": "Labour Force Size",
+     "title_ms": "Tenaga Buruh",
+     "description_en": "[Float] The number (in thousands) of employed and unemployed individuals. This figure also represents the number of people participating in the labour force.",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) individu bekerja dan menganggur. Angka ini juga mewakili jumlah orang yang menyertai tenaga buruh."
+    },
+    {
+     "name": "lf_employed",
+     "type": "DOUBLE",
+     "title_en": "Employed Persons",
+     "title_ms": "Bekerja",
+     "description_en": "[Float] The number (in thousands) of people who worked at least one hour for pay, profit or family gain, in thousands of people",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) orang yang bekerja sekurang-kurangnya satu hari untuk mendapatkan upah, keuntungan atau keuntungan keluarga"
+    },
+    {
+     "name": "lf_unemployed",
+     "type": "DOUBLE",
+     "title_en": "Unemployed Persons",
+     "title_ms": "Penganggur",
+     "description_en": "[Float] The number (in thousands) of people who did not work but were looking for work or available to work",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) orang yang tidak bekerja tetapi sedang mencari kerja atau bersedia untuk bekerja"
+    },
+    {
+     "name": "lf_outside",
+     "type": "DOUBLE",
+     "title_en": "Persons outside Labour Force",
+     "title_ms": "Luar Tenaga Buruh",
+     "description_en": "[Float] The number (in thousands) of people not classified as employed or unemployed, including housewives, students, early retired, disabled persons and those not interested in looking for a job",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) orang yang tidak dikelaskan sebagai bekerja atau menganggur, termasuk suri rumah, pelajar, mereka yang telah bersara, tidak berkeupayaan serta mereka yang tidak berminat untuk mencari pekerjaan"
+    },
+    {
+     "name": "p_rate",
+     "type": "DOUBLE",
+     "title_en": "Participation Rate",
+     "title_ms": "Kadar Penyertaan",
+     "description_en": "[Float] Ratio of the labour force size to the working-age (15-64) population",
+     "description_ms": "[Apung] Nisbah jumlah tenaga buruh ke jumlah penduduk pada umur bekerja (15-64)"
+    },
+    {
+     "name": "ep_ratio",
+     "type": "DOUBLE",
+     "title_en": "Employment-Population Ratio",
+     "title_ms": "Nisbah Guna Tenaga kepada Penduduk",
+     "description_en": "[Float] Ratio of the number of employed people to the working-age (15-64) population",
+     "description_ms": "[Apung] Nisbah orang bekerja jumlah ke jumlah penduduk pada umur bekerja (15-64)"
+    },
+    {
+     "name": "u_rate",
+     "type": "DOUBLE",
+     "title_en": "Unemployment Rate",
+     "title_ms": "Kadar Pengangguran",
+     "description_en": "[Float] Ratio of unemployed to labour force size",
+     "description_ms": "[Apung] Nisbah jumlah penganggur ke bilangan tenaga buruh"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2014-08-01",
+     "lf": 14266.3,
+     "lf_employed": 13881.4,
+     "lf_unemployed": 384.9,
+     "lf_outside": 6934.1,
+     "p_rate": 67.3,
+     "ep_ratio": 65.5,
+     "u_rate": 2.7
+    },
+    {
+     "date": "2017-01-01",
+     "lf": 14880.9,
+     "lf_employed": 14366.8,
+     "lf_unemployed": 514.1,
+     "lf_outside": 7090.4,
+     "p_rate": 67.7,
+     "ep_ratio": 65.4,
+     "u_rate": 3.4
+    },
+    {
+     "date": "2026-01-01",
+     "lf": 17281.0,
+     "lf_employed": 16771.4,
+     "lf_unemployed": 509.6,
+     "lf_outside": 7105.6,
+     "p_rate": 70.9,
+     "ep_ratio": 68.8,
+     "u_rate": 2.9
+    }
+   ]
+  },
+  {
+   "id": "lfs_month_youth",
+   "file": "data/lfs_month_youth.parquet",
+   "title_en": "Monthly Youth Unemployment",
+   "title_ms": "Pengangguran Belia Bulanan",
+   "description_en": "Monthly unemployment statistics focusing on the 15-30 age group.",
+   "description_ms": "Statistik pengangguran bulanan dengan fokus pada kumpulan umur 15-30.",
+   "why": "youth unemployment (Q23)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/lfs_month_youth",
+   "data_as_of": "2026-06",
+   "caveat_en": "Data prior to 2025 is compiled in concordance with population data from the 2010 Census. Data from 2025 onwards is compiled in concordance with population data from the 2020 Census. As such, you may observe a trend break in the series due to the different references used. Furthermore, sums of each category may not always equal to the totals shown in related tables because of independent rounding to one decimal place. However, the differences are not obvious.",
+   "rows": 126,
+   "bytes": 2359,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 since the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD ditetapkan sebagai 01 kerana data berfrekuensi bulanan",
+     "min": "2016-01-01",
+     "max": "2026-06-01"
+    },
+    {
+     "name": "unemployed_15_24",
+     "type": "DOUBLE",
+     "title_en": "Unemployed Persons (15-24)",
+     "title_ms": "Penganggur (15-24 thn)",
+     "description_en": "[Float] Number (in thousands) of people aged 15-24 who did not work but were looking for work or available to work",
+     "description_ms": "[Apung] Jumlah terlaras secara bermusim (dalam ribuan) orang yang tidak bekerja tetapi sedang mencari kerja atau bersedia untuk bekerja"
+    },
+    {
+     "name": "unemployed_15_30",
+     "type": "DOUBLE",
+     "title_en": "Unemployed Persons (15-30 thn)",
+     "title_ms": "Penganggur (15-30 thn)",
+     "description_en": "[Float] Number (in thousands) of people aged 15-30 who did not work but were looking for work or available to work",
+     "description_ms": "[Apung] Jumlah terlaras secara bermusim (dalam ribuan) orang yang tidak bekerja tetapi sedang mencari kerja atau bersedia untuk bekerja"
+    },
+    {
+     "name": "u_rate_15_24",
+     "type": "DOUBLE",
+     "title_en": "Unemployment Rate (15-24 yo)",
+     "title_ms": "Kadar Pengangguran (15-24 thn)",
+     "description_en": "[Float] Ratio of unemployed aged 15-24 to labour force participants aged 15-24",
+     "description_ms": "[Apung] Nisbah terlaras secara bermusim jumlah penganggur ke bilangan tenaga buruh"
+    },
+    {
+     "name": "u_rate_15_30",
+     "type": "DOUBLE",
+     "title_en": "Unemployment Rate (15-30 yo)",
+     "title_ms": "Kadar Pengangguran (15-30 thn)",
+     "description_en": "[Float] Ratio of unemployed aged 15-30 to labour force participants aged 15-30",
+     "description_ms": "[Apung] Nisbah terlaras secara bermusim jumlah penganggur ke bilangan tenaga buruh"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2018-12-01",
+     "unemployed_15_24": 328.7,
+     "unemployed_15_30": 428.8,
+     "u_rate_15_24": 11.7,
+     "u_rate_15_30": 6.8
+    },
+    {
+     "date": "2020-07-01",
+     "unemployed_15_24": 313.2,
+     "unemployed_15_30": 544.5,
+     "u_rate_15_24": 13.9,
+     "u_rate_15_30": 9.7
+    },
+    {
+     "date": "2026-02-01",
+     "unemployed_15_24": 288.7,
+     "unemployed_15_30": 389.5,
+     "u_rate_15_24": 10.2,
+     "u_rate_15_30": 6.2
+    }
+   ]
+  },
+  {
+   "id": "lfs_qtr_state",
+   "file": "data/lfs_qtr_state.parquet",
+   "title_en": "Quarterly Principal Labour Force Statistics by State",
+   "title_ms": "Statistik Tenaga Buruh Suku Tahunan Utama mengikut Negeri",
+   "description_en": "Quarterly principal labour force statistics by state, including unemployment and participation rates.",
+   "description_ms": "Statistik suku tahunan utama berkaitan tenaga buruh mengikut negeri, termasuk kadar pengangguran dan penyertaan.",
+   "why": "unemployment by state (Q16, Q40)",
+   "frequency": "QUARTERLY",
+   "geography": [
+    "NATIONAL",
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/lfs_qtr_state",
+   "data_as_of": "2026-Q2",
+   "caveat_en": "The sum of each category may not always equal to the totals shown in related tables because of independent rounding to one decimal place. However, the differences are not obvious.",
+   "rows": 608,
+   "bytes": 10565,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 since the data is at quarterly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD ditetapkan sebagai 01 kerana data berfrekuensi suku tahunan",
+     "min": "2017-01-01",
+     "max": "2026-04-01"
+    },
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states",
+     "description_ms": "[Kategori] Satu daripada 16 negeri",
+     "distinct_values": 16,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "lf",
+     "type": "DOUBLE",
+     "title_en": "Labour Force Size",
+     "title_ms": "Tenaga Buruh",
+     "description_en": "[Float] The number (in thousands) of employed and unemployed individuals. This figure also represents the number of people participating in the labour force.",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) individu bekerja dan menganggur. Angka ini juga mewakili jumlah orang yang menyertai tenaga buruh."
+    },
+    {
+     "name": "lf_employed",
+     "type": "DOUBLE",
+     "title_en": "Employed Persons",
+     "title_ms": "Bekerja",
+     "description_en": "[Float] The number (in thousands) of people who worked at least one hour for pay, profit or family gain, in thousands of people",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) orang yang bekerja sekurang-kurangnya satu hari untuk mendapatkan upah, keuntungan atau keuntungan keluarga"
+    },
+    {
+     "name": "lf_unemployed",
+     "type": "DOUBLE",
+     "title_en": "Unemployed Persons",
+     "title_ms": "Penganggur",
+     "description_en": "[Float] The number (in thousands) of people who did not work but were looking for work or available to work",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) orang yang tidak bekerja tetapi sedang mencari kerja atau bersedia untuk bekerja"
+    },
+    {
+     "name": "lf_outside",
+     "type": "DOUBLE",
+     "title_en": "Persons outside Labour Force",
+     "title_ms": "Luar Tenaga Buruh",
+     "description_en": "[Float] The number (in thousands) of people not classified as employed or unemployed, including housewives, students, early retired, disabled persons and those not interested in looking for a job",
+     "description_ms": "[Apung] Jumlah (dalam ribuan) orang yang tidak dikelaskan sebagai bekerja atau menganggur, termasuk suri rumah, pelajar, mereka yang telah bersara, tidak berkeupayaan serta mereka yang tidak berminat untuk mencari pekerjaan"
+    },
+    {
+     "name": "p_rate",
+     "type": "DOUBLE",
+     "title_en": "Participation Rate",
+     "title_ms": "Kadar Penyertaan",
+     "description_en": "[Float] Ratio of the labour force size to the working-age (15-64) population",
+     "description_ms": "[Apung] Nisbah jumlah tenaga buruh ke jumlah penduduk pada umur bekerja (15-64)"
+    },
+    {
+     "name": "u_rate",
+     "type": "DOUBLE",
+     "title_en": "Unemployment Rate",
+     "title_ms": "Kadar Pengangguran",
+     "description_en": "[Float] Ratio of unemployed to labour force size",
+     "description_ms": "[Apung] Nisbah jumlah penganggur ke bilangan tenaga buruh"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2020-01-01",
+     "state": "Negeri Sembilan",
+     "lf": 507.8,
+     "lf_employed": 491.0,
+     "lf_unemployed": 16.8,
+     "lf_outside": 269.9,
+     "p_rate": 65.3,
+     "u_rate": 3.3
+    },
+    {
+     "date": "2022-10-01",
+     "state": "Pulau Pinang",
+     "lf": 946.1,
+     "lf_employed": 924.4,
+     "lf_unemployed": 21.7,
+     "lf_outside": 371.2,
+     "p_rate": 71.8,
+     "u_rate": 2.3
+    },
+    {
+     "date": "2020-04-01",
+     "state": "W.P. Putrajaya",
+     "lf": 36.6,
+     "lf_employed": 35.9,
+     "lf_unemployed": 0.8,
+     "lf_outside": 14.2,
+     "p_rate": 72.1,
+     "u_rate": 2.1
+    }
+   ]
+  },
+  {
+   "id": "wages_state",
+   "file": "data/wages_state.parquet",
+   "title_en": "Annual Salaries & Wages by State & Sex",
+   "title_ms": "Gaji & Upah Tahunan mengikut Negeri & Jantina",
+   "description_en": "Number of recipients, median and mean monthly salaries & wages of employees who are Malaysian citizens by state and sex.",
+   "description_ms": "Bilangan penerima, penengah dan purata gaji & upah bulanan pekerja warganegara Malaysia mengikut negeri dan jantina.",
+   "why": "salaries and wages by state (Q38)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/wages_state",
+   "data_as_of": "2025",
+   "caveat_en": "",
+   "rows": 816,
+   "bytes": 7414,
+   "columns": [
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 16 states, or 'Malaysia' for the national figure",
+     "description_ms": "[Kategori] Satu daripada 16 negeri, atau 'Malaysia' bagi angka nasional",
+     "distinct_values": 17,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Malaysia",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 since the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD ditetapkan sebagai 01-01 kerana data berfrekuensi tahunan",
+     "min": "2010-01-01",
+     "max": "2025-01-01"
+    },
+    {
+     "name": "sex",
+     "type": "VARCHAR",
+     "title_en": "Sex",
+     "title_ms": "Jantina",
+     "description_en": "[Categorical] Either both sexes ('both'), male ('male') or female ('female')",
+     "description_ms": "[Kategori] Sama ada kedua-dua jantina ('both'), lelaki ('male') atau perempuan ('female')",
+     "distinct_values": 3,
+     "values": [
+      "both",
+      "female",
+      "male"
+     ]
+    },
+    {
+     "name": "recipients",
+     "type": "DOUBLE",
+     "title_en": "Recipients",
+     "title_ms": "Penerima",
+     "description_en": "[Float] Number of salaries & wages recipients, in thousands",
+     "description_ms": "[Apung] Bilangan penerima gaji & upah, dalam ribu"
+    },
+    {
+     "name": "wages_median",
+     "type": "BIGINT",
+     "title_en": "Median Salaries & Wages",
+     "title_ms": "Penengah Gaji & Upah",
+     "description_en": "[Integer, RM] Median monthly salaries & wages; half of employees earn less than this amount",
+     "description_ms": "[Integer, RM] Penengah gaji & upah bulanan; separuh daripada pekerja memperoleh kurang daripada jumlah ini"
+    },
+    {
+     "name": "wages_mean",
+     "type": "BIGINT",
+     "title_en": "Mean Salaries & Wages",
+     "title_ms": "Purata Gaji & Upah",
+     "description_en": "[Integer, RM] Mean monthly salaries & wages, i.e. total salaries & wages divided by the number of recipients",
+     "description_ms": "[Integer, RM] Purata gaji & upah bulanan, iaitu jumlah gaji & upah dibahagi dengan bilangan penerima"
+    }
+   ],
+   "sample": [
+    {
+     "state": "Negeri Sembilan",
+     "date": "2014-01-01",
+     "sex": "both",
+     "recipients": 281.1,
+     "wages_median": 1800,
+     "wages_mean": 2445
+    },
+    {
+     "state": "Selangor",
+     "date": "2016-01-01",
+     "sex": "both",
+     "recipients": 2043.0,
+     "wages_median": 2500,
+     "wages_mean": 3239
+    },
+    {
+     "state": "Pahang",
+     "date": "2025-01-01",
+     "sex": "both",
+     "recipients": 471.8,
+     "wages_median": 2578,
+     "wages_mean": 3434
+    }
+   ]
+  },
+  {
+   "id": "gdp_state_real_supply",
+   "file": "data/gdp_state_real_supply.parquet",
+   "title_en": "Annual Real GDP by State & Economic Sector",
+   "title_ms": "KDNK Sebenar Tahunan mengikut Negeri & Sektor Ekonomi",
+   "description_en": "Annual state-level gross domestic product (GDP) at constant 2015 prices for the 5 main economic sectors.",
+   "description_ms": "Keluaran dalam negeri kasar (KDNK) tahunan peringkat negeri pada harga malar 2015 bagi 5 sektor ekonomi utama.",
+   "why": "GDP by state and sector (Q12, Q17)",
+   "frequency": "YEARLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/gdp_state_real_supply",
+   "data_as_of": "2025",
+   "caveat_en": "There are several caveats to note:\n- Values for W.P. Putrajaya are subsumed under values for W.P. Kuala Lumpur due to difficulty in separating the attribution of economic value.\n- Values for 2022 and 2023 may be revised in future releases.\n- The sum of GDP for all sectors may not always equal to the values for overall GDP because of independent rounding to one decimal place. However, the differences are not obvious.",
+   "rows": 2163,
+   "bytes": 10128,
+   "columns": [
+    {
+     "name": "series",
+     "type": "VARCHAR",
+     "title_en": "Series Type",
+     "title_ms": "Jenis Siri",
+     "description_en": "[String] Series type, either absolute values ('abs') or annual growth ('growth_yoy')",
+     "description_ms": "[Rentetan] Jenis siri, sama ada nilai mutlak ('abs') atau pertumbuhan tahunan ('growth_yoy')",
+     "distinct_values": 2,
+     "values": [
+      "abs",
+      "growth_yoy"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "2015-01-01",
+     "max": "2025-01-01"
+    },
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State",
+     "title_ms": "Negeri",
+     "description_en": "[Categorical] One of 15 states (W.P. Putrajaya is subsumed under W.P. Kuala Lumpur), or 'Supranational', which is a catch-all category for GDP data that cannot be attributed to a specific state, especially in the mining and quarrying sector.",
+     "description_ms": "[Kategori] Satu daripada 15 negeri (W.P. Putrajaya dimasukkan bawah W.P. Kuala Lumpur), atau 'Supranational', yang merupakan kategori umum bagi data KDNK yang tidak boleh dikhususnya kepada negeri tertentu, terutamanya dalam sektor perlombongan dan pengkuarian.",
+     "distinct_values": 17,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Supra",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "sector",
+     "type": "VARCHAR",
+     "title_en": "Economic Sector",
+     "title_ms": "Sektor Ekonomi",
+     "description_en": "[String] Code for the economic sector, to be mapped using the [Lookup Table](https://open.dosm.gov.my/data-catalogue/gdp_lookup). The lookup table will give you the English and Malay definitions.",
+     "description_ms": "[Rentetan] Kod bagi sektor ekonomi, yang perlu dipadankan dengan [Jadual Carian](https://open.dosm.gov.my/ms-MY/data-catalogue/gdp_lookup). Jadual carian akan memberi definisi dalam Bahasa Inggeris dan Bahasa Melayu.",
+     "distinct_values": 7,
+     "values": [
+      {
+       "value": "p0",
+       "en": "GDP at purchasers' prices",
+       "ms": "KDNK pada harga pembeli"
+      },
+      {
+       "value": "p1",
+       "en": "Agriculture",
+       "ms": "Pertanian"
+      },
+      {
+       "value": "p2",
+       "en": "Mining and quarrying",
+       "ms": "Perlombongan dan pengkuarian"
+      },
+      {
+       "value": "p3",
+       "en": "Manufacturing",
+       "ms": "Pembuatan"
+      },
+      {
+       "value": "p4",
+       "en": "Construction",
+       "ms": "Pembinaan"
+      },
+      {
+       "value": "p5",
+       "en": "Services",
+       "ms": "Perkhidmatan"
+      },
+      {
+       "value": "p6",
+       "en": "(plus) Import duties",
+       "ms": "(tambah) Duti import"
+      }
+     ]
+    },
+    {
+     "name": "value",
+     "type": "DOUBLE",
+     "title_en": "Value",
+     "title_ms": "Nilai",
+     "description_en": "[Float] Either the value of GDP in RM millions (for rows with series type 'abs') or GDP growth as a percentage (for rows with series type 'growth_yoy')",
+     "description_ms": "[Apung] Sama ada nilai KDNK dalam RM juta (bagi baris dengan jenis siri 'abs') ataupun kadar pertumbuhan KDNK sebagai peratus (bagi baris dengan jenis siri 'growth_yoy')"
+    }
+   ],
+   "sample": [
+    {
+     "series": "abs",
+     "date": "2020-01-01",
+     "state": "Melaka",
+     "sector": "p1",
+     "value": 4583.532
+    },
+    {
+     "series": "abs",
+     "date": "2023-01-01",
+     "state": "Johor",
+     "sector": "p0",
+     "value": 148710.224
+    },
+    {
+     "series": "growth_yoy",
+     "date": "2024-01-01",
+     "state": "Pulau Pinang",
+     "sector": "p5",
+     "value": 4.9
+    }
+   ]
+  },
+  {
+   "id": "gdp_gni_annual_real",
+   "file": "data/gdp_gni_annual_real.parquet",
+   "title_en": "Annual Real GDP & GNI: 1970 to Present",
+   "title_ms": "KDNK & PNK Sebenar Tahunan: 1970 sehingga Kini",
+   "description_en": "Long time series of annual real gross domestic product (GDP) and gross national income (GNI), including per capita values.",
+   "description_ms": "Siri masa panjang keluaran dalam negeri kasar (KDNK) serta pendapatan nasional kasar (PNK) pada harga malar 2015, termasuk nilai per kapita.",
+   "why": "national GDP and GDP per capita",
+   "frequency": "YEARLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/gdp_gni_annual_real",
+   "data_as_of": "2025",
+   "caveat_en": "GDP and GNI values for 2022 and 2023 may be revised in future releases. Furthermore, per capita values will be revised in parallel with any published revisions to [Malaysia's population data](https://open.dosm.gov.my/data-catalogue/population_malaysia).",
+   "rows": 111,
+   "bytes": 3666,
+   "columns": [
+    {
+     "name": "series",
+     "type": "VARCHAR",
+     "title_en": "Series Type",
+     "title_ms": "Jenis Siri",
+     "description_en": "[String] Series type, either absolute values ('abs') or annual growth ('growth_yoy')",
+     "description_ms": "[Rentetan] Jenis siri, sama ada nilai mutlak ('abs') atau pertumbuhan tahunan ('growth_yoy')",
+     "distinct_values": 2,
+     "values": [
+      "abs",
+      "growth_yoy"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with MM-DD set to 01-01 as the data is at annual frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan MM-DD diberi nilai 01-01 kerana data berfrekuensi tahunan",
+     "min": "1970-01-01",
+     "max": "2025-01-01"
+    },
+    {
+     "name": "gdp",
+     "type": "DOUBLE",
+     "title_en": "GDP",
+     "title_ms": "KDNK",
+     "description_en": "[Float, RM mil] The total value of goods and services produced within that year, after deducting the cost of goods and services used in production, but before deducting the consumption of fixed capital. The values are in constant 2015 prices, i.e. with base 2015 = 100.",
+     "description_ms": "[Apung, RM juta] Jumlah nilai barangan dan perkhidmatan yang dihasilkan dalam tahun tersebut, selepas ditolak kos barangan dan perkhidmatan yang digunakan dalam proses pengeluaran, tetapi sebelum ditolak penggunaan modal tetap. Nilai adalah pada harga malar 2015, iaitu dengan nilai asas 2015 = 100."
+    },
+    {
+     "name": "gni",
+     "type": "DOUBLE",
+     "title_en": "GNI",
+     "title_ms": "PNK",
+     "description_en": "[Float, RM mil] The total value of the production of the nationals of the country, whether they are in residence in Malaysia or not. Mechnically, it is defined as GDP plus net factor incomes from abroad. The values are in constant 2015 prices, i.e. with base 2015 = 100.",
+     "description_ms": "[Apung, RM juta] Jumlah nilai pengeluaran oleh warganegara Malaysia, sama ada mereka bermastautin dalam Malaysia atau tidak. Secara mekanikal, PNK boleh didefinisikan sebagai KDNK tambah pendapatan faktor bersih dari luar negara. Nilai adalah pada harga malar 2015, iaitu dengan nilai asas 2015 = 100."
+    },
+    {
+     "name": "gdp_capita",
+     "type": "DOUBLE",
+     "title_en": "GDP per Capita",
+     "title_ms": "KDNK per Kapita",
+     "description_en": "[Float, RM] The ratio of GDP to the total population of Malaysia in that year",
+     "description_ms": "[Apung, RM] Nisbah KDNK kepada jumlah penduduk Malaysia pada tahun tersebut"
+    },
+    {
+     "name": "gni_capita",
+     "type": "DOUBLE",
+     "title_en": "GNI per Capita",
+     "title_ms": "PNK per Kapita",
+     "description_en": "[Float, RM] The ratio of GNI to the total population of Malaysia in that year",
+     "description_ms": "[Apung, RM] Nisbah PNK kepada jumlah penduduk Malaysia pada tahun tersebut"
+    }
+   ],
+   "sample": [
+    {
+     "series": "abs",
+     "date": "2001-01-01",
+     "gdp": 581735.9468389092,
+     "gni": 567552.9752537782,
+     "gdp_capita": 24208.28005190416,
+     "gni_capita": 23618.100992881195
+    },
+    {
+     "series": "abs",
+     "date": "2018-01-01",
+     "gdp": 1363766.0,
+     "gni": 1335058.0,
+     "gdp_capita": 42115.0,
+     "gni_capita": 41228.0
+    },
+    {
+     "series": "growth_yoy",
+     "date": "2021-01-01",
+     "gdp": 3.3,
+     "gni": 2.8,
+     "gdp_capita": 2.9,
+     "gni_capita": 2.4
+    }
+   ]
+  },
+  {
+   "id": "gdp_qtr_real",
+   "file": "data/gdp_qtr_real.parquet",
+   "title_en": "Quarterly Real GDP",
+   "title_ms": "KDNK Sebenar Suku Tahunan",
+   "description_en": "Quarterly gross domestic product (GDP) at constant 2015 prices.",
+   "description_ms": "Keluaran dalam negeri kasar (KDNK) suku tahunan pada harga malar 2015.",
+   "why": "quarterly GDP growth",
+   "frequency": "QUARTERLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/gdp_qtr_real",
+   "data_as_of": "2026-Q2",
+   "caveat_en": "Values for 2022, 2023 and 2024 may be revised in future releases.",
+   "rows": 133,
+   "bytes": 1254,
+   "columns": [
+    {
+     "name": "series",
+     "type": "VARCHAR",
+     "title_en": "Series Type",
+     "title_ms": "Jenis Siri",
+     "description_en": "[String] Series type, either absolute values ('abs'), year-on-year growth ('growth_yoy') or quarter-on-quarter growth ('growth_qoq')",
+     "description_ms": "[Rentetan] Jenis siri, sama ada nilai mutlak ('abs'), pertumbuhan tahunan ('growth_yoy') atau pertumbuhan suku tahunan ('growth_qoq')",
+     "distinct_values": 3,
+     "values": [
+      "abs",
+      "growth_qoq",
+      "growth_yoy"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format. The earliest date in the quarter is chosen, e.g. YYYY-01-01 for the 1st quarter and YYYY-04-01 for the 2nd quarter.",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD. Tarikh yang dipilih adalah tarikh terawal dalam suku tahun, contohnya YYYY-01-01 bagi suku tahun pertama dan YYYY-04-01 bagi suku tahun kedua.",
+     "min": "2015-01-01",
+     "max": "2026-04-01"
+    },
+    {
+     "name": "value",
+     "type": "DOUBLE",
+     "title_en": "Value",
+     "title_ms": "Nilai",
+     "description_en": "[Float] Either the value of GDP in RM millions (for rows with series type 'abs') or GDP growth as a percentage (for rows with series type 'growth_yoy' or 'growth_qoq')",
+     "description_ms": "[Apung] Sama ada nilai KDNK dalam RM juta (bagi baris dengan jenis siri 'abs') ataupun kadar pertumbuhan KDNK sebagai peratus (bagi baris dengan jenis siri 'growth_yoy' atau 'growth_qoq')"
+    }
+   ],
+   "sample": [
+    {
+     "series": "abs",
+     "date": "2024-04-01",
+     "value": 402102.247
+    },
+    {
+     "series": "growth_yoy",
+     "date": "2018-10-01",
+     "value": 4.8
+    },
+    {
+     "series": "growth_qoq",
+     "date": "2025-01-01",
+     "value": -3.6
+    }
+   ]
+  },
+  {
+   "id": "trade_headline",
+   "file": "data/trade_headline.parquet",
+   "title_en": "Headline Monthly Trade in Goods",
+   "title_ms": "Statistik Perdagangan Barangan Bulanan",
+   "description_en": "Monthly exports, imports, total trade, and trade balance statistics for Malaysia.",
+   "description_ms": "Statistik eksport, import, jumlah perdagangan, dan imbangan dagangan bulanan Malaysia.",
+   "why": "total exports, imports, trade balance",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/trade_headline",
+   "data_as_of": "2026-09",
+   "caveat_en": "Data for the most recent two months is provisional and subject to revision in future updates.",
+   "rows": 1310,
+   "bytes": 37021,
+   "columns": [
+    {
+     "name": "series",
+     "type": "VARCHAR",
+     "title_en": "Series Type",
+     "title_ms": "Jenis Siri",
+     "description_en": "[Categorical] Either absolute values ('abs'), year-on-year growth ('growth_yoy') or month-on-month growth ('growth_mom')",
+     "description_ms": "[Kategori] Sama ada nilai mutlak ('abs'), pertumbuhan tahunan ('growth_yoy') atau pertumbuhan bulanan ('growth_mom')",
+     "distinct_values": 3,
+     "values": [
+      "abs",
+      "growth_mom",
+      "growth_yoy"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 since the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD ditetapkan sebagai 01 kerana data berfrekuensi bulanan",
+     "min": "1990-01-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "exports",
+     "type": "DOUBLE",
+     "title_en": "Exports",
+     "title_ms": "Eksport",
+     "description_en": "[Float, RM] Gross exports.",
+     "description_ms": "[Apung, RM] Eksport kasar."
+    },
+    {
+     "name": "exports_domestic",
+     "type": "DOUBLE",
+     "title_en": "Domestic Exports",
+     "title_ms": "Eksport Domestik",
+     "description_en": "[Float, RM] Domestic exports, i.e. exports less re-exports.",
+     "description_ms": "[Apung, RM] Eksport domestik, iaitu eksport tolak re-eksport."
+    },
+    {
+     "name": "re_exports",
+     "type": "DOUBLE",
+     "title_en": "Re-exports",
+     "title_ms": "Re-eksport",
+     "description_en": "[Float, RM] Re-exports, i.e. goods imported and subsequently exported without substantial transformation.",
+     "description_ms": "[Apung, RM] Re-eksport, iaitu barangan yang diimport dan seterusnya dieksport semula tanpa pengubahan ketara."
+    },
+    {
+     "name": "imports",
+     "type": "DOUBLE",
+     "title_en": "Imports",
+     "title_ms": "Import",
+     "description_en": "[Float, RM] Gross imports.",
+     "description_ms": "[Apung, RM] Import kasar."
+    },
+    {
+     "name": "imports_retained",
+     "type": "DOUBLE",
+     "title_en": "Retained Imports",
+     "title_ms": "Import Tertangguh",
+     "description_en": "[Float, RM] Retained imports, i.e. imports less re-exports.",
+     "description_ms": "[Apung, RM] Import tertangguh, iaitu import tolak re-eksport."
+    },
+    {
+     "name": "total",
+     "type": "DOUBLE",
+     "title_en": "Total Trade",
+     "title_ms": "Jumlah Perdagangan",
+     "description_en": "[Float, RM] Total trade, i.e. exports plus imports.",
+     "description_ms": "[Apung, RM] Jumlah perdagangan, iaitu eksport tambah import."
+    },
+    {
+     "name": "balance",
+     "type": "DOUBLE",
+     "title_en": "Trade Balance",
+     "title_ms": "Imbangan Dagangan",
+     "description_en": "[Float, RM] Trade balance, i.e. exports less imports.",
+     "description_ms": "[Apung, RM] Imbangan dagangan, iaitu eksport tolak import."
+    }
+   ],
+   "sample": [
+    {
+     "series": "abs",
+     "date": "2019-03-01",
+     "exports": 85677001848.0,
+     "exports_domestic": 70347120976.0,
+     "re_exports": 15329880872.0,
+     "imports": 69681372619.0,
+     "imports_retained": 54351491747.0,
+     "total": 155358374467.0,
+     "balance": 15995629229.0
+    },
+    {
+     "series": "growth_yoy",
+     "date": "1999-02-01",
+     "exports": -2.2,
+     "exports_domestic": -1.4,
+     "re_exports": -23.1,
+     "imports": -14.6,
+     "imports_retained": -14.2,
+     "total": -8.0,
+     "balance": 93.3
+    },
+    {
+     "series": "growth_mom",
+     "date": "2022-05-01",
+     "exports": -5.4,
+     "exports_domestic": -6.9,
+     "re_exports": 1.2,
+     "imports": 3.5,
+     "imports_retained": 4.3,
+     "total": -1.4,
+     "balance": -45.2
+    }
+   ]
+  },
+  {
+   "id": "trade_sitc_1d",
+   "file": "data/trade_sitc_1d.parquet",
+   "title_en": "Monthly Trade by SITC Section (1 digit)",
+   "title_ms": "Perdagangan Bulanan mengikut Seksyen SITC (1 digit)",
+   "description_en": "Monthly exports and imports by SITC commodity sections.",
+   "description_ms": "Eksport dan import bulanan mengikut seksyen komoditi SITC.",
+   "why": "exports and imports by product section (Q30, partial)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "DOSM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/trade_sitc_1d",
+   "data_as_of": "2026-09",
+   "caveat_en": "Data for the most recent two months is provisional and subject to revision in future updates.",
+   "rows": 4851,
+   "bytes": 51998,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 since the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD ditetapkan sebagai 01 kerana data berfrekuensi bulanan",
+     "min": "1990-01-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "section",
+     "type": "VARCHAR",
+     "title_en": "SITC Section",
+     "title_ms": "Seksysen SITC",
+     "description_en": "[Categorical] SITC section (from 0 to 9) or 'overall'",
+     "description_ms": "[Kategori] Seksysen SITC (dari 0 hingga 9) atau 'keseluruhan'",
+     "distinct_values": 11,
+     "values": [
+      {
+       "value": "0",
+       "en": "Food and live animals",
+       "ms": "Makanan dan binatang hidup"
+      },
+      {
+       "value": "1",
+       "en": "Beverages and tobacco",
+       "ms": "Minuman dan tembakau"
+      },
+      {
+       "value": "2",
+       "en": "Crude materials, inedible, except fuels",
+       "ms": "Bahan mentah, tidak boleh dimakan, kecuali bahan api"
+      },
+      {
+       "value": "3",
+       "en": "Mineral fuels, lubricants and related materials",
+       "ms": "Bahan api mineral, pelincir dan bahan berkaitan"
+      },
+      {
+       "value": "4",
+       "en": "Animal and vegetable oils, fats and waxes (incl. palm oil)",
+       "ms": "Minyak dan lemak haiwan dan sayuran (termasuk minyak sawit)"
+      },
+      {
+       "value": "5",
+       "en": "Chemicals and related products",
+       "ms": "Bahan kimia dan keluaran berkaitan"
+      },
+      {
+       "value": "6",
+       "en": "Manufactured goods classified chiefly by material",
+       "ms": "Barang perkilangan dikelaskan mengikut bahan"
+      },
+      {
+       "value": "7",
+       "en": "Machinery and transport equipment",
+       "ms": "Jentera dan kelengkapan pengangkutan"
+      },
+      {
+       "value": "8",
+       "en": "Miscellaneous manufactured articles",
+       "ms": "Pelbagai barang perkilangan"
+      },
+      {
+       "value": "9",
+       "en": "Commodities and transactions not classified elsewhere",
+       "ms": "Komoditi dan urus niaga tidak dikelaskan di tempat lain"
+      },
+      {
+       "value": "overall",
+       "en": "All sections",
+       "ms": "Semua seksyen"
+      }
+     ]
+    },
+    {
+     "name": "exports",
+     "type": "BIGINT",
+     "title_en": "Exports",
+     "title_ms": "Eksport",
+     "description_en": "[Float] The value of exports in RM (not RM millions, as data.gov.my states).",
+     "description_ms": "[Apung] Nilai eksport dalam RM (bukan RM juta seperti dinyatakan di data.gov.my)."
+    },
+    {
+     "name": "imports",
+     "type": "BIGINT",
+     "title_en": "Imports",
+     "title_ms": "Import",
+     "description_en": "[Float] The value of imports in RM (not RM millions, as data.gov.my states).",
+     "description_ms": "[Apung] Nilai import dalam RM (bukan RM juta seperti dinyatakan di data.gov.my)."
+    }
+   ],
+   "sample": [
+    {
+     "date": "1998-11-01",
+     "section": "0",
+     "exports": 530823157,
+     "imports": 916821772
+    },
+    {
+     "date": "2024-06-01",
+     "section": "6",
+     "exports": 11029253048,
+     "imports": 10461368447
+    },
+    {
+     "date": "1999-12-01",
+     "section": "8",
+     "exports": 2591627528,
+     "imports": 1445530268
+    }
+   ]
+  },
+  {
+   "id": "exchangerates",
+   "file": "data/exchangerates.parquet",
+   "title_en": "Monthly Exchange Rates",
+   "title_ms": "Kadar Pertukaran Wang Asing Bulanan",
+   "description_en": "Monthly rates of exchange of the Malaysian ringgit vis-à-vis selected currencies.",
+   "description_ms": "Kadar pertukaran ringgit Malaysia berbanding mata wang asing terpilih.",
+   "why": "ringgit exchange rates (Q18)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "BNM"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/exchangerates",
+   "data_as_of": "2026-09-30 12:00",
+   "caveat_en": "N/A",
+   "rows": 1785,
+   "bytes": 188505,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 to indicate monthly-frequency data",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD ditetapkan sebagai 01 kerana data berfrekuensi bulanan",
+     "min": "1997-01-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "indicator",
+     "type": "VARCHAR",
+     "title_en": "Indicator",
+     "title_ms": "Indikator",
+     "description_en": "[String] The specific computation applied. There are 5 provided in the dataset, namely the highest rate in the month ('high'), lowest rate in the month ('low'), the average across trading days in the month ('avg'), the rate on the first trading day of the month ('start'), and the rate on the last trading day of the month ('end').",
+     "description_ms": "[Rentetan] Kaedah pengiraan yang digunakan. Terdapat 5 jenis yang dibekalkan dalam set data, iaitu kadar tertinggi dalam bulan ('high'), kadar terendah dalam bulan ('low'), purata bagi semua hari perdagangan dalam bulan ('avg'), kadar pada hari perdagangan pertama dalam bulan ('start'), dan kadar pada hari perdagangan terakhir dalam bulan ('end').",
+     "distinct_values": 5,
+     "values": [
+      "avg",
+      "end",
+      "high",
+      "low",
+      "start"
+     ]
+    },
+    {
+     "name": "USD",
+     "type": "DOUBLE",
+     "title_en": "USD",
+     "title_ms": "USD",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "EUR",
+     "type": "DOUBLE",
+     "title_en": "EUR",
+     "title_ms": "EUR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "JPY",
+     "type": "DOUBLE",
+     "title_en": "JPY",
+     "title_ms": "JPY",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "GBP",
+     "type": "DOUBLE",
+     "title_en": "GBP",
+     "title_ms": "GBP",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "SGD",
+     "type": "DOUBLE",
+     "title_en": "SGD",
+     "title_ms": "SGD",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "AUD",
+     "type": "DOUBLE",
+     "title_en": "AUD",
+     "title_ms": "AUD",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "CAD",
+     "type": "DOUBLE",
+     "title_en": "CAD",
+     "title_ms": "CAD",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "CNY",
+     "type": "DOUBLE",
+     "title_en": "CNY",
+     "title_ms": "CNY",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "CHF",
+     "type": "DOUBLE",
+     "title_en": "CHF",
+     "title_ms": "CHF",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "THB",
+     "type": "DOUBLE",
+     "title_en": "THB",
+     "title_ms": "THB",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "IDR",
+     "type": "DOUBLE",
+     "title_en": "IDR",
+     "title_ms": "IDR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "VND",
+     "type": "DOUBLE",
+     "title_en": "VND",
+     "title_ms": "VND",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "KHR",
+     "type": "DOUBLE",
+     "title_en": "KHR",
+     "title_ms": "KHR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "MMK",
+     "type": "DOUBLE",
+     "title_en": "MMK",
+     "title_ms": "MMK",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "PHP",
+     "type": "DOUBLE",
+     "title_en": "PHP",
+     "title_ms": "PHP",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "BND",
+     "type": "DOUBLE",
+     "title_en": "BND",
+     "title_ms": "BND",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "KRW",
+     "type": "DOUBLE",
+     "title_en": "KRW",
+     "title_ms": "KRW",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "HKD",
+     "type": "DOUBLE",
+     "title_en": "HKD",
+     "title_ms": "HKD",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "TWD",
+     "type": "DOUBLE",
+     "title_en": "TWD",
+     "title_ms": "TWD",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "INR",
+     "type": "DOUBLE",
+     "title_en": "INR",
+     "title_ms": "INR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "PKR",
+     "type": "DOUBLE",
+     "title_en": "PKR",
+     "title_ms": "PKR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "NPR",
+     "type": "DOUBLE",
+     "title_en": "NPR",
+     "title_ms": "NPR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "SAR",
+     "type": "DOUBLE",
+     "title_en": "SAR",
+     "title_ms": "SAR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "AED",
+     "type": "DOUBLE",
+     "title_en": "AED",
+     "title_ms": "AED",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "EGP",
+     "type": "DOUBLE",
+     "title_en": "EGP",
+     "title_ms": "EGP",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "NZD",
+     "type": "DOUBLE",
+     "title_en": "NZD",
+     "title_ms": "NZD",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    },
+    {
+     "name": "XDR",
+     "type": "DOUBLE",
+     "title_en": "XDR",
+     "title_ms": "XDR",
+     "description_en": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg').",
+     "description_ms": "[Float] Ringgit per 1 unit of this currency (3-letter code), e.g. USD 4.07 means RM4.07 per US$1. Filter 'indicator' to one computation (usually 'avg')."
+    }
+   ],
+   "sample": [
+    {
+     "date": "2004-12-01",
+     "indicator": "high",
+     "USD": 3.8,
+     "EUR": 5.1752,
+     "JPY": 0.037217,
+     "GBP": 7.3927,
+     "SGD": 2.3283,
+     "AUD": 2.9707,
+     "CAD": 3.2124,
+     "CNY": null,
+     "CHF": 3.3579,
+     "THB": 0.097636,
+     "IDR": 0.000421,
+     "VND": 0.000241,
+     "KHR": 0.000983,
+     "MMK": null,
+     "PHP": 0.067827,
+     "BND": 2.3283,
+     "KRW": 0.003671,
+     "HKD": 0.488991,
+     "TWD": 0.119723,
+     "INR": null,
+     "PKR": null,
+     "NPR": null,
+     "SAR": 1.013333,
+     "AED": null,
+     "EGP": null,
+     "NZD": null,
+     "XDR": 5.8972
+    },
+    {
+     "date": "2009-03-01",
+     "indicator": "low",
+     "USD": 3.6145,
+     "EUR": 4.6474,
+     "JPY": 0.036744,
+     "GBP": 5.0711,
+     "SGD": 2.3926,
+     "AUD": 2.3547,
+     "CAD": 2.8636,
+     "CNY": 0.5291,
+     "CHF": 3.1023,
+     "THB": 0.102268,
+     "IDR": 0.000306,
+     "VND": 0.000203,
+     "KHR": 0.000879,
+     "MMK": null,
+     "PHP": 0.075032,
+     "BND": 2.3926,
+     "KRW": 0.002345,
+     "HKD": 0.466381,
+     "TWD": 0.105822,
+     "INR": null,
+     "PKR": null,
+     "NPR": null,
+     "SAR": 0.963764,
+     "AED": null,
+     "EGP": null,
+     "NZD": null,
+     "XDR": 5.4005
+    },
+    {
+     "date": "2025-07-01",
+     "indicator": "low",
+     "USD": 4.1925,
+     "EUR": 4.8593,
+     "JPY": 0.028529,
+     "GBP": 5.6404,
+     "SGD": 3.2857,
+     "AUD": 2.7466,
+     "CAD": 3.0771,
+     "CNY": 0.5854,
+     "CHF": 5.2296,
+     "THB": 0.129159,
+     "IDR": 0.000258,
+     "VND": 0.00016,
+     "KHR": 0.001042,
+     "MMK": 0.002002,
+     "PHP": 0.072906,
+     "BND": 3.2857,
+     "KRW": 0.003044,
+     "HKD": 0.53408,
+     "TWD": 0.142136,
+     "INR": 0.048542,
+     "PKR": 0.014775,
+     "NPR": 0.030339,
+     "SAR": 1.117851,
+     "AED": 1.141484,
+     "EGP": 0.0845,
+     "NZD": 2.5163,
+     "XDR": 5.7605
+    }
+   ]
+  },
+  {
+   "id": "fuelprice",
+   "file": "data/fuelprice.parquet",
+   "title_en": "Price of Petroleum & Diesel",
+   "title_ms": "Harga Petrol & Diesel",
+   "description_en": "Weekly retail prices of RON95 petrol, RON97 petrol, and diesel in Malaysia.",
+   "description_ms": "Harga runcit mingguan bagi petrol RON95, petrol RON97 dan diesel di Malaysia.",
+   "why": "petrol and diesel prices (Q13, Q28, Q44)",
+   "frequency": "WEEKLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "MOF"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/fuelprice",
+   "data_as_of": "2026-10-22 00:01",
+   "caveat_en": "The following information should be incorporated into any analysis of fuel prices in Malaysia:\n\n- Malaysia's goods and services tax (GST) was zero-rated on 1 June 2018, with the sales and services tax (SST) subsequently implemented on 1 September 2018. However, because petrol and diesel prices are controlled by the government, they were not affected by this.\n- Beginning 3 March 2021, the announcement of fuel prices was changed from Fridays to Wednesdays.\n- On 10 June 2024, diesel subsidies were removed in Peninsular Malaysia, leading to a discontinuous jump from RM2.15 to RM3.35 per litre. Therefore, beginning 13 June 2024, the weekly price of diesel was announced separately for Peninsular Malaysia and East Malaysia (Sarawak, Sabah, W.P. Labuan).\n- On 30 Sep 2025, the price of RON95 petrol was increased to RM2.60 for the general market, lowered to RM1.99 (up to a maximum of 300 litres per month) for eligibles individuals under the BUDI 95 subsidy, and maintained at RM2.05 for commercial vehicles eligible under the Subsidised Petrol Control System (SPCS).",
+   "rows": 967,
+   "bytes": 8711,
+   "columns": [
+    {
+     "name": "series_type",
+     "type": "VARCHAR",
+     "title_en": "Chart Type",
+     "title_ms": "Jenis Carta",
+     "description_en": "[categorical] Price in RM (level), or weekly change in RM (change_weekly).",
+     "description_ms": "[Kategori] Harga dalam RM (level), ataupun perubahan harga mingguan dalam RM (change_weekly).",
+     "distinct_values": 2,
+     "values": [
+      "change_weekly",
+      "level"
+     ]
+    },
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date of effect of the price, in YYYY-MM-DD format",
+     "description_ms": "[Tarikh] Tarikh harga berkuatkuasa, dalam format YYYY-MM-DD",
+     "min": "2017-03-30",
+     "max": "2026-10-22"
+    },
+    {
+     "name": "ron95",
+     "type": "DOUBLE",
+     "title_en": "RON95 Petrol Price",
+     "title_ms": "Harga Petrol RON95",
+     "description_en": "[Float] Price per litre of RON95 petrol, in RM",
+     "description_ms": "[Apung] Harga seliter petrol RON95, dalam RM"
+    },
+    {
+     "name": "ron97",
+     "type": "DOUBLE",
+     "title_en": "RON97 Petrol Price",
+     "title_ms": "Harga Petrol RON97",
+     "description_en": "[Float] Price per litre of RON97 petrol, in RM",
+     "description_ms": "[Apung] Harga seliter petrol RON97, dalam RM"
+    },
+    {
+     "name": "diesel",
+     "type": "DOUBLE",
+     "title_en": "Price of Diesel (Peninsular Malaysia)",
+     "title_ms": "Harga Diesel (Semenanjung Malaysia)",
+     "description_en": "[Float] Price per litre of diesel in Peninsular Malaysia, in RM",
+     "description_ms": "[Apung] Harga seliter diesel di Semenanjung Malaysia, dalam RM"
+    },
+    {
+     "name": "diesel_eastmsia",
+     "type": "DOUBLE",
+     "title_en": "Price of Diesel (East Malaysia)",
+     "title_ms": "Harga Diesel (Malaysia Timur)",
+     "description_en": "[Float] Price per litre of diesel in East Malaysia, in RM",
+     "description_ms": "[Apung] Harga seliter diesel di Malaysia Timur, dalam RM"
+    },
+    {
+     "name": "ron95_budi95",
+     "type": "DOUBLE",
+     "title_en": "RON95 Petrol Price (BUDI 95)",
+     "title_ms": "Harga Petrol RON95 (BUDI 95)",
+     "description_en": "[Float] Price per litre of RON95 petrol under BUDI 95 subsidy, in RM",
+     "description_ms": "[Apung] Harga seliter petrol RON95 di bawah subsidi BUDI 95, dalam RM"
+    },
+    {
+     "name": "ron95_skps",
+     "type": "DOUBLE",
+     "title_en": "RON95 Petrol Price (SKPS)",
+     "title_ms": "Harga Petrol RON95 (SKPS)",
+     "description_en": "[Float] Price per litre of RON95 petrol under the Subsidised Petrol Control System (SKPS), in RM",
+     "description_ms": "[Apung] Harga seliter petrol RON95 di bawah Sistem Kawalan Petrol Bersubsidi (SKPS), dalam RM"
+    },
+    {
+     "name": "diesel_skds",
+     "type": "DOUBLE",
+     "title_en": "diesel_skds",
+     "title_ms": "diesel_skds",
+     "description_en": "[Float] Price per litre of diesel under the SKDS subsidised diesel scheme, in RM (column not documented on data.gov.my)",
+     "description_ms": "[Float] Price per litre of diesel under the SKDS subsidised diesel scheme, in RM (column not documented on data.gov.my)"
+    },
+    {
+     "name": "diesel_budi",
+     "type": "DOUBLE",
+     "title_en": "diesel_budi",
+     "title_ms": "diesel_budi",
+     "description_en": "[Float] Price per litre of diesel under the BUDI diesel subsidy, in RM (column not documented on data.gov.my)",
+     "description_ms": "[Float] Price per litre of diesel under the BUDI diesel subsidy, in RM (column not documented on data.gov.my)"
+    }
+   ],
+   "sample": [
+    {
+     "series_type": "level",
+     "date": "2022-07-14",
+     "ron95": 2.05,
+     "ron97": 4.75,
+     "diesel": 2.15,
+     "diesel_eastmsia": 2.15,
+     "ron95_budi95": null,
+     "ron95_skps": null,
+     "diesel_skds": null,
+     "diesel_budi": null
+    },
+    {
+     "series_type": "level",
+     "date": "2025-03-06",
+     "ron95": 2.05,
+     "ron97": 3.38,
+     "diesel": 3.13,
+     "diesel_eastmsia": 2.15,
+     "ron95_budi95": null,
+     "ron95_skps": null,
+     "diesel_skds": 2.15,
+     "diesel_budi": null
+    },
+    {
+     "series_type": "change_weekly",
+     "date": "2026-01-29",
+     "ron95": 0.0,
+     "ron97": 0.0,
+     "diesel": 0.040000000000000036,
+     "diesel_eastmsia": 0.0,
+     "ron95_budi95": 0.0,
+     "ron95_skps": 0.0,
+     "diesel_skds": 0.0,
+     "diesel_budi": null
+    }
+   ]
+  },
+  {
+   "id": "registrations_type_fuel",
+   "file": "data/registrations_type_fuel.parquet",
+   "title_en": "Monthly Vehicle Registrations by Vehicle and Fuel Type",
+   "title_ms": "Pendaftaran Kenderaan Bulanan mengikut Jenis Kenderaan dan Bahan Bakar",
+   "description_en": "Monthly count of vehicle registrations, disaggregated by vehicle type and fuel type, from 2000 to the present.",
+   "description_ms": "Bilangan pendaftaran kenderaan bulanan, dengan pecahan mengikut jenis kenderaan dan jenis bahan bakar, dari tahun 2000 sehingga kini.",
+   "why": "vehicle registrations by type and fuel (Q14)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "NATIONAL"
+   ],
+   "source": [
+    "JPJ",
+    "MOT"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/registrations_type_fuel",
+   "data_as_of": "2026-09-30 23:59",
+   "caveat_en": "This dataset captures the registration of vehicles, not their sale, import, or any other transaction. Therefore, if a vehicle is not registered for use on the road, it will not be counted in this dataset (e.g. vehicles purchased purely for private display). Furthermore, users should note that the dataset includes rows for 'all_types' and 'all_fuels' to facilitate top-level comparisons; these should not be double-counted with the breakdown rows.",
+   "rows": 10873,
+   "bytes": 26473,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Date",
+     "title_ms": "Tarikh",
+     "description_en": "[Date] The date in YYYY-MM-DD format, with DD set to 01 as the data is at monthly frequency",
+     "description_ms": "[Tarikh] Tarikh dalam format YYYY-MM-DD, dengan DD diberi nilai 01 kerana data berfrekuensi bulanan",
+     "min": "2000-01-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "type",
+     "type": "VARCHAR",
+     "title_en": "Vehicle Type",
+     "title_ms": "Jenis Kenderaan",
+     "description_en": "[Categorical] One of 6 vehicle types for analysis: Cars ('car'), motorcycles ('motorcycle'), lorries ('lorry'), vans ('van'), buses ('bus'), and others ('other'). The value 'all_types' represents the total across all vehicle types. ",
+     "description_ms": "[Kategori] Satu daripada 6 jenis kenderaan untuk analisis: Kereta ('car'), motosikal ('motorcycle'), lori ('lorry'), van ('van'), bas ('bus'), dan lain-lain ('other'). Nilai 'all_types' mewakili jumlah keseluruhan merentasi semua jenis kenderaan.",
+     "distinct_values": 7,
+     "values": [
+      "all_types",
+      "bus",
+      "car",
+      "lorry",
+      "motorcycle",
+      "other",
+      "van"
+     ]
+    },
+    {
+     "name": "fuel",
+     "type": "VARCHAR",
+     "title_en": "Fuel Type",
+     "title_ms": "Jenis Bahan Bakar",
+     "description_en": "[Categorical] Fuel type used by the vehicle's engine(s), either petrol ('petrol'), diesel ('diesel'), green diesel ('greendiesel'), natural gas ('ng'), liquefied natural gas ('lng'), hydrogen ('hydrogen'), and electric ('electric'). Hybrid vehicles are classified as 'hybrid_petrol' or 'hybrid_diesel'. The value 'all_fuels' represents the total across all fuel types.",
+     "description_ms": "[Kategori] Jenis bahan bakar yang digunakan oleh enjin kenderaan, sama ada petrol ('petrol'), diesel ('diesel'), diesel hijau ('greendiesel'), gas asli ('ng'), gas asli cecair ('lng'), hidrogen ('hydrogen'), dan elektrik ('electric'). Kenderaan hibrid dikelaskan sebagai 'hybrid_petrol' atau 'hybrid_diesel'. Nilai 'all_fuels' mewakili jumlah keseluruhan merentasi semua jenis bahan bakar.",
+     "distinct_values": 7,
+     "values": [
+      "all_fuels",
+      "diesel",
+      "electric",
+      "greendiesel",
+      "hybrid",
+      "other",
+      "petrol"
+     ]
+    },
+    {
+     "name": "registrations",
+     "type": "INTEGER",
+     "title_en": "Registrations",
+     "title_ms": "Pendaftaran",
+     "description_en": "[Integer] Number of vehicle registrations recorded in that month for the given vehicle type and fuel type combination",
+     "description_ms": "[Integer] Bilangan pendaftaran kenderaan yang direkodkan dalam bulan tersebut bagi kombinasi jenis kenderaan dan jenis bahan bakar yang diberikan"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2019-07-01",
+     "type": "car",
+     "fuel": "greendiesel",
+     "registrations": 3723
+    },
+    {
+     "date": "2007-12-01",
+     "type": "lorry",
+     "fuel": "petrol",
+     "registrations": 83
+    },
+    {
+     "date": "2004-08-01",
+     "type": "other",
+     "fuel": "greendiesel",
+     "registrations": 207
+    }
+   ]
+  },
+  {
+   "id": "cars_monthly",
+   "file": "data/cars_monthly.parquet",
+   "title_en": "Monthly New Car Registrations by State, Maker & Fuel",
+   "title_ms": "Pendaftaran Kereta Baharu Bulanan mengikut Negeri, Pengeluar & Bahan Api",
+   "description_en": "New car registrations summed per month from JPJ's registration records (data.gov.my 'Car Registration Transactions'), 2015 onwards.",
+   "description_ms": "Pendaftaran kereta baharu dijumlahkan setiap bulan daripada rekod pendaftaran JPJ (data.gov.my 'Car Registration Transactions'), dari 2015.",
+   "why": "new car registrations by state and maker (Q45)",
+   "frequency": "MONTHLY",
+   "geography": [
+    "STATE"
+   ],
+   "source": [
+    "JPJ",
+    "MOT"
+   ],
+   "source_url": "https://data.gov.my/data-catalogue/registration_transactions_car",
+   "data_as_of": "2026-09-30 23:59",
+   "caveat_en": "This dataset captures the registration of cars, not the sale or import or any other transaction. Therefore, if a car is not registered for use on the road, it will not be present in this dataset (e.g. cars which are purchased purely for private display).\n\nFurthermore, it should be noted that this dataset was extremely difficult to prepare, especially for data from the early 2000s when data collection systems were not as sophisticated as they are now. Accordingly, if you spot any errors in the dataset or have any suggestions to improve its quality, please write to help.dtsa@jdn.gov.my so the data.gov.my team can work with JPJ to fix or improve it as soon as possible.",
+   "rows": 110562,
+   "bytes": 207727,
+   "columns": [
+    {
+     "name": "date",
+     "type": "DATE",
+     "title_en": "Month",
+     "title_ms": "Bulan",
+     "description_en": "[Date] First day of the month of registration",
+     "description_ms": "[Tarikh] Hari pertama bulan pendaftaran",
+     "min": "2015-01-01",
+     "max": "2026-09-01"
+    },
+    {
+     "name": "state",
+     "type": "VARCHAR",
+     "title_en": "State of Registration",
+     "title_ms": "Negeri Pendaftaran",
+     "description_en": "[String] One of 16 states, or 'Rakan Niaga'; this either indicates the state of the JPJ office the car was registered at, or that the car was registered through an official JPJ partner portal ('Rakan Niaga'). Please note that this data field has no relation to the car's number plate, which may be freely chosen with no dependence on where the car was registered.",
+     "description_ms": "[Rentetan] Satu daripada 16 negeri, atau 'Rakan Niaga'; ini sama ada merujuk kepada negeri pejabat JPJ di mana kereta tersebut didaftarkan, atau bahawa kereta tersebut didaftarkan melalui portal Rakan Niaga JPJ rasmi. Sila ambil perhatian bahawa medan ini langsung tidak berkaitan dengan nombor plat pendaftaran kereta, yang boleh dipilih secara bebas tanpa bergantung kepada lokasi pendaftaran kereta.",
+     "distinct_values": 17,
+     "values": [
+      "Johor",
+      "Kedah",
+      "Kelantan",
+      "Melaka",
+      "Negeri Sembilan",
+      "Pahang",
+      "Perak",
+      "Perlis",
+      "Pulau Pinang",
+      "Rakan Niaga",
+      "Sabah",
+      "Sarawak",
+      "Selangor",
+      "Terengganu",
+      "W.P. Kuala Lumpur",
+      "W.P. Labuan",
+      "W.P. Putrajaya"
+     ]
+    },
+    {
+     "name": "maker",
+     "type": "VARCHAR",
+     "title_en": "Car Maker",
+     "title_ms": "Jenama Kereta",
+     "description_en": "[String] Maker of the vehicle (e.g. Perodua, Proton, Toyota) in upper-case text",
+     "description_ms": "[Rentetan] Pembuat kereta (contohnya Perodua, Proton, Toyota) dalam teks huruf besar",
+     "distinct_values": 174
+    },
+    {
+     "name": "type",
+     "type": "VARCHAR",
+     "title_en": "Vehicle Type",
+     "title_ms": "Jenis Kenderaan",
+     "description_en": "[Categorical] One of 5 vehicle types classed under as Cars for the purpose of analysis, namely motorcars ('motokar'), MPVs ('motokar_pelbagai_utiliti'), jeeps ('jip'), pick-up trucks ('pick_up') and window vans ('window_van')",
+     "description_ms": "[Kategori] Satu daripada 5 jenis kenderaan yang dikelaskan sebagai Kereta bagi tujuan analisis, iaitu motokar ('motokar'), motokar pelbagai utiliti ('motokar_pelbagai_utiliti'), jip ('jip'), trak pikap ('pick_up') dan van bertingkap ('window_van')",
+     "distinct_values": 5,
+     "values": [
+      "jip",
+      "motokar",
+      "motokar_pelbagai_utiliti",
+      "pick_up",
+      "window_van"
+     ]
+    },
+    {
+     "name": "fuel",
+     "type": "VARCHAR",
+     "title_en": "Fuel",
+     "title_ms": "Bahan Bakar",
+     "description_en": "[String] Fuel used by the car's engine(s); there are 7 types, namely petrol ('petrol'), diesel ('diesel'), green diesel ('greendiesel'), natural gas ('ng'), liquefied natural gas ('lng'), hydrogen ('hydrogen'), and electricity ('electric'). Cars which can run on electricity or fuel are classed as hybrid (either 'hybrid_petrol' or 'hybrid_diesel'). Combinations of two fuels indicate that the car's engine can use more than one type of fuel; for instance, 'diesel_ng' means the car's engine can use both diesel and natural gas as fuel.",
+     "description_ms": "[Rentetan] Bahan bakar yang diguna oleh enjin kereta tersebut; terdapat 7 jenis iaitu petrol ('petrol'), diesel ('diesel'), diesel hijau ('greendiesel'), gas asli ('ng'), gas asli cecair ('lng'), hidrogen ('hydrogen'), dan elektrik ( 'elektrik'). Kereta yang boleh menggunakan bateri elektrik atau bahan api dikelaskan sebagai hibrid (sama ada 'hybrid_petrol' atau 'hybrid_diesel'). Gabungan dua jenis bahan api bermaksud bahawa enjin kereta tersebut boleh menggunakan lebih daripada satu jenis bahan api; contohnya 'diesel_ng' bermaksud enjin kereta boleh menggunakan kedua-dua diesel dan gas asli sebagai bahan bakar.",
+     "distinct_values": 14,
+     "values": [
+      "diesel",
+      "diesel_ng",
+      "electric",
+      "greendiesel",
+      "greendiesel_ng",
+      "hybrid_diesel",
+      "hybrid_petrol",
+      "hydrogen",
+      "lng",
+      "ng",
+      "other",
+      "petrol",
+      "petrol_lng",
+      "petrol_ng"
+     ]
+    },
+    {
+     "name": "registrations",
+     "type": "INTEGER",
+     "title_en": "Registrations",
+     "title_ms": "Pendaftaran",
+     "description_en": "[Integer] Number of new cars registered",
+     "description_ms": "[Integer] Bilangan kereta baharu didaftarkan"
+    }
+   ],
+   "sample": [
+    {
+     "date": "2015-05-01",
+     "state": "Perak",
+     "maker": "Lexus",
+     "type": "motokar",
+     "fuel": "petrol",
+     "registrations": 6
+    },
+    {
+     "date": "2015-07-01",
+     "state": "Selangor",
+     "maker": "Proton",
+     "type": "motokar",
+     "fuel": "petrol",
+     "registrations": 146
+    },
+    {
+     "date": "2016-02-01",
+     "state": "Kedah",
+     "maker": "BMW",
+     "type": "motokar",
+     "fuel": "petrol",
+     "registrations": 1
+    }
+   ]
+  }
+ ]
+}

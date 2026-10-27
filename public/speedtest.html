@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>angka speed test</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; margin: 24px 16px; background: #fff; color: #111; }
+  pre { background: #f4f4f4; padding: 12px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>DuckDB in the browser: speed test</h1>
+<p>Loads DuckDB-WASM, reads two Parquet files and runs two queries. Times are in milliseconds.</p>
+<pre id="out">running…</pre>
+<script type="module">
+import * as duckdb from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm";
+
+const out = document.getElementById("out");
+const t0 = performance.now();
+const ms = () => Math.round(performance.now() - t0);
+const log = [];
+const note = (s) => { log.push(s); out.textContent = log.join("\n"); };
+
+try {
+  const bundle = await duckdb.selectBundle(duckdb.getJsDelivrBundles());
+  const workerUrl = URL.createObjectURL(new Blob([`importScripts("${bundle.mainWorker}");`], { type: "text/javascript" }));
+  const db = new duckdb.AsyncDuckDB(new duckdb.VoidLogger(), new Worker(workerUrl));
+  await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+  URL.revokeObjectURL(workerUrl);
+  note(`engine ready: ${ms()} ms (${bundle.mainModule.split("/").pop()})`);
+
+  const base = new URL("data/", location.href).href;
+  const conn = await db.connect();
+
+  let t = performance.now();
+  let r = await conn.query(`SELECT state, population * 1000 AS people FROM read_parquet('${base}population_state.parquet')
+    WHERE sex = 'both' AND age = 'overall' AND ethnicity = 'overall' AND date = '2026-01-01' ORDER BY people DESC LIMIT 3`);
+  note(`first query (population_state, 410 KB): ${Math.round(performance.now() - t)} ms -> ${JSON.stringify(r.toArray().map((x) => x.toJSON()))}`);
+
+  t = performance.now();
+  r = await conn.query(`SELECT date, inflation_yoy FROM read_parquet('${base}cpi_headline_inflation.parquet')
+    WHERE division = 'overall' ORDER BY date DESC LIMIT 1`);
+  note(`second query (cpi_headline_inflation): ${Math.round(performance.now() - t)} ms -> ${JSON.stringify(r.toArray().map((x) => x.toJSON()), (k, v) => typeof v === "bigint" ? Number(v) : v)}`);
+
+  note(`total to first answer: ${ms()} ms`);
+  document.title = "done";
+} catch (e) {
+  note("ERROR " + (e && e.stack || e));
+  document.title = "error";
+}
+</script>
+</body>
+</html>

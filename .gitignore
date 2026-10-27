@@ -1,0 +1,8 @@
+.env
+.env.*
+.venv/
+__pycache__/
+.DS_Store
+.playwright-cli/
+data/raw/
+node_modules/
