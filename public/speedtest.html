@@ -30,21 +30,25 @@ try {
   URL.revokeObjectURL(workerUrl);
   note(`engine ready: ${ms()} ms (${bundle.mainModule.split("/").pop()})`);
 
+  const engineMs = ms();
   const base = new URL("data/", location.href).href;
   const conn = await db.connect();
 
   let t = performance.now();
   let r = await conn.query(`SELECT state, population * 1000 AS people FROM read_parquet('${base}population_state.parquet')
     WHERE sex = 'both' AND age = 'overall' AND ethnicity = 'overall' AND date = '2026-01-01' ORDER BY people DESC LIMIT 3`);
-  note(`first query (population_state, 410 KB): ${Math.round(performance.now() - t)} ms -> ${JSON.stringify(r.toArray().map((x) => x.toJSON()))}`);
+  const firstMs = Math.round(performance.now() - t);
+  note(`first query (population_state, 410 KB): ${firstMs} ms -> ${JSON.stringify(r.toArray().map((x) => x.toJSON()))}`);
 
   t = performance.now();
   r = await conn.query(`SELECT date, inflation_yoy FROM read_parquet('${base}cpi_headline_inflation.parquet')
     WHERE division = 'overall' ORDER BY date DESC LIMIT 1`);
-  note(`second query (cpi_headline_inflation): ${Math.round(performance.now() - t)} ms -> ${JSON.stringify(r.toArray().map((x) => x.toJSON()), (k, v) => typeof v === "bigint" ? Number(v) : v)}`);
+  const secondMs = Math.round(performance.now() - t);
+  note(`second query (cpi_headline_inflation): ${secondMs} ms -> ${JSON.stringify(r.toArray().map((x) => x.toJSON()), (k, v) => typeof v === "bigint" ? Number(v) : v)}`);
 
   note(`total to first answer: ${ms()} ms`);
-  document.title = "done";
+  // read back by tools that can only see the tab title (e.g. a phone over adb)
+  document.title = `done engine=${engineMs} first=${firstMs} second=${secondMs} total=${ms()}`;
 } catch (e) {
   note("ERROR " + (e && e.stack || e));
   document.title = "error";
